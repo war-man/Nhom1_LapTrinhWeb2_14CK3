@@ -1,0 +1,492 @@
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Petsmart.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Owin.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\WebGrease.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+c:\users\risky\documents\visual studio 2015\Projects\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Petsmart.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Owin.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\WebGrease.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+C:\Users\Tuong\Downloads\DoAn_Web2\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Petsmart.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Owin.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\WebGrease.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+C:\Users\Risky\Desktop\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Petsmart.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Owin.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\WebGrease.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+C:\Users\Tuong\Downloads\Đồ-án\Đồ án\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb
+D:\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+D:\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+D:\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+D:\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+D:\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+D:\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+D:\DoAn_Web2\Petsmart\bin\Petsmart.dll
+D:\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+D:\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+D:\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+D:\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+D:\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+D:\DoAn_Web2\Petsmart\bin\Owin.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+D:\DoAn_Web2\Petsmart\bin\WebGrease.dll
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+D:\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+D:\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+D:\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+D:\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+D:\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+D:\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+D:\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+D:\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\ApplicationInsights.config
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\csc.exe
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\System.Collections.Immutable.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\System.Reflection.Metadata.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\vbc.exe
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\roslyn\VBCSCompiler.exe.config
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Petsmart.dll.config
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Petsmart.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Petsmart.pdb
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\EntityFramework.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.Agent.Intercept.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Web.Infrastructure.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Owin.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Helpers.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Mvc.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Optimization.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Razor.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\WebGrease.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.DependencyCollector.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.Web.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AI.WindowsServer.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.ApplicationInsights.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Helpers.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Mvc.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Optimization.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.Razor.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Deployment.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\System.Web.WebPages.Razor.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Antlr3.Runtime.pdb
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Newtonsoft.Json.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\EntityFramework.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\EntityFramework.SqlServer.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Core.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Facebook.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Cookies.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.OAuth.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Google.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.Twitter.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\CodeWeb\DoAn_Web2\Petsmart\obj\Debug\Petsmart.csprojResolveAssemblyReference.cache
+D:\CodeWeb\DoAn_Web2\Petsmart\obj\Debug\Petsmart.dll
+D:\CodeWeb\DoAn_Web2\Petsmart\obj\Debug\Petsmart.pdb

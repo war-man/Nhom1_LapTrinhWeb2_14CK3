@@ -1,0 +1,255 @@
+﻿<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="state_bar">
+                    <ul class="checkout-progress" id="checkout-progress-state">
+                        <li title="Select Addresses" class="active first">Lựa chọn địa chỉ</li>
+                        <li title="Shipping Information">Thông tin vận chuyển</li>
+                        <li title="Billing Information">Thông tin thanh toán</li>
+                        <li title="Place Order">Đặt hàng</li>
+                        <li title="Order Success" class="last">Đặt hàng thành công</li>
+                    </ul>
+                </div>
+            </div>
+            <!--col-xs-12-->
+        </div>
+        <!--row-->
+    </div>
+    <!--container-->
+
+</div>
+
+<div class="main-container col1-layout wow bounceInUp animated animated animated" style="visibility: visible;">
+    <div class="main">
+
+        <!--state_bar-->
+
+        <div class="multiple_addresses multiple-checkout container">
+            <div class="table-responsive">
+                <form id="checkout_multishipping_form" action="" method="post">
+                    <div class="page-title_multi">
+                        <h2>Giao tới nhiều địa chỉ</h2>
+                    </div>
+                    <!--page-title_multi-->
+                    <div class="title-buttons">
+                        <button type="button" title="Enter a New Address" class="button new-address" onclick="$('add_new_address_flag').value=1; $('checkout_multishipping_form').submit();"><span>Nhập địa chỉ mới</span></button>
+                    </div>
+                    <!--title-buttons-->
+                    <div class="addresses">
+                        <fieldset class="">
+                            <input type="hidden" name="continue" value="0" id="can_continue_flag">
+                            <input type="hidden" name="new_address" value="0" id="add_new_address_flag">
+                            Vui lòng chọn địa chỉ giao hàng cho các mặt hàng áp dụng
+                            <table class="data-table table-striped" id="multiship-addresses-table">
+                                <colgroup>
+                                    <col>
+                                    <col width="1">
+                                    <col width="1">
+                                    <col width="1">
+                                </colgroup>
+                                <thead>
+                                    <tr class="first last">
+                                        <th>Sản phẩm</th>
+                                        <th class="a-center">Số lượng</th>
+                                        <th>Giao đến</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr class="first last">
+                                        <td colspan="100" class="a-right last"><button type="submit" title="Update Qty &amp; Addresses" class="button btn-update" onclick="$('can_continue_flag').value=0"><span>Cập nhật số lượng &amp; địa chỉ</span></button></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr class="first odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[0][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[0][24761][address]" id="ship_0_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[1][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[1][24761][address]" id="ship_1_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[2][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[2][24761][address]" id="ship_2_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[3][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[3][24761][address]" id="ship_3_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[4][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[4][24761][address]" id="ship_4_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[5][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[5][24761][address]" id="ship_5_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Georgette Animal Print</a></h3></td>
+                                        <td><input type="text" name="ship[6][24761][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[6][24761][address]" id="ship_6_24761_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Slim Fit Casual Shirt</a></h3></td>
+                                        <td><input type="text" name="ship[7][24814][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[7][24814][address]" id="ship_7_24814_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Sanctuary Clothing Women's Top</a></h3></td>
+                                        <td><input type="text" name="ship[8][24845][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[8][24845][address]" id="ship_8_24845_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women Casual Wear</a></h3></td>
+                                        <td><input type="text" name="ship[9][24846][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[9][24846][address]" id="ship_9_24846_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Quick Crochet Tops</a></h3></td>
+                                        <td><input type="text" name="ship[10][24850][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[10][24850][address]" id="ship_10_24850_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Quick Crochet Tops</a></h3></td>
+                                        <td><input type="text" name="ship[11][24850][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[11][24850][address]" id="ship_11_24850_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Quick Crochet Tops</a></h3></td>
+                                        <td><input type="text" name="ship[12][24850][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[12][24850][address]" id="ship_12_24850_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Rexine Bean Bag</a></h3></td>
+                                        <td><input type="text" name="ship[13][24851][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[13][24851][address]" id="ship_13_24851_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Softwear Women's Designer</a></h3></td>
+                                        <td><input type="text" name="ship[14][24853][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[14][24853][address]" id="ship_14_24853_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="even">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Vivante Gorgeous Cotton</a></h3></td>
+                                        <td><input type="text" name="ship[15][24854][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[15][24854][address]" id="ship_15_24854_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                    <tr class="last odd">
+                                        <td><h3 class="product-name"><a href="product-detail.html">Women's Crepe Printed Black</a></h3></td>
+                                        <td><input type="text" name="ship[16][25414][qty]" value="1" size="2" class="input-text qty"></td>
+                                        <td>
+                                            <select name="ship[16][25414][address]" id="ship_16_25414_address" class="" title="">
+                                                <option value="1" selected="selected">john doe, Street road, AL, Alabama 42136, United States</option>
+                                            </select>
+                                        </td>
+                                        <td class="a-center last"><a class="btn-remove btn-remove2" href="#" title="Remove Item"></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </fieldset>
+                        <!--multiple-checkout-->
+                    </div>
+                    <!--addresses-->
+
+                </form>
+            </div>
+            <!--table-responsive-->
+
+            <div class="buttons-set">
+                <a class="back-link" href="shopping-cart.html"><small>« </small>Trở lại giỏ hàng</a>
+                <button type="submit" title="Continue to Shipping Information" class="button btn-continue" onclick="$('can_continue_flag').value=1"><span>Tiếp tục thông tin vận chuyển</span></button>
+            </div>
+        </div>
+        <!--multiple_addresses-->
+    </div>
+    <!--main-container-->
+
+</div>

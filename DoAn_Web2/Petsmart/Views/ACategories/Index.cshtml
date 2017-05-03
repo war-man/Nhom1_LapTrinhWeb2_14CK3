@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!--Page Title-->
+				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<div id="page-title">
+					<h1 class="page-header text-overflow">Quản Lý Loại Sản Phẩm</h1>
+
+					<!--Searchbox-->
+					<div class="searchbox">
+						<div class="input-group custom-search-form">
+							<input type="text" class="form-control" placeholder="Tìm kiếm..">
+							<span class="input-group-btn">
+								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<!--End page title-->
+
+
+				<!--Breadcrumb-->
+				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<ol class="breadcrumb">
+					<li><a href="#">Trang chủ</a></li>
+					<li class="active">Quản lý loại sản phẩm</li>
+				</ol>
+				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+				<!--End breadcrumb-->
+
+
+		
+
+				<!--Page content-->
+				<!--===================================================-->
+				<div id="page-content">
+					<!-- Search -->
+					<!-- End Search -->
+					<div class="panel">
+						<div class="panel-heading">
+								<h3 class="panel-title">Quản Lý Loại Sản Phẩm</h3>
+						</div>
+						
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-6">
+									<button data-target="#themloaisanpham" data-toggle="modal" class="btn btn-success">Thêm loại sản phẩm</button>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group row">
+									  <div class="col-10">
+									    <input class="form-control" type="search" placeholder="Tìm kiếm" id="example-search-input">
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-content">
+											<!-- USERS SEARCH -->
+											<!--===================================================-->
+											<div class="tab-pane fade active in" id="demo-search-tab-2">
+												<div class="table-responsive">
+													<table class="table table-hover table-striped table-vcenter mar-top">
+														<thead>
+															<tr>
+																<th class="min-w-td">#</th>
+																<th class="min-w-td">Hình Đại Diện</th>
+																<th>Tên Loại Sản Phẩm</th>
+																<th>Số Lượng</th>
+																<th>Ngày Tạo</th>
+																<th>Đối Tác</th>
+																<th>Tình Trạng</th>
+																<th class="min-w-td text-center">Thao tác</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td class="min-w-td">1</td>
+																<td><img src="~/Content/admin/img/products/dog-sickbay1.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
+																<td><a class="btn-link" href="#">Chó</a></td>
+																<td>20</td>
+																<td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
+																<td>Lazada</td>
+																<td><span class="label label-table label-info">Bán chạy</span></td>
+																<td class="min-w-td text-center">
+																	<div class="btn-group">
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td class="min-w-td">2</td>
+																<td><img src="~/Content/admin/img/products/1443347096-1443339772-meonala--1-.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
+																<td><a class="btn-link" href="#">Mèo</a></td>
+																<td>20</td>
+																<td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
+																<td>Apple</td>
+																<td><span class="label label-table label-info">Bán chạy</span></td>
+																<td class="min-w-td text-center">
+																	<div class="btn-group">
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
+																		<a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<hr>
+					
+													<!--Pagination-->
+													<div class="text-right">
+														<ul class="pagination mar-no">
+															<li class="disabled"><a class="fa fa-angle-double-left" href="#"></a></li>
+															<li class="active"><a href="#">1</a></li>
+															<li><a href="#">2</a></li>
+															<li><a href="#">3</a></li>
+															<li><a href="#">4</a></li>
+															<li><span>...</span></li>
+															<li><a href="#">20</a></li>
+															<li><a class="fa fa-angle-double-right" href="#"></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!--===================================================-->
+					
+										</div>
+						</div>
+					</div>
+					
+					
+					
+				</div>
+				<!--===================================================-->
+				<!--End page content-->
+				<div class="modal fade" id="themloaisanpham" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+			<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!--Modal header-->
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close" type="button">
+					<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title"><b>Thêm loại sản phẩm</b></h3>
+				</div>
+
+				<!--Modal body-->
+				<div class="modal-body">
+					<form class="form-horizontal">
+										<div class="row">
+											<div class="col-md-6 mar-btm">
+												<input type="text" class="form-control" placeholder="Tên loại sản phẩm">
+											</div>
+										</div>
+										<div class="row">
+													<div class="col-md-3 mar-btm">
+														<span class="pull-left btn btn-default btn-file">Hình đại diện... <input type="file"></span>
+													</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Giới thiệu..."></textarea>
+											</div>
+										</div>		
+						
+					</form>
+				</div>
+
+				<!--Modal footer-->
+				<div class="modal-footer">
+					<button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
+					<button class="btn btn-primary">Lưu thay đổi</button>
+				</div>
+			</div>
+			</div>
+
+			</div>
+			
+			<!--MAIN NAVIGATION-->
+			<!--===================================================-->
+			<!--===================================================-->
+			<!--END MAIN NAVIGATION-->
+			
+			<!--ASIDE-->
+			<!--===================================================-->
