@@ -1,0 +1,49 @@
+﻿@using Petsmart.Models;
+@model List<LoaiSanPham>
+
+@{
+    foreach (var item in Model)
+    {
+        <li class="mega-menu">
+            <a class="level-top" href="#"><span>@item.TenLoaiSanPham</span></a>
+            <div class="level0-wrapper dropdown-6col" style="left: 0px; display: none;">
+                <div class="container">
+                    <div class="level0-wrapper2">
+                        <div class="col-1">
+                            <div class="nav-block nav-block-center">
+                                <!--mega menu-->
+                                <ul class="level0">
+                                    <!--level3 nav-6-1 parent item-->
+                                    <li class="level3 nav-6-1 parent item">
+                                        <a href="grid.html"><span>Root Vegetables</span></a>
+                                        <!--sub sub category-->
+                                        <ul class="level1">
+                                            <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Garlic</span></a> </li>
+                                            <!--level2 nav-6-1-1-->
+                                            <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Onion</span></a> </li>
+                                            <!--level2 nav-6-1-1-->
+                                            <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Potato</span></a> </li>
+                                            <!--level2 nav-6-1-1-->
+                                            <li class="level2 nav-6-1-1"> <a href="grid.html"><span>Taros</span></a> </li>
+                                            <!--level2 nav-6-1-1-->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!--level0-->
+                            </div>
+                            <!--nav-block nav-block-center-->
+                        </div>
+                        <!--col-1-->
+                        <div class="col-2">
+                            <div class="menu_image"><a title="" href="grid.html"><img alt="menu_image" src="~/Content/user/images/menu-bag.png"></a></div>
+
+                        </div>
+                        <!--col-2-->
+                    </div>
+                    <!--level0-wrapper2-->
+                </div>
+                <!--container-->
+            </div>
+            </li>
+            }
+}
