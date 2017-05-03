@@ -629,7 +629,6 @@
     <Content Include="Views\AHome\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\LayoutUser\getMenu.cshtml" />
-    <Content Include="Views\LayoutUser\getNhaSanXuat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
