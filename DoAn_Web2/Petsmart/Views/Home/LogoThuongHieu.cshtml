@@ -1,0 +1,10 @@
+﻿@using Petsmart.Models
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="item">
+            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="Image"></a></div>
+        </div>
+    }
+}
