@@ -1,4 +1,11 @@
-﻿<div class="content">
+﻿<style>
+    .product-image{
+        width:214px;
+        height:214px;
+    }
+</style>
+
+<div class="content">
     <div id="thm-mart-slideshow" class="thm-mart-slideshow">
         <div class="container">
             <div id='thm_slider_wrapper' class='thm_slider_wrapper fullwidthbanner-container'>
@@ -93,89 +100,8 @@
                     </div>
                     <div id="top-categories" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col4 products-grid">
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/akita-inu.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Akita-inu</div>
-                                </div>
-                            </div>
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/shiba-inu.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Shiba-inu</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/phocsoc.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Phốc sóc</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/scottishfold.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Scottish Fold</div>
-                                </div>
-                            </div>
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/siberianhusky.png" alt="Retis lapen casen">
-                                    <div class="pro-info">Siberian Husky</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/alaskanhusky.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Alaskan Husky</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/labradorhusky.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Labrador Husky‎</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/scottishstraight.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Scottish Straight</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/pandabear.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Panda Bear</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/roboisabel.png" alt="Retis lapen casen">
-                                    <div class="pro-info">Robo isabel</div>
-                                </div>
-                            </div>
-                            <!-- End Item -->
-                            <!-- Item -->
-                            <div class="item">
-                                <div class="pro-img">
-                                    <img src="~/Content/user/images/teddybear.jpg" alt="Retis lapen casen">
-                                    <div class="pro-info">Teddy Bear</div>
-                                </div>
-                            </div>
+                            @{ Html.RenderAction("DanhMucHangDau", "Home", null); }
+
                             <!-- End Item -->
                         </div>
                     </div>
@@ -193,11 +119,12 @@
             <div class="cate-banner-img"><img src="~/Content/user/images/banner-cat.jpg" alt="Retis lapen casen"></div>
             <div id="best-seller" class="product-flexslider hidden-buttons">
                 <div class="slider-items slider-width-col4 products-grid">
+                 
                     <div class="item">
                         <div class="item-inner">
                             <div class="item-img">
                                 <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/logo5.jpg" alt="Retis lapen casen"></a>
+                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/shiba-inu.jpg" alt="Retis lapen casen"></a>
                                     <div class="new-label new-top-left">Mới</div>
                                     <div class="item-box-hover">
                                         <div class="box-inner">
@@ -210,7 +137,7 @@
                             </div>
                             <div class="item-info">
                                 <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
+                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Default</a> </div>
                                     <div class="item-content">
                                         <div class="rating">
                                             <div class="ratings">
@@ -221,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
+                                            <div class="price-box"><span class="regular-price"><span class="price">Default</span> </span> </div>
                                         </div>
                                         <div class="add_cart">
                                             <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
@@ -233,204 +160,21 @@
                     </div>
 
                     <!-- Item -->
-                    <div class="item">
-                        <div class="item-inner">
-                            <div class="item-img">
-                                <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/product-img.jpg" alt="Retis lapen casen"></a>
-                                    <div class="new-label new-top-left">Mới</div>
-                                    <div class="item-box-hover">
-                                        <div class="box-inner">
-                                            <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                            <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+                    @{ Html.RenderAction("SanPhamBanChay", "Home", null); }
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
-                                    <div class="item-content">
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:80%"></div>
-                                                </div>
-                                                <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                            </div>
-                                        </div>
-                                        <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
-                                        </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Item -->
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="item-inner">
-                            <div class="item-img">
-                                <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/product-img.jpg" alt="Retis lapen casen"></a>
-                                    <div class="sale-label sale-top-left">Giảm</div>
-                                    <div class="item-box-hover">
-                                        <div class="box-inner">
-                                            <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                            <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
-                                    <div class="item-content">
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:80%"></div>
-                                                </div>
-                                                <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                            </div>
-                                        </div>
-                                        <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
-                                        </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- End Item -->
 
-                    <div class="item">
-                        <div class="item-inner">
-                            <div class="item-img">
-                                <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/product-img.jpg" alt="Retis lapen casen"></a>
-                                    <div class="new-label new-top-left">Mới</div>
-                                    <div class="item-box-hover">
-                                        <div class="box-inner">
-                                            <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                            <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
-                                    <div class="item-content">
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:80%"></div>
-                                                </div>
-                                                <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                            </div>
-                                        </div>
-                                        <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
-                                        </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Item -->
-                    <div class="item">
-                        <div class="item-inner">
-                            <div class="item-img">
-                                <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/product-img.jpg" alt="Retis lapen casen"></a>
-                                    <div class="new-label new-top-left">Mới</div>
-                                    <div class="item-box-hover">
-                                        <div class="box-inner">
-                                            <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                            <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
-                                    <div class="item-content">
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:80%"></div>
-                                                </div>
-                                                <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                            </div>
-                                        </div>
-                                        <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
-                                        </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Item -->
+
+                    <!-- Item -->
+
+                    <!-- Item -->
                     <!-- End Item -->
                     <!-- Item -->
-                    <div class="item">
-                        <div class="item-inner">
-                            <div class="item-img">
-                                <div class="item-img-info">
-                                    <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/product-img.jpg" alt="Retis lapen casen"></a>
-                                    <div class="new-label new-top-left">Mới</div>
-                                    <div class="item-box-hover">
-                                        <div class="box-inner">
-                                            <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                            <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-info">
-                                <div class="info-inner">
-                                    <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">Thức ăn chó 1kg</a> </div>
-                                    <div class="item-content">
-                                        <div class="rating">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:80%"></div>
-                                                </div>
-                                                <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                            </div>
-                                        </div>
-                                        <div class="item-price">
-                                            <div class="price-box"><span class="regular-price"><span class="price">125.000VNĐ</span> </span> </div>
-                                        </div>
-                                        <div class="add_cart">
-                                            <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- End Item -->
                 </div>
             </div>
