@@ -1,6 +1,19 @@
 ﻿@using Petsmart.Models;
-
-
+@using Petsmart.Controllers;
+@{
+    decimal tongtien = 0;
+    int count = 0;
+    List<ItemCart> cart = new List<ItemCart>();
+    if (Session["cart"] != null)
+    {
+        cart = (List<ItemCart>)Session["cart"];
+        count = cart.Count;
+        foreach (ItemCart item in cart)
+        {
+            tongtien += item.Sp.GiaSanPham * item.Soluong;
+        }
+    }
+}
 <div class="page-heading">
     <div class="breadcrumbs">
         <div class="container">
@@ -114,7 +127,7 @@
                                                                 <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
                                                             </div>
                                                             <div class="add_cart">
-                                                                <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
+                                                                <button class="button btn-cart" type="button"><a href="@Url.Action("OrderNow", "ShoppingCart", new { id = @item.MaSanPham}, null)"><span>Thêm vào giỏ</span></a></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -222,50 +235,42 @@
                     <div class="block-title"> Giỏ hàng </div>
                     <div class="block-content">
                         <div class="summary">
-                            <p class="amount">Đã có <a href="#">1 sản phẩm</a> trong giỏ.</p>
-                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">299.000VNĐ</span> </p>
+                            <p class="amount">Đã có <a href="#">@count sản phẩm</a> trong giỏ.</p>
+                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@tongtien VNĐ</span> </p>
                         </div>
-                        <div class="ajax-checkout">
-                            <button type="button" title="Checkout" class="button button-checkout" onclick="#"> <span>Thanh toán</span> </button>
-                        </div>
+                        @if (Session["cart"] != null)
+                        {
+                            <a href="@Url.Action("CheckOut", "ShoppingCart")">
+                             <div class="ajax-checkout">
+                                    <button type="button" title="Checkout" class="button button-checkout"><span>Đặt hàng</span>
+                                    </button>
+                            </div>
+                            </a>
+                        }
                         <p class="block-subtitle">Những sản phẩm thêm gần đây</p>
                         <ul id="cart-sidebar" class="mini-products-list">
+                        @if (Session["cart"] != null)
+                        {
+                            foreach (var item in cart)
+                            {
                             <li class="item">
                                 <div class="item-inner">
-                                    <a href="#" class="product-image"><img src="~/Content/user/images/product-img.jpg" width="80" alt="product"></a>
+                                    <a href="#" class="product-image"><img src="~/Content/user/images/@item.Sp.HinhURL" width="80" alt="@item.Sp.TenSanPham"></a>
                                     <div class="product-details">
                                         <div class="access">
-                                            <a href="#" class="btn-remove1">Remove</a>
-                                            <a href="" title="Edit item" class="btn-edit">
-                                                <i class="icon-pencil"></i><span class="hidden">Edit item</span>
+                                            <a href="@Url.Action("RemoveCart","ShoppingCart",new { id = @item.Sp.MaSanPham})" class="btn-remove1">Xóa</a>
+                                            <a href="@Url.Action("ViewCart","ShoppingCart")" title="Edit item" class="btn-edit">
+                                                <i class="icon-pencil"></i><span class="hidden">Sửa sản phẩm</span>
                                             </a>
                                         </div>
-                                        <!--access-->
 
-                                        <strong>1</strong> x <span class="price">299.000VNĐ</span>
-                                        <p class="product-name"><a href="#">Thức ăn chó 2kg</a></p>
+                                        <strong>@item.Soluong</strong> x <span class="price">@item.Sp.GiaSanPham VNĐ</span>
+                                        <p class="product-name"><a href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham })">@item.Sp.TenSanPham</a></p>
                                     </div>
-                                    <!--product-details-bottoms-->
                                 </div>
                             </li>
-                            <li class="item  last1">
-                                <div class="item-inner">
-                                    <a href="#" class="product-image"><img src="~/Content/user/images/product-img.jpg" width="80" alt="product"></a>
-                                    <div class="product-details">
-                                        <div class="access">
-                                            <a href="#" class="btn-remove1">Remove</a>
-                                            <a href="" title="Edit item" class="btn-edit">
-                                                <i class="icon-pencil"></i><span class="hidden">Edit item</span>
-                                            </a>
-                                        </div>
-                                        <!--access-->
-
-                                        <strong>1</strong> x <span class="price">299.000VNĐ</span>
-                                        <p class="product-name"><a href="#">Thức ăn chó 2kg</a></p>
-                                    </div>
-                                    <!--product-details-bottoms-->
-                                </div>
-                            </li>
+                            }
+                        }
                         </ul>
                     </div>
                 </div>

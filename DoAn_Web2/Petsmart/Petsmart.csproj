@@ -208,6 +208,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemCart.cs" />
     <Compile Include="Controllers\LayoutUserController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -629,6 +630,7 @@
     <Content Include="Views\AHome\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\LayoutUser\getMenu.cshtml" />
+    <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
