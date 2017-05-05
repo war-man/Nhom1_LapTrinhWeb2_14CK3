@@ -1,9 +1,9 @@
 ﻿@using Petsmart.Models
 
 <style>
-    .product-image{
-        width:214px;
-        height:214px;
+    .product-image {
+        width: 214px;
+        height: 214px;
     }
 </style>
 
@@ -102,14 +102,14 @@
                     </div>
                     <div id="top-categories" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col4 products-grid">
-                            
+
                             @{
                                 foreach (var item in ViewData["lstDanhMuc"] as List<SanPham>)
                                 {
 
                                     <div class="item">
                                         <div class="pro-img">
-                                            <img src="~/Content/user/images/@item.HinhURL" alt="Retis lapen casen">
+                                            <img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham">
                                             <div class="pro-info">@item.TenSanPham</div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
             <div class="cate-banner-img"><img src="~/Content/user/images/banner-cat.jpg" alt="Retis lapen casen"></div>
             <div id="best-seller" class="product-flexslider hidden-buttons">
                 <div class="slider-items slider-width-col4 products-grid">
-                 
+
                     <div class="item">
                         <div class="item-inner">
                             <div class="item-img">
@@ -181,12 +181,12 @@
                                 <div class="item-inner">
                                     <div class="item-img">
                                         <div class="item-img-info">
-                                            <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="Retis lapen casen"></a>
+                                            <a href="product-detail.html" title="@item.TenSanPham" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
                                             <div class="new-label new-top-left">Mới</div>
                                             <div class="item-box-hover">
                                                 <div class="box-inner">
                                                     <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                                    <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+                                                    <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Thêm vào giỏ hàng tạm"><span>Thêm vào giỏ hàng tạm</span></a> <a href="#" class="link-compare add_to_compare" title="Thêm vào so sánh"><span>Thêm vào so sánh</span></a></span> </div>
 
                                                 </div>
                                             </div>
@@ -194,14 +194,14 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">@item.TenSanPham</a> </div>
+                                            <div class="item-title"><a href="product-detail.html" title="@item.TenSanPham">@item.TenSanPham</a> </div>
                                             <div class="item-content">
                                                 <div class="rating">
                                                     <div class="ratings">
                                                         <div class="rating-box">
                                                             <div class="rating" style="width:80%"></div>
                                                         </div>
-                                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                                                        <p class="rating-links"><a href="#">1 Đánh giá</a> <span class="separator">|</span> <a href="#">Thêm đánh giá</a> </p>
                                                     </div>
                                                 </div>
                                                 <div class="item-price">
@@ -242,8 +242,8 @@
                                     foreach (var item in ViewData["lstNSX"] as List<HangSanXuat>)
                                     {
                                         <div class="item">
-                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="Image"></a></div>
-                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="Image"></a></div>
+                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
+                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
                                         </div>
                                     }
                                 }
