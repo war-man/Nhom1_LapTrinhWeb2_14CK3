@@ -13,6 +13,10 @@ namespace Petsmart.Controllers
         {
             return View();
         }
+        public ActionResult OrderNow(int id)
+        {
+            return View();
+        }
 
         public ActionResult WishList()
         {

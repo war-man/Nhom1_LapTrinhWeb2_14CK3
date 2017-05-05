@@ -59,9 +59,9 @@
                                 <div class="nav-inner">
                                     <!-- BEGIN NAV -->
                                     <ul id="nav" class="hidden-xs">
-                                        <li id="nav-home" class="level0 parent drop-menu"><a class="level-top active" href="index.html"><span>TRANG CHỦ</span></a></li>
+                                        <li id="nav-home" class="level0 parent drop-menu"><a class="level-top active" href="@Url.Action(null, "Home")"><span>TRANG CHỦ</span></a></li>
                                         @*<li class="mega-menu">*@
-                                            @{ Html.RenderAction("getMenu", "LayoutUser", null); }
+                                        @{ Html.RenderAction("getMenu", "LayoutUser", null); }
                                         @*</li>*@
                                         <li class="fl-custom-tabmenulink mega-menu">
                                             <a href="#" class="level-top"> <span>KHUYẾN MÃI</span> </a>
@@ -549,36 +549,7 @@
             <li><a href="contact-us.html">Contact Us</a></li>
         </ul>
     </div>
-    <div class="popup1" style="display: block;">
-
-        <div class="newsletter-sign-box">
-
-            <div class="newsletter">
-                <img src="~/Content/user/images/close-icon.png" alt="close" class="x" onClick="HideMe();">
-                <div class="newsletter_img">
-                    <img alt="newsletter" src="~/Content/user/images/newsletter.jpg">
-                </div>
-                <form method="post" id="popup-newsletter" name="popup-newsletter" class="email-form">
-                    <h3>Đăng ký bản tin</h3>
-
-                    <h4>Hãy đăng ký và là người đầu tiên được xem những ưu đãi đặc biệt.</h4>
-                    <div class="newsletter-form">
-                        <div class="input-box">
-                            <input type="text" name="email" id="newsletter2" title="Sign up for our newsletter" placeholder="Vui lòng điền địa chỉ Email" class="input-text required-entry validate-email">
-                            <button type="submit" title="Subscribe" class="button subscribe"><span>Đăng ký</span></button>
-
-                        </div> <!--input-box-->
-                    </div> <!--newsletter-form-->
-                    <label class="subscribe-bottom"><input type="checkbox" name="notshowpopup" id="notshowpopup">Không hiển thị popup này nữa</label>
-                </form>
-
-
-
-            </div> <!--newsletter-->
-
-        </div> <!--newsletter-sign-box-->
-    </div>
-    <div id="fade" style="display: block;"></div>
+    
 
 
     <!-- JavaScript -->
@@ -664,12 +635,6 @@
             });
         });
     </script>
-    <script type="text/javascript">
-    function HideMe()
-    {
-        jQuery('.popup1').hide();
-        jQuery('#fade').hide();
-    }
-    </script>
+    
 </body>
 </html>
