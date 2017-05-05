@@ -210,6 +210,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemCart.cs" />
     <Compile Include="Controllers\LayoutUserController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -622,7 +623,6 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Detail.cshtml" />
-    <Content Include="Views\Categories\Detail.cshtml" />
     <Content Include="Views\AProducts\Index.cshtml" />
     <Content Include="Views\ACategories\Index.cshtml" />
     <Content Include="Views\AOrders\Index.cshtml" />
@@ -631,6 +631,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\LayoutUser\getMenu.cshtml" />
     <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

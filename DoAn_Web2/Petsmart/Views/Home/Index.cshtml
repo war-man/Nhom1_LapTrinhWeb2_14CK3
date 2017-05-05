@@ -181,11 +181,11 @@
                                 <div class="item-inner">
                                     <div class="item-img">
                                         <div class="item-img-info">
-                                            <a href="product-detail.html" title="@item.TenSanPham" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
+                                            <a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )" title="@item.TenSanPham" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
                                             <div class="new-label new-top-left">Mới</div>
                                             <div class="item-box-hover">
                                                 <div class="box-inner">
-                                                    <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
+                                                    <div class="product-detail-bnt"><a class="button detail-bnt"><span>Xem nhanh</span></a></div>
                                                     <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Thêm vào giỏ hàng tạm"><span>Thêm vào giỏ hàng tạm</span></a> <a href="#" class="link-compare add_to_compare" title="Thêm vào so sánh"><span>Thêm vào so sánh</span></a></span> </div>
 
                                                 </div>
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><a href="product-detail.html" title="@item.TenSanPham">@item.TenSanPham</a> </div>
+                                            <div class="item-title"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )" title="@item.TenSanPham">@item.TenSanPham</a> </div>
                                             <div class="item-content">
                                                 <div class="rating">
                                                     <div class="ratings">
@@ -208,7 +208,7 @@
                                                     <div class="price-box"><span class="regular-price"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
                                                 </div>
                                                 <div class="add_cart">
-                                                    <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
+                                                    <button class="button btn-cart" type="button"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )"><span>Xem chi tiết</span></a> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,8 +217,6 @@
                             </div>
                         }
                     }
-
-
                     <!-- End Item -->
                 </div>
             </div>
