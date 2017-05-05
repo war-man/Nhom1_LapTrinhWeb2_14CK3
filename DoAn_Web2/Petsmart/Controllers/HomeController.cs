@@ -10,26 +10,12 @@ namespace Petsmart.Controllers
     {
         private ShopBanDongVatEntities db = new ShopBanDongVatEntities();
         public ActionResult Index()
-        {   
+        {
+            ViewData["lstDanhMuc"] = db.SanPhams.OrderByDescending(s => s.LuotXem).Where(s => s.MaLoaiSanPham < 5).Select(s => s).ToList();
+            ViewData["lstSanPham"] = db.SanPhams.OrderByDescending(s => s.SoLuongBan).Select(s => s).Take(6).ToList();
+            ViewData["lstNSX"] = db.HangSanXuats.ToList();
+
             return View();
-        }
-
-        public PartialViewResult DanhMucHangDau()
-        {
-            List<SanPham> lstSanPham = db.SanPhams.OrderByDescending(s => s.LuotXem).Where(s => s.MaLoaiSanPham < 5).Select(s => s).ToList();
-            return PartialView(lstSanPham);
-        }
-
-        public PartialViewResult SanPhamBanChay()
-        {
-            List<SanPham> lstSanPham = db.SanPhams.OrderByDescending(s => s.SoLuongBan).Select(s => s).Take(6).ToList();
-            return PartialView(lstSanPham);
-        }
-
-        public PartialViewResult LogoThuongHieu()
-        {
-            List<HangSanXuat> lstHangSX = db.HangSanXuats.ToList();
-            return PartialView(lstHangSX);
         }
 
         public ActionResult Contact()
