@@ -139,7 +139,7 @@
                                 <div class="basket"> <a href="@Url.Action("ViewCart", "ShoppingCart")"><span>@count</span></a> </div>
                                 <div class="fl-mini-cart-content" style="display: none;">
                                     <div class="block-subtitle">
-                                        <div class="top-subtotal">@count sản phẩm, <span class="price">@tongtien VNĐ<span> </div>
+                                        <div class="top-subtotal">@count sản phẩm, <span class="price">@string.Format("{0:0,0}", @tongtien) VNĐ<span> </div>
                                         <!--top-subtotal-->
                                         <!--pull-right-->
                                     </div>
@@ -151,14 +151,14 @@
                                             {
                                             <li class="item first">
                                                 <div class="item-inner">
-                                                    <a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="#l"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src="~/Content/user/images/@item.Sp.HinhURL"></a>
+                                                    <a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham})"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src="~/Content/user/images/@item.Sp.HinhURL"></a>
                                                     <div class="product-details">
                                                         <div class="access">
                                                         <a class="btn-remove1" title="Remove This Item" href="@Url.Action("RemoveCart","ShoppingCart", new { id = @item.Sp.MaSanPham })">Remove</a>
                                                          </div>
                                                         <!--access-->
-                                                        <strong>@item.Soluong</strong> x <span class="price">@item.Sp.GiaSanPham VNĐ</span>
-                                                        <p class="product-name"><a href="product-detail.html">@item.Sp.TenSanPham</a></p>
+                                                        <strong>@item.Soluong</strong> x <span class="price">@string.Format("{0:0,0}",@item.Sp.GiaSanPham) VNĐ</span>
+                                                        <p class="product-name"><a href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham})">@item.Sp.TenSanPham</a></p>
                                                     </div>
                                                 </div>
                                             </li>

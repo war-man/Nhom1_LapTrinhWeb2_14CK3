@@ -1,4 +1,18 @@
 ﻿@using Petsmart.Controllers;
+@{
+    decimal tongtien = 0;
+    int count = 0;
+    List<ItemCart> cart = new List<ItemCart>();
+    if (Session["cart"] != null)
+    {
+        cart = (List<ItemCart>)Session["cart"];
+        count = cart.Count;
+        foreach (ItemCart item in cart)
+        {
+            tongtien += item.Sp.GiaSanPham * item.Soluong;
+        }
+    }
+}
 <div class="page-heading">
     <div class="container">
         <div class="row">
@@ -69,15 +83,15 @@
                                             </td>
                                             <td class="a-right hidden-table">
                                                 <span class="cart-price">
-                                                    <span class="price">@item.Sp.GiaSanPham</span>
+                                                    <span class="price">@string.Format("{0:0,0}",@item.Sp.GiaSanPham) VNĐ</span>
                                                 </span>
                                             </td>
                                             <td class="a-center movewishlist">
-                                                <input name="quantity" value="@item.Soluong" size="4" title="" class="input-text qty" maxlength="12">
+                                                <input name="quantity" value="@item.Soluong" type="number" size="4" style="width:60px;" title="quantity" class="input-text qty" maxlength="12">
                                             </td>
                                             <td class="a-right movewishlist">
                                                 <span class="cart-price">
-                                                    <span class="price">@(item.Soluong * item.Sp.GiaSanPham)</span>
+                                                    <span class="price">@string.Format("{0:0,0}", (item.Soluong * item.Sp.GiaSanPham)) VNĐ</span>
                                                 </span>
                                             </td>
                                             <td class="a-center last">
@@ -238,7 +252,7 @@
                                             <strong>Thành Tiền</strong>
                                         </td>
                                         <td style="" class="a-right">
-                                            <strong><span class="price">129.000VNĐ</span></strong>
+                                            <strong><span class="price">@string.Format("{0:0,0}",@tongtien) VNĐ</span></strong>
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -248,7 +262,7 @@
                                             Tổng Tiền
                                         </td>
                                         <td style="" class="a-right">
-                                            <span class="price">129.000VNĐ</span>
+                                            <span class="price">@string.Format("{0:0,0}",@tongtien) VNĐ</span>
                                         </td>
                                     </tr>
                                 </tbody>

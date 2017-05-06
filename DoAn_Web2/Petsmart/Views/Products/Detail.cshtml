@@ -87,7 +87,7 @@
                                             </div>
                                         </span>
                                         <div class="price-block">
-                                            <div class="price-box"> <span class="regular-price" id="product-price-123"> <span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
+                                            <div class="price-box"> <span class="regular-price" id="product-price-123"> <span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
                                             <p class="availability in-stock">
                                                 <link itemprop="availability" href="http://schema.org/InStock">
                                                 <span>Còn hàng</span>
@@ -448,7 +448,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="item-price">
-                                                                    <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
+                                                                    <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
                                                                 </div>
                                                                 <div class="add_cart">
                                                                     <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})"><button class="button btn-cart" type="button"><span>Xem chi tiết</span></button></a>

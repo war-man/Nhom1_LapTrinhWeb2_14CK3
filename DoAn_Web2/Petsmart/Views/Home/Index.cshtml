@@ -205,10 +205,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
-                                                </div>
+                                                    <div class="price-box"><span class="regular-price"><span class="price">@string.Format("{0:0,0}",item.GiaSanPham) VNĐ</span></span> </div >
+                                                </div >
                                                 <div class="add_cart">
-                                                    <button class="button btn-cart" type="button"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )"><span>Xem chi tiết</span></a> </button>
+                                                    <button class="button btn-cart" type="button"><a href = "@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )"><span>Xem chi tiết</span></a> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                         }
-                    }
+                                                    }
                     <!-- End Item -->
                 </div>
             </div>
@@ -233,15 +233,15 @@
                         <h2>Logo thương hiệu</h2>
                     </div>
                     <div class="slider-items-products">
-                        <div id="brand-slider" class="product-flexslider hidden-buttons">
+                        <div id = "brand-slider" class="product-flexslider hidden-buttons">
                             <div class="slider-items slider-width-col6">
                                 <!-- Item -->
                                 @{
                                     foreach (var item in ViewData["lstNSX"] as List<HangSanXuat>)
                                     {
                                         <div class="item">
-                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
-                                            <div class="logo-item"><a href="#"><img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
+                                            <div class="logo-item"><a href = "#" >< img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
+                                            <div class="logo-item"><a href = "#" >< img src="~/Content/user/images/@item.LogoURL" alt="@item.TenHangSanXuat"></a></div>
                                         </div>
                                     }
                                 }
@@ -254,19 +254,19 @@
                     <div class="offer-slider parallax parallax-2">
                         <ul class="bxslider">
                             <li>
-                                <div class="avatar"><img src="~/Content/user/images/male.png" alt="Image"></div>
+                                <div class="avatar"><img src = "~/Content/user/images/male.png" alt="Image"></div>
                                 <div class="testimonials">"Shop có rất nhiều giống chó hiếm và đẹp, rất thích shop."</div>
-                                <div class="clients_author">  Lê Việt  <span>Khách hàng vui vẻ</span> </div>
+                                <div class="clients_author">  Lê Việt<span>Khách hàng vui vẻ</span> </div>
                             </li>
                             <li>
-                                <div class="avatar"><img src="~/Content/user/images/female.jpg" alt="Image"></div>
+                                <div class="avatar"><img src = "~/Content/user/images/female.jpg" alt="Image"></div>
                                 <div class="testimonials">"Anh chủ shop tên Vũ đẹp trai."</div>
-                                <div class="clients_author">  Ú Xinh  <span>khách hàng thân thiết</span> </div>
+                                <div class="clients_author">  Ú Xinh<span>khách hàng thân thiết</span> </div>
                             </li>
                             <li>
-                                <div class="avatar"><img src="~/Content/user/images/male.png" alt="Image"></div>
+                                <div class="avatar"><img src = "~/Content/user/images/male.png" alt="Image"></div>
                                 <div class="testimonials">"Phụ kiện đủ loại, đa dạng cho các thú cưng nhà mình. Sẽ ủng hộ shop dài dài."</div>
-                                <div class="clients_author">  Nhanh Gay  <span>khách hàng vui vẻ</span> </div>
+                                <div class="clients_author">  Nhanh Gay<span>khách hàng vui vẻ</span> </div>
                             </li>
 
                         </ul>

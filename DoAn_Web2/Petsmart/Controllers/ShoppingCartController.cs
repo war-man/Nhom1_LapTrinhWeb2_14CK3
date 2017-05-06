@@ -60,8 +60,14 @@ namespace Petsmart.Controllers
             string[] quantities = frm.GetValues("quantity");
             List<ItemCart> cart = (List<ItemCart>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
-                cart[i].Soluong = Convert.ToInt32(quantities[i]);
+            {
+                int quantity = Convert.ToInt32(quantities[i]);
+                if (quantity <= 0)
+                    cart.RemoveAt(i);
 
+                else
+                    cart[i].Soluong = quantity;
+            }
             Session["cart"] = cart;
             return RedirectToAction("ViewCart", "ShoppingCart");
         }

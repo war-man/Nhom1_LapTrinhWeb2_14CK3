@@ -125,7 +125,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="item-price">
-                                                                <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
+                                                                <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
                                                             </div>
                                                             <div class="add_cart">
                                                                 <button class="button btn-cart" type="button"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham}, null)"><span>Xem chi tiết</span></a></button>
@@ -213,7 +213,7 @@
                     <div class="block-content">
                         <div class="summary">
                             <p class="amount">Đã có <a href="@Url.Action("ViewCart","ShoppingCart")">@count sản phẩm</a> trong giỏ.</p>
-                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@tongtien VNĐ</span> </p>
+                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@string.Format("{0:0,0}",@tongtien) VNĐ</span> </p>
                         </div>
                         @if (Session["cart"] != null)
                         {
@@ -241,7 +241,7 @@
                                             </a>
                                         </div>
 
-                                        <strong>@item.Soluong</strong> x <span class="price">@item.Sp.GiaSanPham VNĐ</span>
+                                        <strong>@item.Soluong</strong> x <span class="price">@string.Format("{0:0,0}",@item.Sp.GiaSanPham) VNĐ</span>
                                         <p class="product-name"><a href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham })">@item.Sp.TenSanPham</a></p>
                                     </div>
                                 </div>
