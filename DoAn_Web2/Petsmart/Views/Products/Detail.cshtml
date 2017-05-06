@@ -90,7 +90,14 @@
                                             <div class="price-box"> <span class="regular-price" id="product-price-123"> <span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
                                             <p class="availability in-stock">
                                                 <link itemprop="availability" href="http://schema.org/InStock">
-                                                <span>Còn hàng</span>
+                                                @if (@item.SoLuongTon > 0)
+                                                {
+                                                    <span>Còn hàng</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Hết hàng</span>
+                                                }
                                             </p>
                                         </div>
                                         <!--price-block-->
