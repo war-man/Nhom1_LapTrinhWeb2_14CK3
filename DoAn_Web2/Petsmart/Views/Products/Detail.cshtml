@@ -11,10 +11,9 @@
                         {
                             <div class="col-xs-12">
                                 <ul>
-                                    <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>—› </span> </li>
-                                    <li class="category1599"> <a href="grid.html" title=""></a>@item.TenLoaiSanPham<span>—› </span> </li>
-                                    <li class="category1600"> <a href="grid.html" title="">@item1.TenSanPham</a> </li>
-
+                                    <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Home</a> <span>—› </span> </li>
+                                    <li class="category1599"> <a href="@Url.Action("Index", "Categories", new { id = @item1.MaLoaiSanPham })" title="">@item.TenLoaiSanPham<span>—› </span></a> </li>
+                                    <li class="category1600"> <a href="@Url.Action("Detail", "Products", new { id = @item1.MaSanPham })" title="">@item1.TenSanPham</a> </li>
                                 </ul>
                             </div>
                         }
@@ -110,13 +109,13 @@
                                                     <!--custom pull-left-->
                                                 </div>
                                                 <!--pull-left-->
-                                                <button type="button" title="Thêm vào giỏ" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><i class="icon-basket"></i>Thêm vào giỏ</span></button>
+                                                <a href="@Url.Action("OrderNow", "ShoppingCart", new { id = @item.MaSanPham })"><button type="button" title="Thêm vào giỏ" class="button btn-cart"><span><i class="icon-basket"></i>Thêm vào giỏ</span></button></a>
                                             </div>
                                             <!--add-to-cart-->
                                             <div class="email-addto-box">
                                                 <p class="email-friend"><a href="#" title="Gửi mail cho bạn bè"><span>Gửi mail cho bạn bè</span></a></p>
                                                 <ul class="add-to-links">
-                                                    <li> <a class="link-wishlist" href="wishlist.html" onclick="" title="Thêm vào giỏ tạm"><span>Thêm vào giỏ tạm</span></a> </li>
+                                                    <li> <a class="link-wishlist" href="#" onclick="" title="Thêm vào giỏ tạm"><span>Thêm vào giỏ tạm</span></a> </li>
                                                     <li> <span class="separator">|</span> <a class="link-compare" href="Compare.html" title="Thêm vào đánh giá"><span>Thêm vào đánh giá</span></a> </li>
                                                 </ul>
                                                 <!--add-to-links-->
@@ -134,7 +133,6 @@
                                                 <li class="googleplus"> <a href="https://plus.google.com/" rel="nofollow" target="_blank" style="text-decoration:none;"> </a> </li>
                                             </ul>
                                         </div>
-                                        <!-- thm-mart Social Share Close-->
                                     </div>
                                     <!--product-shop-->
                                     <!--Detail page static block for version 3-->
@@ -418,67 +416,55 @@
                                 <h2>Sản phẩm tương tự</h2>
                             </div>
                             <div id="related-slider" class="product-flexslider hidden-buttons">
-                                <div class="slider-items slider-width-col4 products-grid owl-carousel owl-theme" style="opacity: 1; display: block;">
-                                    <div class="owl-wrapper-outer">
-                                        <div class="owl-wrapper" style="width: 2916px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);">
-                                            <div class="owl-item" style="width: 243px;">
-
-                                                @{
-                                                    foreach (var item in ViewData["SPTuongTu"] as List<SanPham>)
-                                                    {
-
-                                                        <div class="item">
-                                                            <div class="item-inner">
-                                                                <div class="item-img">
-                                                                    <div class="item-img-info">
-                                                                        <a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )" title="@item.TenSanPham" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
-                                                                        <div class="new-label new-top-left">New</div>
-                                                                        <div class="item-box-hover">
-                                                                            <div class="box-inner">
-                                                                                <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Xem nhanh</span></a></div>
-                                                                                <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Thêm vào giỏ tạm"><span>Thêm vào giỏ tạm</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-info">
-                                                                    <div class="info-inner">
-                                                                        <div class="item-title"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham } )" title="@item.TenSanPham">@item.TenSanPham</a> </div>
-                                                                        <div class="item-content">
-                                                                            <div class="rating">
-                                                                                <div class="ratings">
-                                                                                    <div class="rating-box">
-                                                                                        <div class="rating" style="width:80%"></div>
-                                                                                    </div>
-                                                                                    <p class="rating-links"><a href="#">1 Đánh giá</a> <span class="separator">|</span> <a href="#">Thêm đánh giá</a> </p>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="item-price">
-                                                                                <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
-                                                                            </div>
-                                                                            <div class="add_cart">
-                                                                                <button class="button btn-cart" type="button"><span>Thêm vào giỏ</span></button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                <div class="slider-items slider-width-col4 products-grid">
+                                    
+        @{
+            foreach (var item in ViewData["SPTuongTu"] as List<SanPham>)
+            {
+                                <div class="item">
+                                                <div class="item-inner">
+                                                    <div class="item-img">
+                                                        <div class="item-img-info">
+                                                            <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
+                                                            <div class="new-label new-top-left">New</div>
+                                                            <div class="item-box-hover">
+                                                                <div class="box-inner">
+                                                                    <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
+                                                                    <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                    }
-                                                }
+                                                    </div>
+                                                    <div class="item-info">
+                                                        <div class="info-inner">
+                                                            <div class="item-title"><a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="Retis lapen casen">@item.TenSanPham</a> </div>
+                                                            <div class="item-content">
+                                                                <div class="rating">
+                                                                    <div class="ratings">
+                                                                        <div class="rating-box">
+                                                                            <div class="rating" style="width:80%"></div>
+                                                                        </div>
+                                                                        <p class="rating-links"><a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-price">
+                                                                    <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
+                                                                </div>
+                                                                <div class="add_cart">
+                                                                    <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})"><button class="button btn-cart" type="button"><span>Xem chi tiết</span></button></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><a class="flex-prev"></a></div><div class="owl-next"><a class="flex-next"></a></div></div></div>
-                                    </div>
+            }
+        }
                                 </div>
                             </div>
                         </div>
-                        <!-- end related product -->
-
                     </div>
+                    
                     <!-- end related product -->
                 </div>
                 <!--box-additional-->
@@ -487,3 +473,4 @@
         </div>
         <!--col-main-->
     </div>
+

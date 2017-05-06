@@ -15,9 +15,9 @@ namespace Petsmart.Controllers
         {
             ViewData["lstSanPham"] = db.SanPhams.Where(s => s.MaLoaiSanPham == id).ToList();
             ViewData["lstLoaiSanPham"] = db.LoaiSanPhams.ToList();
+            ViewData["lsp"] = db.LoaiSanPhams.Where(s => s.MaLoaiSanPham == id).ToList();
             return View();
         }
-
         public ActionResult List()
         {
             return View();

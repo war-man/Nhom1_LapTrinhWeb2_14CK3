@@ -13,6 +13,7 @@
             tongtien += item.Sp.GiaSanPham * item.Soluong;
         }
     }
+    // Breadcumbs
 }
 <div class="page-heading">
     <div class="breadcrumbs">
@@ -20,10 +21,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul>
-                        <li class="home"> <a href="index.html" title="Go to Home Page">Trang chủ</a> <span>—› </span> </li>
-                        <li class="category1599"> <a href="grid.html" title="">Chó</a> <span>—› </span> </li>
-                        <li class="category1600"> <a href="grid.html" title="">Chó Nhật</a> <span>—› </span> </li>
-                        <li class="category1601"> <strong>Shiba-inu</strong> </li>
+                       @foreach (var item in ViewData["lsp"] as List<LoaiSanPham>) {
+                        <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Trang chủ</a> <span>—› </span> </li>
+                        <li class=""> <a href="@Url.Action("Index", "Categories", new { id = @item.MaLoaiSanPham })" title="">@item.TenLoaiSanPham</a> <span>—› </span> </li>
+                           }
                     </ul>
                 </div>
                 <!--col-xs-12-->
@@ -127,7 +128,7 @@
                                                                 <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@item.GiaSanPham VNĐ</span> </span> </div>
                                                             </div>
                                                             <div class="add_cart">
-                                                                <button class="button btn-cart" type="button"><a href="@Url.Action("OrderNow", "ShoppingCart", new { id = @item.MaSanPham}, null)"><span>Thêm vào giỏ</span></a></button>
+                                                                <button class="button btn-cart" type="button"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham}, null)"><span>Xem chi tiết</span></a></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -169,31 +170,7 @@
                     </div>
                     <!--box-content box-category-->
                 </div>
-                <!--side-nav-categories-->
-                @*<div class="block block-layered-nav">
-                        <div class="block-title"> Mua sắm </div>
-                        <div class="block-content">
-                            <p class="block-subtitle">Lựa chọn mua sắm</p>
-                            <dl id="narrow-by-list">
-                                <dt class="odd">Thể loại</dt>
-                                <dd class="odd">
-                                    <ol>
-                                        <li> <a href="#"> Chó <span class="count">(24)</span> </a> </li>
-                                        <li> <a href="#"> Mèo <span class="count">(24)</span> </a> </li>
-                                        <li> <a href="#"> Hamster <span class="count">(24)</span> </a> </li>
-                                        <li> <a href="#"> Thỏ <span class="count">(24)</span> </a> </li>
-                                    </ol>
-                                </dd>
-                                <dt class="last odd">Giá</dt>
-                                <dd class="last odd">
-                                    <ol>
-                                        <li> <a href="#"> <span class="price">0VNĐ</span> - <span class="price">99.000VNĐ</span> <span class="count">(26)</span> </a> </li>
-                                        <li> <a href="#"> <span class="price">100.000VNĐ</span> và cao hơn <span class="count">(3)</span> </a> </li>
-                                    </ol>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>*@
+              
                 <div class="custom-slider" style="margin-bottom:20px;">
                     <div>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -235,7 +212,7 @@
                     <div class="block-title"> Giỏ hàng </div>
                     <div class="block-content">
                         <div class="summary">
-                            <p class="amount">Đã có <a href="#">@count sản phẩm</a> trong giỏ.</p>
+                            <p class="amount">Đã có <a href="@Url.Action("ViewCart","ShoppingCart")">@count sản phẩm</a> trong giỏ.</p>
                             <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@tongtien VNĐ</span> </p>
                         </div>
                         @if (Session["cart"] != null)
