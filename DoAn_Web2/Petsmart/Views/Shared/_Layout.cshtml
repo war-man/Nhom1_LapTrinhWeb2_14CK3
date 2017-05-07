@@ -184,14 +184,17 @@
                         </div>
                         <!--mini-cart-->
                         <div class="collapse navbar-collapse">
-                            <form class="navbar-form" role="search">
+
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm">
+@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form", @id = "formSearch", @role = "search" }))
+{
+                                    <input type="text" name="searchString" id="" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm">
                                     <span class="input-group-btn">
-                                        <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Tìm kiếm</span> </span> </button>
+                                        <button type="submit" class="search-btn"><span class="glyphicon glyphicon-search"> <span class="sr-only">Tìm kiếm</span> </span></button>
                                     </span>
-                                </div>
-                            </form>
+}
+                                    
+                                </div>                          
                         </div>
                         <!--links-->
                     </div>

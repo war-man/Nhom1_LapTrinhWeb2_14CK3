@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Petsmart.Models;
+using PagedList;
 namespace Petsmart.Controllers
 {
     public class HomeController : Controller
@@ -17,7 +18,32 @@ namespace Petsmart.Controllers
 
             return View();
         }
+        public ActionResult Search(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            List<SanPham> sanpham = new List<SanPham>();
+            ViewBag.CurrentSort = sortOrder;
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
+            ViewBag.CurrentFilter = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sanpham = db.SanPhams.Where(s => s.TenSanPham.Contains(searchString)).ToList();
+
+            }
+            
+            ViewData["lstLoaiSanPham"] = db.LoaiSanPhams.ToList();
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(sanpham.ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult Contact()
         {
             return View();

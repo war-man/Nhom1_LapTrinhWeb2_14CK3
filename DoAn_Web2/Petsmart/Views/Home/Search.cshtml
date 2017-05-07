@@ -2,6 +2,7 @@
 @using Petsmart.Controllers;
 @using PagedList.Mvc;
 @model PagedList.IPagedList<SanPham>
+
 @{
     decimal tongtien = 0;
     int count = 0;
@@ -15,6 +16,7 @@
             tongtien += item.Sp.GiaSanPham * item.Soluong;
         }
     }
+   
     // Breadcumbs
 }
 <div class="page-heading">
@@ -23,10 +25,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul>
-                       @foreach (var item in ViewData["lsp"] as List<LoaiSanPham>) {
-                        <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Trang chủ</a> <span>—› </span> </li>
-                        <li class=""> <a href="@Url.Action("Index", "Categories", new { id = @item.MaLoaiSanPham })" title="">@item.TenLoaiSanPham</a> <span>—› </span> </li>
-                           }
+                            <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Trang chủ</a> <span>—› </span> </li>
                     </ul>
                 </div>
                 <!--col-xs-12-->
@@ -49,76 +48,45 @@
                 <div class="pro-coloumn">
                     <article class="col-main">
                         <div class="toolbar">
-                            <div id="sort-by">
-                                <label class="left">Sắp xếp theo: </label>
-                                <ul>
-                                    <li>
-                                        <a href="#">Sắp xếp<span class="right-arrow"></span></a>
-                                        <ul>
-                                            <a href="@Url.Action("Index","Categories", new { sortOrder = ViewBag.NameSortParm })"><li>Tên</li></a>
-                                            <a href="@Url.Action("Index","Categories", new { sortOrder = ViewBag.DateSortParm })"><li>Ngày</li></a>
-                                            <a href="@Url.Action("Index","Categories", new { sortOrder = ViewBag.PriceSortParm })"><li>Giá</li></a>                                            
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
                             <div class="pager">
                                 <div class="pages">
-                                    <label>Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</label>
-                                   
-
-                                    @Html.PagedListPager(Model, page => Url.Action("Index","Categories",new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                                    <label>Trang: Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</label>
+                                    @Html.PagedListPager(Model, page => Url.Action("Search",
+                                    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                                 </div>
                             </div>
                         </div>
                         <div class="category-products">
-                            <ul class="products-grid">
-                                @{
-                                    foreach (var item in Model)
-                                    {
-                                        <li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6">
-                                            <div class="item-inner">
-                                                <div class="item-img">
-                                                    <div class="item-img-info">
-                                                        <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="Retis lapen casen"></a>
-
-                                                        <div class="item-box-hover">
-                                                            <div class="box-inner">
-                                                                <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                                                <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="info-inner">
-                                                        <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">@item.TenSanPham</a> </div>
-                                                        <div class="item-content">
-                                                            <div class="rating">
-                                                                <div class="ratings">
-                                                                    <div class="rating-box">
-                                                                        <div class="rating" style="width:80%"></div>
-                                                                    </div>
-                                                                    <p class="rating-links"><a href="#">@item.LuotXem</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-price">
-                                                                <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
-                                                            </div>
-                                                            <div class="add_cart">
-                                                                <button class="button btn-cart" type="button"><a href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham}, null)"><span>Xem chi tiết</span></a></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            <ol class="products-list" id="products-list">
+                                @foreach (var item in Model)
+                                {
+                                <li class="item first">
+                                    <div class="product-image"> <a href="@Url.Action("Detail","Products",new { id = item.MaSanPham})" title="@item.TenSanPham"> <img class="small-image" src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"> </a> </div>
+                                    <div class="product-shop">
+                                        <h2 class="product-name"><a href="@Url.Action("Detail","Products",new { id = item.MaSanPham})" title="@item.TenSanPham">@item.TenSanPham</a></h2>
+                                        <div class="ratings">
+                                            <div class="rating-box">
+                                                <div style="width:50%" class="rating"></div>
                                             </div>
-
-                                        </li>
-                                    }
+                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#review-form">Add Your Review</a> </p>
+                                        </div>
+                                        <div class="desc std">
+                                            <p>
+                                                @Html.Raw(@item.MoTa)
+                                            </p>
+                                            
+                                        </div>
+                                        <div class="price-box">
+                                            <p class="special-price"> <span class="price-label"></span> <span id="product-price-212" class="price"> @string.Format("{0:0,0}", @item.GiaSanPham) VNĐ</span> </p>
+                                        </div>
+                                        <div class="actions" style="display:flex; min-width:500px;">
+                                            <a href="@Url.Action("Detail","Products",new { id = item.MaSanPham})" title="@item.TenSanPham"><button class="button btn-cart ajx-cart" title="Xem chi tiết" type="button"><span>Xem chi tiết</span></button></a>
+                                            <a href="@Url.Action("OrderNow","ShoppingCart",new { id = item.MaSanPham})" title="@item.TenSanPham"><button class="button btn-cart ajx-cart" title="Thêm vào giỏ" type="button"><span>Thêm vào giỏ</span></button></a>
+                                        </div>
+                                    </div>
+                                </li>
                                 }
-
-                            </ul>
+                            </ol>
                         </div>
                     </article>
                 </div>
@@ -149,7 +117,7 @@
                     </div>
                     <!--box-content box-category-->
                 </div>
-              
+
                 <div class="custom-slider" style="margin-bottom:20px;">
                     <div>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -192,41 +160,42 @@
                     <div class="block-content">
                         <div class="summary">
                             <p class="amount">Đã có <a href="@Url.Action("ViewCart","ShoppingCart")">@count sản phẩm</a> trong giỏ.</p>
-                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@string.Format("{0:0,0}",@tongtien) VNĐ</span> </p>
+                            <p class="subtotal"> <span class="label">Tổng cộng:</span> <span class="price">@string.Format("{0:0,0}", @tongtien) VNĐ</span> </p>
                         </div>
                         @if (Session["cart"] != null)
                         {
                             <a href="@Url.Action("CheckOut", "ShoppingCart")">
-                             <div class="ajax-checkout">
-                                    <button type="button" title="Checkout" class="button button-checkout"><span>Đặt hàng</span>
+                                <div class="ajax-checkout">
+                                    <button type="button" title="Checkout" class="button button-checkout">
+                                        <span>Đặt hàng</span>
                                     </button>
-                            </div>
+                                </div>
                             </a>
                         }
                         <p class="block-subtitle">Những sản phẩm thêm gần đây</p>
                         <ul id="cart-sidebar" class="mini-products-list">
-                        @if (Session["cart"] != null)
-                        {
-                            foreach (var item in cart)
+                            @if (Session["cart"] != null)
                             {
-                            <li class="item">
-                                <div class="item-inner">
-                                    <a href="#" class="product-image"><img src="~/Content/user/images/@item.Sp.HinhURL" width="80" alt="@item.Sp.TenSanPham"></a>
-                                    <div class="product-details">
-                                        <div class="access">
-                                            <a href="@Url.Action("RemoveCart","ShoppingCart",new { id = @item.Sp.MaSanPham})" class="btn-remove1">Xóa</a>
-                                            <a href="@Url.Action("ViewCart","ShoppingCart")" title="Edit item" class="btn-edit">
-                                                <i class="icon-pencil"></i><span class="hidden">Sửa sản phẩm</span>
-                                            </a>
-                                        </div>
+                                foreach (var item in cart)
+                                {
+                                    <li class="item">
+                                        <div class="item-inner">
+                                            <a href="#" class="product-image"><img src="~/Content/user/images/@item.Sp.HinhURL" width="80" alt="@item.Sp.TenSanPham"></a>
+                                            <div class="product-details">
+                                                <div class="access">
+                                                    <a href="@Url.Action("RemoveCart","ShoppingCart",new { id = @item.Sp.MaSanPham})" class="btn-remove1">Xóa</a>
+                                                    <a href="@Url.Action("ViewCart","ShoppingCart")" title="Edit item" class="btn-edit">
+                                                        <i class="icon-pencil"></i><span class="hidden">Sửa sản phẩm</span>
+                                                    </a>
+                                                </div>
 
-                                        <strong>@item.Soluong</strong> x <span class="price">@string.Format("{0:0,0}",@item.Sp.GiaSanPham) VNĐ</span>
-                                        <p class="product-name"><a href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham })">@item.Sp.TenSanPham</a></p>
-                                    </div>
-                                </div>
-                            </li>
+                                                <strong>@item.Soluong</strong> x <span class="price">@string.Format("{0:0,0}", @item.Sp.GiaSanPham) VNĐ</span>
+                                                <p class="product-name"><a href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham })">@item.Sp.TenSanPham</a></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
                             }
-                        }
                         </ul>
                     </div>
                 </div>

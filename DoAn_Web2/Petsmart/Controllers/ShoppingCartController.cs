@@ -57,6 +57,8 @@ namespace Petsmart.Controllers
         }
         public ActionResult UpdateCart(FormCollection frm)
         {
+            if(Session["cart"] == null) return RedirectToAction("ViewCart", "ShoppingCart");
+
             string[] quantities = frm.GetValues("quantity");
             List<ItemCart> cart = (List<ItemCart>)Session["cart"];
             for (int i = 0; i < cart.Count; i++)
