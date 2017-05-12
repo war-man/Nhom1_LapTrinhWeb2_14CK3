@@ -72,7 +72,7 @@
                                     foreach (ItemCart item in (List<ItemCart>)Session["cart"])
                                     {
                                         <tr class="odd">
-                                            <td class="image hidden-table"><a href="@Url.Action("Detail", "Products", new { id = @item.Sp.MaSanPham })" title="@item.Sp.TenSanPham" class="product-image"><img src="~/Content/user/images/@item.Sp.HinhURL" width="75" alt="@item.Sp.TenSanPham"></a></td>
+                                            <td class="image hidden-table"><a href="@Url.Action("Detail", "Products", new { id = @item.Sp.MaSanPham })" title="@item.Sp.TenSanPham" class="product-image"><img src="~/Content/images/products/@item.Sp.HinhURL" width="75" alt="@item.Sp.TenSanPham"></a></td>
                                             <td>
                                                 <h2 class="product-name">
                                                     <a href="@Url.Action("Detail", "Products", new { id = @item.Sp.MaSanPham })">@item.Sp.TenSanPham</a>

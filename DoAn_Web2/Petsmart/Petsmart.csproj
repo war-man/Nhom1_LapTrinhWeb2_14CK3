@@ -390,6 +390,30 @@
     <Content Include="Content\admin\plugins\x-editable\img\clear.png" />
     <Content Include="Content\admin\plugins\x-editable\img\loading.gif" />
     <Content Include="Content\admin\plugins\x-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Content\images\partner\logo1.png" />
+    <Content Include="Content\images\partner\logo10.jpg" />
+    <Content Include="Content\images\partner\logo11.jpg" />
+    <Content Include="Content\images\partner\logo2.jpg" />
+    <Content Include="Content\images\partner\logo3.jpg" />
+    <Content Include="Content\images\partner\logo4.jpg" />
+    <Content Include="Content\images\partner\logo5.jpg" />
+    <Content Include="Content\images\partner\logo6.jpg" />
+    <Content Include="Content\images\partner\logo7.PNG" />
+    <Content Include="Content\images\partner\logo8.jpg" />
+    <Content Include="Content\images\partner\logo9.png" />
+    <Content Include="Content\images\products\akita-inu.jpg" />
+    <Content Include="Content\images\products\alaskanhusky.jpg" />
+    <Content Include="Content\images\products\husky-1160444_1280.jpg" />
+    <Content Include="Content\images\products\labradorhusky.jpg" />
+    <Content Include="Content\images\products\newsletter.jpg" />
+    <Content Include="Content\images\products\pandabear.jpg" />
+    <Content Include="Content\images\products\phocsoc.jpg" />
+    <Content Include="Content\images\products\roboisabel.png" />
+    <Content Include="Content\images\products\scottishfold.jpg" />
+    <Content Include="Content\images\products\scottishstraight.jpg" />
+    <Content Include="Content\images\products\shiba-inu.jpg" />
+    <Content Include="Content\images\products\siberianhusky.png" />
+    <Content Include="Content\images\products\teddybear.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\user\images\404.jpg" />
     <Content Include="Content\user\images\ad-banner1.jpg" />
@@ -575,6 +599,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\banner\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>

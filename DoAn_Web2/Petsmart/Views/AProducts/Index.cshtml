@@ -3,7 +3,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.SanPham>
+@using PagedList.Mvc;
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
@@ -38,18 +40,22 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Quản Lý Sản Phẩm</h3>
             </div>
-
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <button data-target="#themsanpham" data-toggle="modal" class="btn btn-success">Thêm sản phẩm</button>
                     </div>
                     <div class="col-sm-6">
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" type="search" placeholder="Tìm kiếm" id="example-search-input">
+                        @using (Html.BeginForm())
+                        {
+
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên sản phẩm" id="example-search-input">
+                                </div>
                             </div>
-                        </div>
+                        }
+                        
                     </div>
                 </div>
                 <div class="tab-content">
@@ -60,69 +66,87 @@
                             <table class="table table-hover table-striped table-vcenter mar-top">
                                 <thead>
                                     <tr>
-                                        <th class="min-w-td">#</th>
+                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
                                         <th class="min-w-td">Hình Đại Diện</th>
-                                        <th>Tên Sản Phẩm</th>
+                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.NameSortParm })">Tên Sản Phẩm <i class="fa fa-sort" ></i></a></th>
                                         <th>Loại Sản Phẩm</th>
-                                        <th>Ngày Tạo</th>
-                                        <th>Giá</th>
+                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.DateSortParm })">Ngày Tạo <i class="fa fa-sort"></i></a></th>
+                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.PriceSortParm })">Giá <i class="fa fa-sort"></i></a></th>
                                         <th>Trạng Thái</th>
                                         <th class="min-w-td text-center">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="min-w-td">1</td>
-                                        <td><img src="~/Content/admin/img/products/dog-sickbay1.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-                                        <td><a class="btn-link" href="#">Chó Husky Sibir</a></td>
-                                        <td>Chó</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-                                        <td>$24.98</td>
-                                        <td><span class="label label-table label-info">Còn hàng</span></td>
-                                        <td class="min-w-td text-center">
-                                            <div class="btn-group">
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="min-w-td">2</td>
-                                        <td><img src="~/Content/admin/img/products/1443347096-1443339772-meonala--1-.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-                                        <td><a class="btn-link" href="#">Mèo Sibir</a></td>
-                                        <td>Mèo</td>
-                                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-                                        <td>$100</td>
-                                        <td><span class="label label-table label-info">Còn hàng</span></td>
-                                        <td class="min-w-td text-center">
-                                            <div class="btn-group">
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-                                                <a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @{ 
+                                        foreach (var item in Model)
+                                        {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaSanPham</td>
+                                            <td><img src="~/Content/images/products/@item.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
+                                            <td><a class="btn-link" href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham })">@item.TenSanPham</a></td>
+                                            <td>@item.LoaiSanPham.TenLoaiSanPham</td>
+                                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> @string.Format("{0:d/M/yyyy}", item.NgayNhap)</span></td>
+                                            <td>@string.Format("{0:0,0}", item.GiaSanPham)đ</td>
+                                            <td>
+                                                @{
+                                                    if (@item.BiXoa != false)
+                                                    {
+                                                        <span class="label label-table label-danger">Đã Khóa</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (@item.SoLuongTon > 0)
+                                                        {
+                                                            <span class="label label-table label-info">Còn hàng</span>
+
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="label label-table label-warning">Hết hàng</span>
+                                                        }
+                                                    }
+
+
+                                                }
+                                                
+                                            </td>
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                   @{
+                                                      if (@item.BiXoa != false)
+                                                      {
+                                                        <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-unlock add-tooltip" href="@Url.Action("UnLockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Mở Khóa" data-container="body"></a>
+
+                                                      }
+                                                       else
+                                                       {
+                                                           <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-lock add-tooltip" href="@Url.Action("LockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Khóa" data-container="body"></a>
+                                                       }
+                                                    <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="" data-original-title="Sửa" data-container="body"></a>
+
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         }
+                                     }
+                                    
                                 </tbody>
                             </table>
                             <hr>
 
                             <!--Pagination-->
                             <div class="text-right">
-                                <ul class="pagination mar-no">
-                                    <li class="disabled"><a class="fa fa-angle-double-left" href="#"></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><span>...</span></li>
-                                    <li><a href="#">20</a></li>
-                                    <li><a class="fa fa-angle-double-right" href="#"></a></li>
-                                </ul>
+                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                                @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                                
                             </div>
                         </div>
                     </div>
-                    <!--===================================================-->
+                  
 
                 </div>
             </div>
