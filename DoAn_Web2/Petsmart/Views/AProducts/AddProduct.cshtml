@@ -1,0 +1,81 @@
+﻿@model Petsmart.Models.SanPham
+
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="page-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Thêm Mới Sản Phẩm</h3>        
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <div class="col-md-4 mar-btm">
+                                <input type="text" id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
+                            </div>
+                            <div class="col-md-3 mar-btm">
+                                <input type="number" name="soluong" class="form-control" placeholder="Số lượng">
+                            </div>
+                            <div class="col-md-3 mar-btm">
+                                <input type="number" id="price_products" name="giaban" class="form-control" placeholder="Giá bán">
+                            </div>
+                            <div class="col-md-2 mar-btm">
+                                <span style="font-weight:bold;font-size:18px;color:#DB5261;" class="title" id="money_bind"></span>
+                            </div>
+                            <script>
+                                $('#price_products').keyup(function () {
+                                    var value = "";
+                                    value = $(this).val();
+                                    if (value == "") {
+                                        $("#money_bind").text();
+                                    }
+                                    $("#money_bind").text(String(value).replace(/(.)(?=(\d{3})+$)/g, '$1,')+"đ");
+                                });
+                            </script>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mar-btm">
+                                @Html.DropDownList("MaLoaiSanPham", (IEnumerable<SelectListItem>)ViewBag.LoaiSanPhams, new { @class = "selectpicker" })
+                            </div>
+                            <div class="col-md-3 mar-btm">
+                                @Html.DropDownList("MaHangSanXuat", (IEnumerable<SelectListItem>)ViewBag.HangSanXuats, new { @class = "selectpicker" })
+                            </div>
+                            <div class="col-md-6">
+                                <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Giới thiệu sản phẩm..."></textarea>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="ftitle"><label>Hình ảnh (tối đa 5 hình)</label></div>
+                                <textarea hidden id="_images" name="_images" style="display:none" required="true"></textarea>
+                                <div class="fitem">
+                                    <div class="images-add">
+                                        <img src="~/Content/admin/img/add-image.png" width="80" height="80" id="btn_add_images">
+                                        <input style="display:none;" type="file" id="my_file" multiple />
+                                    </div>
+                                    <div class="input-images">
+                                        <h3 class="notify">Bộ sưu tập hình đang rỗng</h3>
+                                        <div class="images-list" id="image_containers" class="easyui-validatebox" required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/admin/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btn_add_images").click(function () {
+            $('#my_file').click();
+            
+        });
+    });
+   
+</script>

@@ -71,5 +71,47 @@ namespace Petsmart.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult AddProduct()
+        {
+            List<LoaiSanPham> lsp = db.LoaiSanPhams.ToList<LoaiSanPham>();
+            ViewBag.LoaiSanPhams = new SelectList(lsp, "MaLoaiSanPham", "TenLoaiSanPham");
+            List<HangSanXuat> hsx = db.HangSanXuats.ToList<HangSanXuat>();
+            ViewBag.HangSanXuats = new SelectList(hsx, "MaHangSanXuat", "TenHangSanXuat");
+            return View();
+        }
+        // Ajax show popover detail product
+        [HttpPost]
+        public string DetailProduct(int id)
+        {
+            SanPham sp = db.SanPhams.Single(s => s.MaSanPham == id);
+            string img = "<img src='../Content/images/products/" + sp.HinhURL + "' class='img-circle img-sm' />";
+            string out1 = img+"<div class='row'>" +
+                                "<p>" +
+                                    "<label>Tên:&nbsp;</label>" +
+                                    "<strong>"+ sp.TenSanPham +"</strong>"+
+                                "</p>" +
+                                 "<p>" +
+                                    "<label>Giá:&nbsp;</label>" +
+                                    "<strong>" + String.Format("{0:0,0}", sp.GiaSanPham) + "đ</strong>" +
+                                "</p>" +
+                                 "<p>" +
+                                    "<label>Thuộc loại:&nbsp;</label>" +
+                                    "<strong>" + sp.LoaiSanPham.TenLoaiSanPham + "</strong>" +
+                                "</p>"+
+                                "<p>" +
+                                    "<label>Đối tác:&nbsp;</label>" +
+                                    "<strong>" + sp.HangSanXuat.TenHangSanXuat + "</strong>" +
+                                "</p>" +
+                                "<p>" +
+                                    "<label>Số lượng bán:&nbsp;</label>" +
+                                    "<strong>" + sp.SoLuongBan + "</strong>" +
+                                "</p>" +
+                                "<p>" +
+                                    "<label>Lượt xem:&nbsp;</label>" +
+                                    "<strong>" + sp.LuotXem + "</strong>" +
+                                "</p>" +
+                        "</div>";
+            return out1;
+        }
     }
 }

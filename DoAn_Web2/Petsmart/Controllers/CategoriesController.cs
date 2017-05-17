@@ -12,7 +12,7 @@ namespace Petsmart.Controllers
 
         private ShopBanDongVatEntities db = new ShopBanDongVatEntities();
         // GET: Categories
-        public ActionResult Index(int id,string sortOrder, string currentFilter, int? page)
+        public ActionResult Index(int id ,string sortOrder, string currentFilter, int? page)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "price_desc" : "";

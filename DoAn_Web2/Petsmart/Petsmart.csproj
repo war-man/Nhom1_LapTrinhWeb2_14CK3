@@ -275,6 +275,7 @@
     <Content Include="Content\admin\css\bootstrap.min.css" />
     <Content Include="Content\admin\css\demo\nifty-demo.min.css" />
     <Content Include="Content\admin\css\nifty.min.css" />
+    <Content Include="Content\admin\img\add-image.png" />
     <Content Include="Content\admin\img\av1.png" />
     <Content Include="Content\admin\img\av2.png" />
     <Content Include="Content\admin\img\av3.png" />
@@ -326,6 +327,7 @@
     <Content Include="Content\admin\js\demo\ui-panels.js" />
     <Content Include="Content\admin\js\demo\widgets.js" />
     <Content Include="Content\admin\js\jquery-2.1.1.min.js" />
+    <Content Include="Content\admin\js\jquery.min.js" />
     <Content Include="Content\admin\js\nifty.min.js" />
     <Content Include="Content\admin\plugins\animate-css\animate.min.css" />
     <Content Include="Content\admin\plugins\bootbox\bootbox.min.js" />
@@ -667,6 +669,7 @@
     <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\AProducts\AddProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

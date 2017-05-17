@@ -43,7 +43,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <button data-target="#themsanpham" data-toggle="modal" class="btn btn-success">Thêm sản phẩm</button>
+                        <a href="@Url.Action("AddProduct","AProducts")"><button data-target="#themsanpham" data-toggle="modal" class="btn btn-success">Thêm sản phẩm</button></a>
                     </div>
                     <div class="col-sm-6">
                         @using (Html.BeginForm())
@@ -83,7 +83,7 @@
                                         <tr>
                                             <td class="min-w-td">@item.MaSanPham</td>
                                             <td><img src="~/Content/images/products/@item.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
-                                            <td><a class="btn-link" href="@Url.Action("Detail", "Products", new { id = @item.MaSanPham })">@item.TenSanPham</a></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaSanPham">@item.TenSanPham</a></td>
                                             <td>@item.LoaiSanPham.TenLoaiSanPham</td>
                                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> @string.Format("{0:d/M/yyyy}", item.NgayNhap)</span></td>
                                             <td>@string.Format("{0:0,0}", item.GiaSanPham)đ</td>
@@ -111,6 +111,7 @@
                                                 }
                                                 
                                             </td>
+                                            
                                             <td class="min-w-td text-center">
                                                 <div class="btn-group">
                                                    @{
@@ -218,4 +219,34 @@
         </div>
     </div>
 
-
+<style>
+.popover-content {
+   font-size: 12px;
+   width:800px;
+}
+</style>
+<script>
+    $(document).ready(function () {
+        $('.btn-link').popover({
+            title: "<h4  style='margin:0;' class='title'>Chi tiết sản phẩm</h4>",
+            content:fetchData,
+            html: true,
+            placement: 'right'
+        });
+        function fetchData() {
+            var fetch_data = '';
+            var element = $(this);
+            var id = element.attr("id");
+            $.ajax({
+                url: "@Url.Action("DetailProduct")",
+                method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    fetch_data = data;
+                }
+            });
+            return fetch_data;
+        }
+    });
+</script>
