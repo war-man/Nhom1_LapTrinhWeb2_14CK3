@@ -34,5 +34,6 @@ namespace Petsmart.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TinhTrang> TinhTrangs { get; set; }
+        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
     }
 }

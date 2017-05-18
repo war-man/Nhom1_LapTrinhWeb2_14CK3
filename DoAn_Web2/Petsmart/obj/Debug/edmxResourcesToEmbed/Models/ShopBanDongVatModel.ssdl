@@ -29,6 +29,14 @@
     <Property Name="LogoURL" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="BiXoa" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="HinhAnhSanPham">
+    <Key>
+      <PropertyRef Name="MaHinh" />
+    </Key>
+    <Property Name="MaHinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaSanPham" Type="int" Nullable="false" />
+    <Property Name="HinhURL" Type="nvarchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>
       <PropertyRef Name="MaLoaiSanPham" />
@@ -56,7 +64,7 @@
     <Property Name="SoLuongTon" Type="int" Nullable="false" />
     <Property Name="SoLuongBan" Type="int" Nullable="false" />
     <Property Name="LuotXem" Type="int" Nullable="false" />
-    <Property Name="MoTa" Type="text" />
+    <Property Name="MoTa" Type="ntext" />
     <Property Name="BiXoa" Type="bit" Nullable="false" />
     <Property Name="MaLoaiSanPham" Type="int" Nullable="false" />
     <Property Name="MaHangSanXuat" Type="int" Nullable="false" />
@@ -140,6 +148,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HinhAnhSanPham_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="HinhAnhSanPham" Type="Self.HinhAnhSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Principal>
+      <Dependent Role="HinhAnhSanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SanPham_HangSanXuat">
     <End Role="HangSanXuat" Type="Self.HangSanXuat" Multiplicity="1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
@@ -180,6 +200,7 @@
     <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonDatHang" EntityType="Self.DonDatHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HangSanXuat" EntityType="Self.HangSanXuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HinhAnhSanPham" EntityType="Self.HinhAnhSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
@@ -201,6 +222,10 @@
     <AssociationSet Name="FK_DonDatHang_TinhTrang" Association="Self.FK_DonDatHang_TinhTrang">
       <End Role="TinhTrang" EntitySet="TinhTrang" />
       <End Role="DonDatHang" EntitySet="DonDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HinhAnhSanPham_SanPham" Association="Self.FK_HinhAnhSanPham_SanPham">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPham" />
     </AssociationSet>
     <AssociationSet Name="FK_SanPham_HangSanXuat" Association="Self.FK_SanPham_HangSanXuat">
       <End Role="HangSanXuat" EntitySet="HangSanXuat" />

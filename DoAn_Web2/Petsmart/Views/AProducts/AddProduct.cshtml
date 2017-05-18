@@ -10,18 +10,16 @@
             <h3 class="panel-title">Thêm Mới Sản Phẩm</h3>        
         </div>
         <div class="panel-body">
-            @using (Html.BeginForm())
-            {
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="form_add_product"  enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-4 mar-btm">
-                                <input type="text" id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
+                                <input type="text" name="tensanpham" required id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
                             </div>
                             <div class="col-md-3 mar-btm">
-                                <input type="number" name="soluong" class="form-control" placeholder="Số lượng">
+                                <input type="number" name="soluong" required class="form-control" placeholder="Số lượng">
                             </div>
                             <div class="col-md-3 mar-btm">
-                                <input type="number" id="price_products" name="giaban" class="form-control" placeholder="Giá bán">
+                                <input type="number" id="price_products" required name="giaban" class="form-control" placeholder="Giá bán">
                             </div>
                             <div class="col-md-2 mar-btm">
                                 <span style="font-weight:bold;font-size:18px;color:#DB5261;" class="title" id="money_bind"></span>
@@ -45,37 +43,127 @@
                                 @Html.DropDownList("MaHangSanXuat", (IEnumerable<SelectListItem>)ViewBag.HangSanXuats, new { @class = "selectpicker" })
                             </div>
                             <div class="col-md-6">
-                                <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Giới thiệu sản phẩm..."></textarea>
+                                <textarea id="demo-textarea-input" rows="9" name="mota" class="form-control" placeholder="Giới thiệu sản phẩm..."></textarea>
                             </div>
                             <div class="col-sm-6">
                                 <div class="ftitle"><label>Hình ảnh (tối đa 5 hình)</label></div>
-                                <textarea hidden id="_images" name="_images" style="display:none" required="true"></textarea>
                                 <div class="fitem">
                                     <div class="images-add">
+                                        <textarea hidden id="_images" name="_images" style="display:none"></textarea>
                                         <img src="~/Content/admin/img/add-image.png" width="80" height="80" id="btn_add_images">
-                                        <input style="display:none;" type="file" id="my_file" multiple />
+                                        <input id='images' accept='image/*' type='file' style="display:none" multiple />
                                     </div>
-                                    <div class="input-images">
-                                        <h3 class="notify">Bộ sưu tập hình đang rỗng</h3>
-                                        <div class="images-list" id="image_containers" class="easyui-validatebox" required="true">
-                                        </div>
+                                    <div id="images-to-upload">
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <input id="submit_form_product" type="submit" value="Thêm sản phẩm">
+                            <button id="demo-alert-noty" class="btn btn-warning mar-btm" type="button">"Growl-Like" Notification</button>
+                        </div>
                     </form>
-            }
         </div>
     </div>
 </div>
+<style>
+   
+ #btn_delete_image_update{
+    margin-bottom:85px;
+    width:20px;
+    height:20px;
+    padding:2px;
+    margin-left:-20px;
+    margin-right:8px;
 
-<script src="~/Content/admin/js/jquery.min.js"></script>
+  }
+ #images-to-upload{
+        margin-top:5px;
+        border:1px solid #E7EBEE;
+        padding:10px;
+  }
+ #images-to-upload img{
+     width:100px;
+     height:100px;
+     margin-right:8px;
+     margin-bottom:5px;
+ }
+</style>
 <script>
+    //2. delete images
+    function deleteImages(e) {
+        $(e).parent('.item_image_uploads').hide("fade", function () {
+            $(e).parent('.item_image_uploads').remove();
+        })        
+    }
+    // 3. Image select
+    function selectImages(e) {
+        // reset
+        $('.image_upload').css("border", "0px");
+        $('.image_upload').attr('data-selected' , false);
+        // select
+        $(e).css({ "border": "3px solid red" });
+        $(e).attr('data-selected', true);
+    }
+
     $(document).ready(function () {
         $("#btn_add_images").click(function () {
-            $('#my_file').click();
-            
+            $('#images').click();
         });
+        //1. Preview Images
+        $('#images').change(function (e) {
+            var files = e.target.files;
+            $.each(files, function (i, file) {
+                var extension = file.name.substr((file.name.lastIndexOf('.') + 1));
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    var template = '<span class="item_image_uploads">' + '<img onclick = "selectImages(this)" data-extension = "' + extension + '" data-source="' + e.target.result + '" data-name = "' + file.name + '" data-selected = "false" class="image_upload" src="' + e.target.result + '" />' +
+                        '<a onclick="deleteImages(this)" id="btn_delete_image_update" class="btn btn-sm btn-danger btn-icon btn-hover-warning fa fa-remove add-tooltip" data-original-title="Xóa"></a>'
+                        + '</span>';
+                    ;
+                    $('#images-to-upload').append(template);
+                };
+
+            });
+        });
+        
     });
+    // 4. Submit form
+
+    $('#submit_form_product').click(function (e) {
+        var images = [];
+        var container = $('#images-to-upload');
+        if (container.find("img").length > 0) {
+            container.find("img").each(function (index, img) {
+                img = $(img);
+                images.push({
+                    _name: img.data("name"),
+                    _status: img.data("selected"),
+                    _image: img.data("source"),
+                    _extension: img.data("extension")
+                });
+            });
+            $('#_images').val(JSON.stringify(images));
+            var url = 'themsanpham';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $("#form_add_product").serialize(),
+                success: function (data) {
+                    alert(data);
+                }
+            });
+            e.preventDefault();
+        }
+        else {
+            alert("Hình ảnh không được rỗng");
+            return;
+        }
+    });
+   
+</script>
+<script>
    
 </script>

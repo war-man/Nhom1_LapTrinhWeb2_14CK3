@@ -216,6 +216,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesProduct.cs" />
     <Compile Include="Controllers\ItemCart.cs" />
     <Compile Include="Controllers\LayoutUserController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -231,6 +232,9 @@
       <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HangSanXuat.cs">
+      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HinhAnhSanPham.cs">
       <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -602,6 +606,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\banner\" />
+    <Folder Include="Content\images\products\slide_products\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>

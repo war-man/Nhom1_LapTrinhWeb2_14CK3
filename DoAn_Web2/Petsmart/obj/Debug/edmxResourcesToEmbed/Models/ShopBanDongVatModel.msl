@@ -102,5 +102,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HinhAnhSanPhams">
+      <EntityTypeMapping TypeName="ShopBanDongVatModel.HinhAnhSanPham">
+        <MappingFragment StoreEntitySet="HinhAnhSanPham">
+          <ScalarProperty Name="HinhURL" ColumnName="HinhURL" />
+          <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+          <ScalarProperty Name="MaHinh" ColumnName="MaHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -64,13 +64,14 @@
     <Property Name="SoLuongTon" Type="Int32" Nullable="false" />
     <Property Name="SoLuongBan" Type="Int32" Nullable="false" />
     <Property Name="LuotXem" Type="Int32" Nullable="false" />
-    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="BiXoa" Type="Boolean" Nullable="false" />
     <Property Name="MaLoaiSanPham" Type="Int32" Nullable="false" />
     <Property Name="MaHangSanXuat" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="SanPham" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="HangSanXuat" Relationship="Self.FK_SanPham_HangSanXuat" FromRole="SanPham" ToRole="HangSanXuat" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSanPham" FromRole="SanPham" ToRole="LoaiSanPham" />
+    <NavigationProperty Name="HinhAnhSanPhams" Relationship="ShopBanDongVatModel.FK_HinhAnhSanPham_SanPham" FromRole="SanPham" ToRole="HinhAnhSanPham" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -228,5 +229,31 @@
       <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
       <End Role="TaiKhoan" EntitySet="TaiKhoans" />
     </AssociationSet>
+    <EntitySet Name="HinhAnhSanPhams" EntityType="ShopBanDongVatModel.HinhAnhSanPham" />
+    <AssociationSet Name="FK_HinhAnhSanPham_SanPham" Association="ShopBanDongVatModel.FK_HinhAnhSanPham_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPhams" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="HinhAnhSanPham">
+    <Key>
+      <PropertyRef Name="MaHinh" />
+    </Key>
+    <Property Name="MaHinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaSanPham" Type="Int32" Nullable="false" />
+    <Property Name="HinhURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="ShopBanDongVatModel.FK_HinhAnhSanPham_SanPham" FromRole="HinhAnhSanPham" ToRole="SanPham" />
+  </EntityType>
+  <Association Name="FK_HinhAnhSanPham_SanPham">
+    <End Type="ShopBanDongVatModel.SanPham" Role="SanPham" Multiplicity="1" />
+    <End Type="ShopBanDongVatModel.HinhAnhSanPham" Role="HinhAnhSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Principal>
+      <Dependent Role="HinhAnhSanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
