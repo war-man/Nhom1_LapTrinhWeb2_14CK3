@@ -669,12 +669,12 @@
     <Content Include="Views\AOrders\Index.cshtml" />
     <Content Include="Views\AUser\Index.cshtml" />
     <Content Include="Views\AHome\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\LayoutUser\getMenu.cshtml" />
     <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\AProducts\AddProduct.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

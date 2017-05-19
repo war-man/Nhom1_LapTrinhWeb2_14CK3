@@ -11,7 +11,7 @@
                         {
                             <div class="col-xs-12">
                                 <ul>
-                                    <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Home</a> <span>—› </span> </li>
+                                    <li class="home"> <a href="@Url.Action("Index", "Home")" title="Đến trang chủ">Home</a> <span>—› </span> </li>
                                     <li class="category1599"> <a href="@Url.Action("Index", "Categories", new { id = @item1.MaLoaiSanPham })" title="">@item.TenLoaiSanPham<span>—› </span></a> </li>
                                     <li class="category1600"> <a href="@Url.Action("Detail", "Products", new { id = @item1.MaSanPham })" title="">@item1.TenSanPham</a> </li>
                                 </ul>
@@ -43,7 +43,7 @@
                         foreach (var item in ViewData["ChiTietSP"] as List<SanPham>)
                         {
                             <div class="row">
-                                <div class="product-next-prev"> <a class="product-next" title="Next" href="#"><span></span></a> <a class="product-prev" title="Previous" href="#"><span></span></a> </div>
+                                <div class="product-next-prev"> <a class="product-next" title="Tiếp" href="#"><span></span></a> <a class="product-prev" title="Lui" href="#"><span></span></a> </div>
                                 <form action="" method="post" id="product_addtocart_form">
                                     <!--End For version 1, 2, 6 -->
                                     <!-- For version 3 -->
@@ -82,7 +82,7 @@
                                                     <div class="rating-box">
                                                         <div class="rating" style="width:50%"></div>
                                                     </div>
-                                                    <p class="rating-links"><a href="#">1 Đánh giá</a> <span class="separator">|</span> <a href="#">Thêm đánh giá</a> </p>
+                                                    <p class="rating-links"><a href="#">1 đánh giá</a> <span class="separator">|</span> <a href="#">Thêm đánh giá</a> </p>
                                                 </div>
                                             </div>
                                         </span>
@@ -110,7 +110,7 @@
                                                 <div class="pull-left">
                                                     <div class="custom pull-left">
                                                         <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
-                                                        <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                                                        <input type="text" name="qty" id="qty" maxlength="12" value="1" title="Số lượng:" class="input-text qty">
                                                         <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
                                                     </div>
                                                     <!--custom pull-left-->
@@ -169,7 +169,7 @@
                                                         <label for="productTagName">Thêm thẻ:</label>
                                                         <div class="input-box">
                                                             <input class="input-text" name="productTagName" id="productTagName" type="text">
-                                                            <button type="button" title="Add Tags" class=" button btn-add" onclick="submitTagForm()"> <span>Thêm thẻ</span> </button>
+                                                            <button type="button" title="Thêm thẻ" class=" button btn-add" onclick="submitTagForm()"> <span>Thêm thẻ</span> </button>
                                                         </div>
                                                         <!--input-box-->
                                                     </div>
@@ -261,7 +261,7 @@
                                                                     </li>
                                                                 </ul>
                                                                 <div class="buttons-set">
-                                                                    <button class="button submit" title="Submit Review" type="submit"><span>Xác nhận Đánh giá</span></button>
+                                                                    <button class="button submit" title="Xác nhận đánh giá" type="submit"><span>Xác nhận đánh giá</span></button>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
@@ -432,19 +432,19 @@
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info">
-                                                            <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="Retis lapen casen" class="product-image"><img src="~/Content/user/images/@item.HinhURL" alt="@item.TenSanPham"></a>
+                                                            <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="@item.TenSanPham" class="product-image"><img src="~/Content/images/products/@item.HinhURL" alt="@item.TenSanPham"></a>
                                                             <div class="new-label new-top-left">New</div>
                                                             <div class="item-box-hover">
                                                                 <div class="box-inner">
                                                                     <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                                                    <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+                                                                    <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Thêm vào giỏ tạm"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Thêm vào so sánh"><span>Add to Compare</span></a></span> </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="item-info">
                                                         <div class="info-inner">
-                                                            <div class="item-title"><a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="Retis lapen casen">@item.TenSanPham</a> </div>
+                                                            <div class="item-title"><a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})" title="@item.TenSanPham">@item.TenSanPham</a> </div>
                                                             <div class="item-content">
                                                                 <div class="rating">
                                                                     <div class="ratings">

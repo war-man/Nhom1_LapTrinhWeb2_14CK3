@@ -45,6 +45,9 @@
             }
         }
     }
+    @{ 
+        var user = Session["user"] as TaiKhoan;
+    }
     <div id="page">
         <header>
             <div class="header-banner">
@@ -59,7 +62,7 @@
                 <div class="header-container container">
                     <div class="row">
                         <div class="logo">
-                            <a href="index.html" title="Flavours HTML">
+                            <a href="@Url.Action("Index", "Home")" title="Flavours Home Page">
                                 <!-- <img src="~/Content/user/images/404-img.png" /> -->
                                 <div><img src="~/Content/user/images/logo.png" alt="Flavours Store"></div>
                             </a>
@@ -101,7 +104,7 @@
                     <div class="fl-header-right">
                         <div class="fl-links">
                             <div class="no-js">
-                                <a title="Company" class="clicker"></a>
+                                <a title="Công ty" class="clicker"></a>
                                 <div class="fl-nav-links">
                                     <div class="language-currency">
                                         <div class="fl-language">
@@ -125,11 +128,19 @@
                                         <!-- END For version 1,2,3,4,6 -->
                                     </div>
                                     <ul class="links">
-                                        <li><a href="dashboard.html" title="My Account">Tài khoản của tôi</a></li>
-                                        <li><a href="wishlist.html" title="Wishlist">Giỏ hàng tạm</a></li>
-                                        <li><a href="checkout.html" title="Checkout">Thanh toán</a></li>
-                                        <li><a href="blog.html" title="Blog"><span>Bài viết</span></a></li>
-                                        <li class="last"><a href="login.html" title="Login"><span>Đăng nhập</span></a></li>
+                                        <li><a href="dashboard.html" title="Tài khoản của tôi">Tài khoản của tôi</a></li>
+                                        <li><a href="wishlist.html" title="Giỏ hàng tạm">Giỏ hàng tạm</a></li>
+                                        <li><a href="@Url.Action("ViewCart", "ShoppingCart")" title="Thanh toán">Thanh toán</a></li>
+                                        <li><a href="blog.html" title="Bài viết"><span>Bài viết</span></a></li>
+
+                                        @if (Session["user"] == null)
+                                        {
+                                            <li class="last"><a href="@Url.Action("Login", "Home")" title="Đăng nhập"><span>Đăng nhập</span></a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="last"><a href="@Url.Action("Logout", "Home")" title="Đăng xuất"><span>Đăng xuất</span></a></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -151,10 +162,10 @@
                                             {
                                             <li class="item first">
                                                 <div class="item-inner">
-                                                    <a class="product-image" title="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham})"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src="~/Content/images/products/@item.Sp.HinhURL"></a>
+                                                    <a class="product-image" title="@item.Sp.TenSanPham" href="@Url.Action("Detail","Products",new { id = @item.Sp.MaSanPham})"><img alt="timi &amp; leslie Sophia Diaper Bag, Lemon Yellow/Shadow White" src="~/Content/images/products/@item.Sp.HinhURL"></a>
                                                     <div class="product-details">
                                                         <div class="access">
-                                                        <a class="btn-remove1" title="Remove This Item" href="@Url.Action("RemoveCart","ShoppingCart", new { id = @item.Sp.MaSanPham })">Remove</a>
+                                                        <a class="btn-remove1" title="Xóa sản phẩm" href="@Url.Action("RemoveCart","ShoppingCart", new { id = @item.Sp.MaSanPham })">Remove</a>
                                                          </div>
                                                         <!--access-->
                                                         <strong>@item.Soluong</strong> x <span class="price">@string.Format("{0:0,0}",@item.Sp.GiaSanPham) VNĐ</span>
@@ -168,13 +179,13 @@
                                     @if (count != 0)
                                     {
                                          <div class="actions">
-                                            <a href="@Url.Action("CheckOut","ShoppingCart")"><button class="btn-checkout" title="Checkout" type="button" onClick="window.location=checkout.html"><span>Thanh toán</span></button></a>
+                                            <a href="@Url.Action("CheckOut","ShoppingCart")"><button class="btn-checkout" title="Thanh toán" type="button" onClick="window.location.href = '@Url.Action("ViewCart", "ShoppingCart")';"><span>Thanh toán</span></button></a>
                                         </div>
                                     }
                                     else
                                     {
                                         <div class="actions">
-                                            <a href="@Url.Action("Index","Home")"><button class="button btn-continue" title="Checkout" type="button"><span>Tiếp tục mua sắm</span></button></a>
+                                            <a href="@Url.Action("Index","Home")"><button class="button btn-continue" title="Thanh toán" type="button"><span>Tiếp tục mua sắm</span></button></a>
                                         </div>
                                     } 
                                     <!--actions-->
@@ -258,8 +269,8 @@
                                     <form action="#" method="post" id="newsletter-validate-detail1">
                                         <div id="container_form_news">
                                             <div id="container_form_news2">
-                                                <input type="text" name="email" id="newsletter1" title="Sign up for our newsletter" class="input-text required-entry validate-email" placeholder="Vui lòng điền địa chỉ Email">
-                                                <button type="submit" title="Subscribe" class="button subscribe"><span>Đăng ký</span></button>
+                                                <input type="text" name="email" id="newsletter1" title="Đăng ký nhận bản tin của chúng tôi" class="input-text required-entry validate-email" placeholder="Vui lòng điền địa chỉ Email">
+                                                <button type="submit" title="Đăng ký" class="button subscribe"><span>Đăng ký</span></button>
                                             </div>
                                             <!--container_form_news2-->
                                         </div>
@@ -302,34 +313,34 @@
                             <div class="footer-column">
                                 <h4>Truy cập nhanh</h4>
                                 <ul class="links">
-                                    <li class="first"><a title="How to buy" href="/blog/">Bài viết</a></li>
+                                    <li class="first"><a title="Bài viết<" href="/blog/">Bài viết</a></li>
                                     <li><a title="FAQs" href="#">FAQs</a></li>
-                                    <li><a title="Payment" href="#">Thanh toán</a></li>
-                                    <li><a title="Shipment" href="#">Giao hàng</a></li>
-                                    <li><a title="Order" href="#">Đơn đặt hàng</a></li>
-                                    <li class="last"><a title="Return policy" href="#">Giỏ hàng</a></li>
+                                    <li><a title="Thanh toán" href="@Url.Action("ViewCart", "ShoppingCart")">Thanh toán</a></li>
+                                    <li><a title="Giao hàng" href="#">Giao hàng</a></li>
+                                    <li><a title="Đơn đặt hàng" href="#">Đơn đặt hàng</a></li>
+                                    <li class="last"><a title="Giỏ hàng" href="#">Giỏ hàng</a></li>
                                 </ul>
                             </div>
                             <div class="footer-column">
                                 <h4>Thông tin cá nhân</h4>
                                 <ul class="links">
-                                    <li class="first"><a title="Your Account" href="#">Tài khoản</a></li>
-                                    <li><a title="Information" href="#">Thông tin</a></li>
-                                    <li><a title="Addresses" href="#">Địa chỉ</a></li>
-                                    <li><a title="Addresses" href="#">Giảm giá</a></li>
-                                    <li><a title="Orders History" href="#">Lịch sử đặt hàng</a></li>
-                                    <li class="last"><a title=" Additional Information" href="#">Thông tin thêm</a></li>
+                                    <li class="first"><a title="Tài khoản của tôi" href="#">Tài khoản của tôi</a></li>
+                                    <li><a title="Thông tin của tôi" href="#">Thông tin của tôi</a></li>
+                                    <li><a title="Địa chỉ của tôi" href="#">Địa chỉ của tôi</a></li>
+                                    <li><a title="Giảm giá" href="#">Giảm giá</a></li>
+                                    <li><a title="Lịch sử đặt hàng" href="#">Lịch sử đặt hàng</a></li>
+                                    <li class="last"><a title="Thông tin thêm" href="#">Thông tin thêm</a></li>
                                 </ul>
                             </div>
                             <div class="footer-column">
                                 <h4>Thông tin shop</h4>
                                 <ul class="links">
-                                    <li class="first"><a title="Site Map" href="#">Bản đồ</a></li>
-                                    <li><a title="Search Terms" href="#">Tìm kiếm cơ bản</a></li>
-                                    <li><a title="Advanced Search" href="#">Tìm kiếm nâng cao</a></li>
-                                    <li><a title="History" href="#">Thông tin shop</a></li>
-                                    <li><a title="History" href="#">Liên hệ</a></li>
-                                    <li><a title="Suppliers" href="#">Nhà cung cấp</a></li>
+                                    <li class="first"><a title="Bản đồ" href="#">Bản đồ</a></li>
+                                    <li><a title="Tìm kiếm cơ bản" href="#">Tìm kiếm cơ bản</a></li>
+                                    <li><a title="Tìm kiếm nâng cao" href="#">Tìm kiếm nâng cao</a></li>
+                                    <li><a title="Thông tin shop" href="#">Thông tin shop</a></li>
+                                    <li><a title="Liên hệ" href="#">Liên hệ</a></li>
+                                    <li><a title="Nhà cung cấp" href="#">Nhà cung cấp</a></li>
                                 </ul>
                             </div>
 

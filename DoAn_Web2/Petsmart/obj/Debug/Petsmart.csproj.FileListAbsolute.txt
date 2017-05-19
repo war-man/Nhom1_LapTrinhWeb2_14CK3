@@ -658,3 +658,7 @@ C:\Users\Tuong\Desktop\DoAnWeb2\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\
 C:\Users\Tuong\Desktop\DoAnWeb2\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.Mvc.dll
 C:\Users\Tuong\Desktop\DoAnWeb2\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.xml
 C:\Users\Tuong\Desktop\DoAnWeb2\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.Mvc.xml
+C:\Users\Risky\Documents\Repos\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.dll
+C:\Users\Risky\Documents\Repos\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.Mvc.dll
+C:\Users\Risky\Documents\Repos\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.xml
+C:\Users\Risky\Documents\Repos\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\bin\PagedList.Mvc.xml

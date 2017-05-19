@@ -16,6 +16,11 @@ namespace Petsmart.Controllers
             ViewData["lstSanPham"] = db.SanPhams.OrderByDescending(s => s.SoLuongBan).Select(s => s).Take(6).ToList();
             ViewData["lstNSX"] = db.HangSanXuats.ToList();
 
+            if (Session["user"] == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
         public ActionResult Search(string sortOrder, string currentFilter, string searchString, int? page)
@@ -58,6 +63,36 @@ namespace Petsmart.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(TaiKhoan t)
+        {
+            if (ModelState.IsValid)
+            {
+                using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
+                {
+                    var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
+                    {
+                        if (tk != null)
+                        {
+                            Session["user"] = tk;
+                            return RedirectToAction("Index", "Home");
+
+                        }
+                    }
+                }
+            }
+
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Register()
         {
             return View();

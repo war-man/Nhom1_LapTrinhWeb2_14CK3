@@ -24,7 +24,7 @@
                 <div class="col-xs-12">
                     <ul>
                        @foreach (var item in ViewData["lsp"] as List<LoaiSanPham>) {
-                        <li class="home"> <a href="@Url.Action("Index", "Home")" title="Go to Home Page">Trang chủ</a> <span>—› </span> </li>
+                        <li class="home"> <a href="@Url.Action("Index", "Home")" title="Đến trang chủ">Trang chủ</a> <span>—› </span> </li>
                         <li class=""> <a href="@Url.Action("Index", "Categories", new { id = @item.MaLoaiSanPham })" title="">@item.TenLoaiSanPham</a> <span>—› </span> </li>
                            }
                     </ul>
@@ -80,12 +80,12 @@
                                             <div class="item-inner">
                                                 <div class="item-img">
                                                     <div class="item-img-info">
-                                                        <a href="product-detail.html" title="Retis lapen casen" class="product-image"><img src="~/Content/images/products/@item.HinhURL" alt="Retis lapen casen"></a>
+                                                        <a href="product-detail.html" title="@item.TenSanPham" class="product-image"><img src="~/Content/images/products/@item.HinhURL" alt="Retis lapen casen"></a>
 
                                                         <div class="item-box-hover">
                                                             <div class="box-inner">
-                                                                <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Quick View</span></a></div>
-                                                                <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="#" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
+                                                                <div class="product-detail-bnt"><a class="button detail-bnt" type="button"><span>Xem nhanh</span></a></div>
+                                                                <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Thêm vào giỏ tạm"><span>Thêm vào giỏ tạm</span></a> <a href="#" class="link-compare add_to_compare" title="Thêm vào so sánh"><span>Thêm vào so sánh</span></a></span> </div>
 
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@
                                                 </div>
                                                 <div class="item-info">
                                                     <div class="info-inner">
-                                                        <div class="item-title"><a href="product-detail.html" title="Retis lapen casen">@item.TenSanPham</a> </div>
+                                                        <div class="item-title"><a href="product-detail.html" title="@item.TenSanPham">@item.TenSanPham</a> </div>
                                                         <div class="item-content">
                                                             <div class="rating">
                                                                 <div class="ratings">
@@ -162,7 +162,7 @@
                                 <div class="item active">
                                     <img src="~/Content/images/banner/ad-banner1.jpg" alt="slide3">
                                     <div class="carousel-caption">
-                                        <h3><a title=" Sample Product" href="product-detail.html">Giảm ngay 50%</a></h3>
+                                        <h3><a title="Sản phẩm mẫu" href="product-detail.html">Giảm ngay 50%</a></h3>
                                         <p>Phụ kiện cho cún nhân ngày Valentine.</p>
                                         <a class="link" href="#">Mua ngay</a>
                                     </div>
@@ -170,14 +170,14 @@
                                 <div class="item">
                                     <img src="~/Content/images/banner/ad-banner2.jpg" alt="slide1">
                                     <div class="carousel-caption">
-                                        <h3><a title=" Sample Product" href="product-detail.html">Sản phẩm mới cho Hamster</a></h3>
+                                        <h3><a title="Sản phẩm mẫu" href="product-detail.html">Sản phẩm mới cho Hamster</a></h3>
                                         <p>Ghé shop ngay để lựa chọn những phụ kiện mới nhất cho các bé Hams nhé.</p>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <img src="~/Content/images/banner/ad-banner3.jpg" alt="slide2">
                                     <div class="carousel-caption">
-                                        <h3><a title=" Sample Product" href="product-detail.html">Bộ sưu tập hè</a></h3>
+                                        <h3><a title="Sản phẩm mẫu" href="product-detail.html">Bộ sưu tập hè</a></h3>
                                         <p>Combo phụ kiện ngày hè cho thú cưng đã có tại shop, hãy nhanh chân lên.</p>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                         {
                             <a href="@Url.Action("CheckOut", "ShoppingCart")">
                              <div class="ajax-checkout">
-                                    <button type="button" title="Checkout" class="button button-checkout"><span>Đặt hàng</span>
+                                    <button type="button" title="Thanh toán" class="button button-checkout"><span>Đặt hàng</span>
                                     </button>
                             </div>
                             </a>
@@ -215,7 +215,7 @@
                                     <div class="product-details">
                                         <div class="access">
                                             <a href="@Url.Action("RemoveCart","ShoppingCart",new { id = @item.Sp.MaSanPham})" class="btn-remove1">Xóa</a>
-                                            <a href="@Url.Action("ViewCart","ShoppingCart")" title="Edit item" class="btn-edit">
+                                            <a href="@Url.Action("ViewCart","ShoppingCart")" title="Chỉnh sửa sản phẩm" class="btn-edit">
                                                 <i class="icon-pencil"></i><span class="hidden">Sửa sản phẩm</span>
                                             </a>
                                         </div>
@@ -253,7 +253,7 @@
                         </ol>
 
                         <div class="ajax-checkout">
-                            <button type="button" title="Compare" class="button button-compare" onclick="#"><span>So sánh</span></button>
+                            <button type="button" title="So sánh" class="button button-compare" onclick="#"><span>So sánh</span></button>
                             <button class="button button-clear" href="#"><span>Xóa</span></button>
                         </div><!--ajax-checkout-->
                     </div>
@@ -294,7 +294,7 @@
                                 </li>
                             </ul>
                             <div class="actions">
-                                <button type="submit" title="Vote" class="button button-vote"><span>Bình chọn</span></button>
+                                <button type="submit" title="Bình chọn" class="button button-vote"><span>Bình chọn</span></button>
                             </div>
                         </div>
                     </form>

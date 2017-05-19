@@ -1,4 +1,6 @@
-﻿<div class="page-heading">
+﻿@model Petsmart.Models.TaiKhoan
+
+<div class="page-heading">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -28,10 +30,15 @@
 
                             <p>Bằng cách tạo tài khoản với shop của chúng tôi, bạn sẽ có thể thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi các đơn đặt hàng trong tài khoản của bạn và hơn thế nữa.</p>
                             <div class="buttons-set">
-                                <button type="button" title="Create an Account" class="button create-account" onclick=""><span><span>Tạo tài khoản</span></span></button>
+                                <button type="button" title="Tạo tài khoản" class="button create-account" onclick="window.location.href = '@Url.Action("Register", "Home")';"><span><span>Tạo tài khoản</span></span></button>
                             </div>
                         </div>
                     </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    @Html.ValidationSummary(true);
+
                     <div class="col-2 registered-users">
                         <strong>Đăng nhập</strong>
                         <div class="content">
@@ -39,27 +46,27 @@
                             <p>Nếu bạn đã có tài khoản, vui lòng đăng nhập.</p>
                             <ul class="form-list">
                                 <li>
-                                    <label for="email">Địa chỉ Email<em class="required">*</em></label>
+                                    <label for="email">@Html.LabelFor(e => e.Email)<em class="required">*</em></label>
                                     <div class="input-box">
-                                        <input type="text" name="login[username]" value="" id="email" class="input-text required-entry validate-email" title="Email Address">
+                                        @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email", @required = @Html.ValidationMessageFor(e => e.Email) })
                                     </div>
                                 </li>
                                 <li>
-                                    <label for="pass">Mật khẩu<em class="required">*</em></label>
+                                    <label for="pass">@Html.LabelFor(p => p.MatKhau)<em class="required">*</em></label>
                                     <div class="input-box">
-                                        <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="Password">
+                                        @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password", @required = @Html.ValidationMessageFor(m => m.MatKhau) })
                                     </div>
                                 </li>
                             </ul>
                             <div class="remember-me-popup">
                                 <div class="remember-me-popup-head" style="display:none">
                                     <h3 id="text2">What's this?</h3>
-                                    <a href="#" class="remember-me-popup-close" onclick="showDiv()" title="Close">Close</a>
+                                    <a href="#" class="remember-me-popup-close" onclick="showDiv()" title="Đóng">Close</a>
                                 </div>
                                 <div class="remember-me-popup-body" style="display:none">
                                     <p id="text1">Checking "Remember Me" will let you access your shopping cart on this computer when you are logged out</p>
                                     <div class="remember-me-popup-close-button a-right">
-                                        <a href="#" class="remember-me-popup-close button" title="Close" onclick="
+                                        <a href="#" class="remember-me-popup-close button" title="Đóng" onclick="
                                            showDiv()"><span>Close</span></a>
                                     </div>
                                 </div>
@@ -71,12 +78,14 @@
 
                             <div class="buttons-set">
 
-                                <button type="submit" class="button login" title="Login" name="send" id="send2"><span>Đăng nhập</span></button>
+                                <button type="submit" class="button login" title="Đăng nhập" name="send" id="send2"><span>Đăng nhập</span></button>
 
                                 <a href="#" class="forgot-word">Quên mật khẩu?</a>
                             </div> <!--buttons-set-->
                         </div> <!--content-->
                     </div> <!--col-2 registered-users-->
+                }
+                    
                 </fieldset> <!--col2-set-->
             </form>
 
