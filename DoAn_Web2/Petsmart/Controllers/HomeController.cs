@@ -68,7 +68,7 @@ namespace Petsmart.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(TaiKhoan t)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
                 {

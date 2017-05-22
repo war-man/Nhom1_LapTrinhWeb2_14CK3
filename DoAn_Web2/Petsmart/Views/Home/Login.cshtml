@@ -15,13 +15,6 @@
     <!--container-->
 </div>
 
-<style>
-    .validationLogin
-    {
-        color: red;
-    }
-</style>
-
 <div class="main-container col1-layout wow bounceInUp animated animated animated" style="visibility: visible;">
 
     <div class="main">
@@ -53,26 +46,25 @@
                             <p>Nếu bạn đã có tài khoản, vui lòng đăng nhập.</p>
                             <ul class="form-list">
                                 <li>
-                                    <label for="email">@Html.LabelFor(e => e.Email)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(e => e.Email)</div></label>
+                                    <label for="email">@Html.LabelFor(e => e.Email)<em class="required">*</em></label>
                                     <div class="input-box">
-                                        @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email" })
+                                        @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email", @required = @Html.ValidationMessageFor(e => e.Email) })
                                     </div>
-                                    
                                 </li>
                                 <li>
-                                    <label for="pass">@Html.LabelFor(p => p.MatKhau)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(m => m.MatKhau)</div></label>
+                                    <label for="pass">@Html.LabelFor(p => p.MatKhau)<em class="required">*</em></label>
                                     <div class="input-box">
-                                        @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password" })
-                                    </div>    
+                                        @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password", @required = @Html.ValidationMessageFor(m => m.MatKhau) })
+                                    </div>
                                 </li>
                             </ul>
                             <div class="remember-me-popup">
                                 <div class="remember-me-popup-head" style="display:none">
-                                    <h3 id="text2">Đây là gì?</h3>
+                                    <h3 id="text2">What's this?</h3>
                                     <a href="#" class="remember-me-popup-close" onclick="showDiv()" title="Đóng">Close</a>
                                 </div>
                                 <div class="remember-me-popup-body" style="display:none">
-                                    <p id="text1">Đánh dấu "Remember Me" sẽ cho phép bạn truy cập vào giỏ hàng của bạn trên máy tính này khi đã đăng xuất.</p>
+                                    <p id="text1">Checking "Remember Me" will let you access your shopping cart on this computer when you are logged out</p>
                                     <div class="remember-me-popup-close-button a-right">
                                         <a href="#" class="remember-me-popup-close button" title="Đóng" onclick="
                                            showDiv()"><span>Close</span></a>
