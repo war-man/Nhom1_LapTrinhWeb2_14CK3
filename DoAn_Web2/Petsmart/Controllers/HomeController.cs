@@ -78,7 +78,6 @@ namespace Petsmart.Controllers
                         {
                             Session["user"] = tk;
                             return RedirectToAction("Index", "Home");
-
                         }
                     }
                 }
@@ -97,6 +96,37 @@ namespace Petsmart.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(TaiKhoan t)
+        {
+            if (ModelState.IsValid)
+            {
+                using(ShopBanDongVatEntities db = new ShopBanDongVatEntities())
+                {
+                    var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email)).FirstOrDefault();
+
+                    if(tk != null)
+                    {
+                        ViewBag.Message = "Tài khoản này đã tồn tại!";
+                    }
+                    else
+                    {
+                        t.BiXoa = false;
+                        t.MaLoaiTaiKhoan = 1;
+                        db.TaiKhoans.Add(t);
+                        db.SaveChanges();
+                        ModelState.Clear();
+                        t = null;
+                        ViewBag.Message = "Đăng ký thành công!";
+                    }
+                }
+            }
+
+            return View();
+        }
+
         public ActionResult Error()
         {
             return View();

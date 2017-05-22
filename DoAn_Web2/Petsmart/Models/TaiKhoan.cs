@@ -22,19 +22,41 @@ namespace Petsmart.Models
         }
         
         public int MaTaiKhoan { get; set; }
+
+        [Display(Name = "Họ và tên")]
+        [Required(ErrorMessage = "Họ và tên không được để trống!", AllowEmptyStrings = false)]
         public string TenDangNhap { get; set; }
+
         [Display(Name = "Mật khẩu")]
-        [Required(ErrorMessage = "Mật khẩu không được để trống", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "Mật khẩu không được để trống!", AllowEmptyStrings = false)]
         [DataType(DataType.Password)]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "Mật khẩu ít nhất phải 8 ký tự!")]
         public string MatKhau { get; set; }
+
+        [Display(Name = "Xác nhận mật khẩu")]
+        [Compare("MatKhau", ErrorMessage = "Xác nhận mật khẩu không đúng!")]
+        [DataType(DataType.Password)]
+        public string XacNhanMK { get; set; }
+
+        [Display(Name = "Tên hiển thị")]
+        [Required(ErrorMessage = "Tên hiển thị không được để trống!", AllowEmptyStrings = false)]
         public string TenHienThi { get; set; }
+
+        [Display(Name = "Địa chỉ")]
+        [Required(ErrorMessage = "Địa chỉ không được để trống!", AllowEmptyStrings = false)]
         public string DiaChi { get; set; }
+
+        [Display(Name = "Số điện thoại")]
+        [Required(ErrorMessage = "Số điện thoại không được để trống!", AllowEmptyStrings = false)]
+        [RegularExpression(@"^(0\d{9,10})$", ErrorMessage = "Số điện thoại không hợp lệ")]
         public string DienThoai { get; set; }
-        [Key]
+
         [Display(Name = "Địa chỉ Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Định dạng Email không hợp lệ!")]
         public string Email { get; set; }
+
         public bool BiXoa { get; set; }
+
         public int MaLoaiTaiKhoan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
