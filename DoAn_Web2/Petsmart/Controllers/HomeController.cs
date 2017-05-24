@@ -42,7 +42,7 @@ namespace Petsmart.Controllers
                 sanpham = db.SanPhams.Where(s => s.TenSanPham.Contains(searchString)).ToList();
 
             }
-            
+
             ViewData["lstLoaiSanPham"] = db.LoaiSanPhams.ToList();
             int pageSize = 3;
             int pageNumber = (page ?? 1);
@@ -68,19 +68,18 @@ namespace Petsmart.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(TaiKhoan t)
         {
-            if (!ModelState.IsValid)
+
+            using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
             {
-                using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
+                var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
                 {
-                    var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
+                    if (tk != null)
                     {
-                        if (tk != null)
-                        {
-                            Session["user"] = tk;
-                            return RedirectToAction("Index", "Home");
-                        }
+                        Session["user"] = tk;
+                        return RedirectToAction("Index", "Home");
                     }
                 }
+
             }
 
             return View();
@@ -103,11 +102,11 @@ namespace Petsmart.Controllers
         {
             if (ModelState.IsValid)
             {
-                using(ShopBanDongVatEntities db = new ShopBanDongVatEntities())
+                using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
                 {
                     var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email)).FirstOrDefault();
 
-                    if(tk != null)
+                    if (tk != null)
                     {
                         ViewBag.Message = "Tài khoản này đã tồn tại!";
                     }
