@@ -1,0 +1,311 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.HangSanXuat>
+@using PagedList.Mvc;
+<style>
+    #divhinhdaidien {
+        width: 100px;
+        height: 100px;
+        border: 2.5px dotted #E1E5EA;
+        padding: 2px;
+    }
+
+        #divhinhdaidien i {
+            margin: 28px;
+            color: #E7EBEE;
+        }
+
+        #divhinhdaidien img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #divhinhdaidien:hover {
+            background: #32404E;
+        }
+</style>
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Đối Tác</h1>
+
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Tìm kiếm..">
+            <span class="input-group-btn">
+                <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">Trang chủ</a></li>
+    <li class="active">Quản Lý Đối Tác</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Quản Lý Đối Tác</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button data-target="#themdoitac" id="doitac_btn" data-toggle="modal" class="btn btn-mint">Thêm đối tác</button>
+                    <button data-target="#themdoitac" id="doitac_btn_sua" data-toggle="modal" style="display:none;">Thêm đối tác</button>
+                </div>
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên đối tác" id="example-search-input">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="demo-search-tab-2">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-vcenter mar-top">
+                            <thead>
+                                <tr>
+                                    <th><a href="@Url.Action("Index","APartner",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Logo</th>
+                                    <th><a href="@Url.Action("Index","APartner",new { sortOrder = ViewBag.NameSortParm })">Tên đối tác <i class="fa fa-sort"></i></a></th>
+                                    <th class="min-w-td text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaHangSanXuat</td>
+                                            <td><img src="~/Content/images/partner/@item.LogoURL" alt="Profile Picture" class="img-circle img-sm"></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaHangSanXuat">@item.TenHangSanXuat</a></td>
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                    <a onclick="fncDeletePartner(this)" class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-remove add-tooltip" data-id="@item.MaHangSanXuat"  href="#" data-original-title="Xóa" data-container="body"></a>
+                                                    <a onclick="fncEditPartner(this)" class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" data-id="@item.MaHangSanXuat" href="#" data-original-title="Sửa" data-container="body"></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                     }
+                                }
+                            </tbody>
+                        </table>
+                        <hr>
+                        <div class="text-right">
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="themdoitac" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--Modal header-->
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="text-bold">Quản lý đối tác</h4>
+            </div>
+            <!--Modal body-->
+            <form class="form-horizontal" id="form_add_partner">
+                 <div class="modal-body">
+                    <div class="row">
+                        <input type="text" id="madoitac" name="madoitac" style="display:none;">
+                        <div class="col-md-6 mar-btm">
+                            <input type="text" id="tendoitac" name="tendoitac" required class="form-control" placeholder="Tên đối tác">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div id="divhinhdaidien">
+                                <i class="fa fa-upload fa-3x" aria-hidden="true"></i>
+                            </div>
+                            <input name="image" style="display:none;" hidden accept='image/*' id="hinhdaidien" type="file" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
+                    <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+            <!--Sua doi tac-->
+
+<script>
+        
+        $("#divhinhdaidien").click(function () {
+            $('#hinhdaidien').click();
+        });
+        $('#hinhdaidien').change(function (e) {
+            $('#divhinhdaidien').empty();
+            var files = e.target.files;
+            $.each(files, function (i, file) {
+                var extension = file.name.substr((file.name.lastIndexOf('.') + 1));
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    var template = '<img id="image_hinhdaidien" src="' + e.target.result + '" />';
+                    ;
+                    $('#divhinhdaidien').append(template);
+                };
+            });
+        });
+
+        //clear form
+        $("#doitac_btn").click(function () {
+            $('#divhinhdaidien img').remove();
+            $('#tendoitac').val('');
+        })
+        // Add đối tác
+        $("form#form_add_partner").submit(function () {
+            var formData = new FormData($(this)[0]);
+            var madoitac = $('#madoitac').val();
+            // Sửa sản phẩm
+            if (madoitac != "") {
+                $.ajax({
+                    url: "@Url.Action("suadoitac")",
+                    type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data == "success") {
+                        sweetAlert("Thành công", "Sửa đối tác thành công!", "success");
+                        $('.confirm').click(function (e) {
+                            window.location.replace("@Url.Action("Index")");
+                        });
+                    }
+                    else if (data == "error_product")
+                        sweetAlert("Lỗi", "Sản phẩm không tồn tại!", "error");
+                    else
+                        sweetAlert(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            }
+                // Form thêm đối tác
+            else {
+                $.ajax({
+                    url: "@Url.Action("themdoitac")",
+                    type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data == "success") {
+                        sweetAlert("Thành công", "Thêm đối tác thành công!", "success");
+                        $('.confirm').click(function (e) {
+                            window.location.replace("@Url.Action("Index")");
+                        });
+                    }
+                    else if (data == "error_product")
+                        sweetAlert("Lỗi", "Đối tác không tồn tại!", "error");
+                    else if (data == "error_images")
+                        sweetAlert("Lỗi", "Hình ảnh không được rỗng!", "error");
+                    else
+                        sweetAlert(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+                });
+            }
+            
+            return false;
+        });
+    //Edit đối tác
+    function fncEditPartner(e) {
+        var id = $(e).attr("data-id");
+        $.ajax({
+            url: "@Url.Action("EditPartner")",
+            method: "POST",
+        async: false,
+        data: { id: id },
+        success: function (data) {
+            $('#tendoitac').val(data.TenHangSanXuat);
+            $('#madoitac').val(data.MaHangSanXuat);
+            $('#divhinhdaidien').empty();
+            var srcImage = "/Content/images/partner/"+ data.LogoURL;
+            var image = '<img id="image_hinhdaidien" src="'+ srcImage +'" />';
+            $('#divhinhdaidien').append(image);
+            $('#doitac_btn_sua').click();
+        }
+    });
+    }
+        // Delete đối tác
+        function fncDeletePartner(e) {
+            swal({
+                title: "Bạn có muốn xóa đối tác này!",
+                text: "Sau khi xóa đối tác sẽ mất hoàn toàn!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function () {
+                var id = $(e).attr("data-id");
+                $.ajax({
+                    url: "@Url.Action("DeletePartner")",
+                    method: "POST",
+                    async: false,
+                    data: { id: id },
+                    success: function (data) {
+                        if (data == "success") {
+                            swal("Xóa thành công!", "Đối tác đã được xóa!", "success");
+                            $('.confirm').click(function (e) {
+                                window.location.replace("@Url.Action("Index")");
+                            });
+                        }
+                        else if (data == "exits_products")
+                            swal("Lỗi!", "Đối tác còn sản phẩm không thể xóa!", "error");
+                        else if (data == "error_null") {
+                            swal("Lỗi!", "Không tồn tại đối tác!", "error");
+
+                        }
+                        else {
+                            swal(data);
+                        }
+                    }
+                });
+            });
+
+        };
+    </script>
