@@ -4,11 +4,12 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<!--Page Title-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<div id="page-title">
-    <h1 class="page-header text-overflow">Quản Lý Đơn Đặt Hàng</h1>
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.DonDatHang>
+@using PagedList.Mvc;
 
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Đơn Hàng</h1>
     <!--Searchbox-->
     <div class="searchbox">
         <div class="input-group custom-search-form">
@@ -25,320 +26,104 @@
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <ol class="breadcrumb">
     <li><a href="#">Trang chủ</a></li>
-    <li class="active">Quản Lý Đơn Đặt Hàng</li>
+    <li class="active">Quản Lý Đơn Hàng</li>
 </ol>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--End page title-->
+<!--End breadcrumb-->
 <!--Page content-->
 <!--===================================================-->
 <div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Quản Lý Đơn Đặt Hàng</h3>
+            <h3 class="panel-title">Quản Lý Đơn Hàng</h3>
         </div>
-
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-6">
-                    <button data-target="#themdonhang" data-toggle="modal" class="btn btn-success">Thêm đơn hàng</button>
-                    <!-- Modal chi tiet don hang -->
-                    <!-- End -->
+                <div class="col-sm-2">
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" type="search" placeholder="Tìm kiếm" id="example-search-input">
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên khách hàng" id="example-search-input">
+                            </div>
                         </div>
-                    </div>
+                    }
+
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
                 </div>
             </div>
             <div class="tab-content">
-                <!-- USERS SEARCH -->
-                <!--===================================================-->
                 <div class="tab-pane fade active in" id="demo-search-tab-2">
                     <div class="table-responsive">
                         <table class="table table-hover table-striped table-vcenter mar-top">
                             <thead>
                                 <tr>
-                                    <th class="min-w-td">#</th>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Tình trạng</th>
+                                    <th><a href="@Url.Action("Index","AOrders",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Icon</th>
+                                    <th><a href="@Url.Action("Index","AOrders",new { sortOrder = ViewBag.NameSortParm })">Tên Khách Hàng <i class="fa fa-sort"></i></a></th>
+                                    <th><a href="@Url.Action("Index","AOrders",new { sortOrder = ViewBag.DateSortParm })">Ngày Đặt <i class="fa fa-sort"></i></a></th>
+                                    <th><a href="@Url.Action("Index","AOrders",new { sortOrder = ViewBag.PriceSortParm })">Tổng tiền <i class="fa fa-sort"></i></a></th>
+                                    <th>Trạng Thái</th>
                                     <th class="min-w-td text-center">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="min-w-td">1</td>
-                                    <td><a class="btn-link" href="#">P0-123</a></td>
-                                    <td>Nguyễn Quốc Tường</td>
-                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-                                    <td>$2.000.000</td>
-                                    <td><span class="label label-table label-warning">Chờ duyệt</span></td>
-                                    <td class="min-w-td text-center">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-info fa fa-info add-tooltip" href="#" data-original-title="Chi tiết" data-container="body" data-target="#chitietdonhang" data-toggle="modal"></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="min-w-td">2</td>
-                                    <td><a class="btn-link" href="#">P0-123</a></td>
-                                    <td>Nguyễn Quốc Tường</td>
-                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-                                    <td>$2.000.000</td>
-                                    <td><span class="label label-table label-primary">Đang giao</span></td>
-                                    <td class="min-w-td text-center">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-info fa fa-info add-tooltip" href="#" data-original-title="Chi tiết" data-container="body" data-target="#chitietdonhang" data-toggle="modal"></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="min-w-td">3</td>
-                                    <td><a class="btn-link" href="#">P0-123</a></td>
-                                    <td>Nguyễn Quốc Tường</td>
-                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-                                    <td>$2.000.000</td>
-                                    <td><span class="label label-table label-success">Đã duyệt</span></td>
-                                    <td class="min-w-td text-center">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-                                            <a class="btn btn-sm btn-default btn-icon btn-hover-info fa fa-info add-tooltip" href="#" data-original-title="Chi tiết" data-container="body" data-target="#chitietdonhang" data-toggle="modal"></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaDonDatHang</td>
+                                            <td><img src="~/Content/images/invoice.png" alt="Profile Picture" class="img img-sm"></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaDonDatHang">@item.TaiKhoan.TenHienThi </a></td>
+                                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> @string.Format("{0:d/M/yyyy}", @item.NgayLap)</span></td>
+                                            <td>@string.Format("{0:0,0}", item.TongThanhTien)đ</td>
+                                            <td>
+                                                @{
+                                                    if (@item.MaTinhTrang  == 1)
+                                                    {
+                                                        <span class="label label-table label-warning">Chờ duyệt</span>
+                                                    }
+                                                    else if(@item.MaTinhTrang == 2)
+                                                    {
+                                                       <span class="label label-table label-info">Đang giao</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="label label-table label-success">Đã giao</span>
+                                                    }
+
+                                                }
+                                            </td>
+
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Cập nhật trạng thái" data-container="body"></a>
+                                                    <a class="btn btn-sm btn-default btn-icon btn-hover-info fa fa-info add-tooltip" href="@Url.Action("DetailOrder", new {mdh = @item.MaDonDatHang })" data-original-title="Chi tiết" data-container="body"></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                     }
+                                }
+
                             </tbody>
                         </table>
+
                         <hr>
-
-                        <!--Pagination-->
                         <div class="text-right">
-                            <ul class="pagination mar-no">
-                                <li class="disabled"><a class="fa fa-angle-double-left" href="#"></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><span>...</span></li>
-                                <li><a href="#">20</a></li>
-                                <li><a class="fa fa-angle-double-right" href="#"></a></li>
-                            </ul>
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                         </div>
                     </div>
                 </div>
-                <!--===================================================-->
-
-            </div>
-        </div>
-
-
-
-    </div>
-</div>
-<!--===================================================-->
-<!--End page content-->
-
-<div class="modal fade" id="themdonhang" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!--Modal header-->
-            <div class="modal-header">
-                <button data-dismiss="modal" class="close" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h3 class="text-bold">Thêm đơn hàng</h3>
-            </div>
-
-            <!--Modal body-->
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="panel">
-                        <h3 class="panel-title">Thông tin sản phẩm</h3>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-6 mar-btm">
-                                    <select class="selectpicker" data-live-search="true" data-width="100%" style="display: none;">
-                                        <option>Family</option>
-                                        <option>Friend</option>
-                                        <option>Partner</option>
-                                        <option>Sport</option>
-                                        <option>Movie</option>
-                                        <option>Documents</option>
-                                        <option>Music</option>
-                                        <option>Video</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mar-btm">
-                                    <input type="text" class="form-control" placeholder="Số lượng">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mar-btm">
-                                    <button class="btn btn-primary">Thêm sản phẩm</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="panel">
-                        <h3 class="panel-title">Thông tin khách hàng</h3>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-6 mar-btm">
-                                    <input type="text" class="form-control" placeholder="Họ tên">
-                                </div>
-                                <div class="col-md-6 mar-btm">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mar-btm">
-                                    <input type="text" class="form-control" placeholder="SĐT">
-                                </div>
-                                <div class="col-md-6 mar-btm">
-                                    <input type="email" class="form-control" placeholder="Tài khoản">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Địa chỉ khách hàng..."></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-            <!--Modal footer-->
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                <button class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="chitietdonhang" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!--Modal header-->
-            <div class="modal-header">
-                <div class="row">
-                    <div class="col-sm-11">
-                        <h2 class="text-bold">P0-620</h2>
-                    </div>
-                    <div class="col-sm-1">
-                        <button data-dismiss="modal" class="close" type="button">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-10">
-                        <!--Basic Buttons-->
-                        <!--===================================================-->
-                        <button class="btn btn-default btn-labeled fa fa-print">Print</button>
-                        <button class="btn btn-warning btn-labeled fa fa-file-pdf-o">PDF</button>
-                        <button class="btn btn-dark btn-labeled fa fa-share-square-o">Export</button>
-
-                        <!--===================================================-->
-                    </div>
-                    <div class="con-sm-2">
-                        <button class="btn btn-primary">Đang giao</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <!--Modal body-->
-            <div class="modal-body">
-                <table class="table table-hover table-striped table-vcenter mar-top">
-                    <thead>
-                        <tr>
-                            <th class="min-w-td">#</th>
-                            <th>Hình đại diện</th>
-                            <th>Tên Sản Phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Giá</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="min-w-td">1</td>
-                            <td><img src="~/Content/admin/img/products/dog-sickbay1.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-                            <td><a class="btn-link" href="#">Chó Husky Sibir</a></td>
-                            <td>1</td>
-                            <td>5.000.000 đ</td>
-
-                        </tr>
-                        <tr>
-                            <td class="min-w-td">2</td>
-                            <td><img src="~/Content/admin/img/products/1443347096-1443339772-meonala--1-.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-                            <td><a class="btn-link" href="#">Mèo Sibir</a></td>
-                            <td>2</td>
-                            <td>7.000.000 đ</td>
-
-
-                        </tr>
-                        <tr>
-                            <td class="min-w-td">2</td>
-                            <td><img src="~/Content/admin/img/products/1443347096-1443339772-meonala--1-.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-                            <td><a class="btn-link" href="#">Mèo Sibir</a></td>
-                            <td>2</td>
-                            <td>8.000.000 đ</td>
-
-
-                        </tr>
-                    </tbody>
-
-                </table>
-                <div class="text-right">
-                    <div class="row">
-                        <span class=" col-sm-7 text-2x ">Tổng tiền:</span>
-                        <span class=" col-sm-5 text-2x text-muted">5.000.000.000 đ</span>
-                    </div>
-                </div>
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Thông tin khách hàng</h3>
-                    </div>
-                    <div class="panel-body">
-                        <!--Address-->
-                        <!--===================================================-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <address>
-                                    <strong>Địa chỉ</strong><br>
-                                    373 Trần Xuân Soạn, Quận 7<br>
-                                    Hồ Chí Minh, Việt Nam<br>
-                                    <abbr title="Phone">SĐ: 01689016132
-                                </address>
-                            </div>
-                            <div class="col-sm-6">
-                                <address>
-                                    <strong>Họ tên</strong><br>
-                                    <a href="mailto:#">Nguyễn Quốc Tường</a><br>
-                                    <strong>Email</strong><br>
-                                    <a href="mailto:#">tuongnguyendev@gmail.com</a>
-                                </address>
-                            </div>
-                        </div>
-                        <!--===================================================-->
-                    </div>
-                </div>
-            </div>			<!--Modal footer-->
-            <div class="modal-footer" style="background-color: #00E6E8;">
             </div>
         </div>
     </div>

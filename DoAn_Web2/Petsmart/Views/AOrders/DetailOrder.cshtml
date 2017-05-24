@@ -1,0 +1,131 @@
+﻿@using Petsmart.Models
+@{
+    ViewBag.Title = "DetailOrder";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{ 
+    var ddh = ViewData["DonHang"] as DonDatHang;
+}
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Xem chi tiết đơn hàng</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="modal-dialog" style="width:750px;">
+                    <div class="modal-content">
+                        <!--Modal header-->
+                        <div class="modal-header">
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <h2 class="text-bold"></h2>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button data-dismiss="modal" class="close" type="button">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <!--Basic Buttons-->
+                                    <!--===================================================-->
+                                    <button class="btn btn-default btn-labeled fa fa-print">Print</button>
+                                  <!--===================================================-->
+                                </div>
+                                <div class="con-sm-2">
+                                    @{
+                                        if (@ddh.MaTinhTrang == 1)
+                                        {
+                                            <span class="label label-table label-warning">Chờ duyệt</span>
+                                        }
+                                        else if (@ddh.MaTinhTrang == 2)
+                                        {
+                                            <span class="label label-table label-info">Đang giao</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-table label-success">Đã giao</span>
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--Modal body-->
+                        <div class="modal-body">
+                            <table class="table table-hover table-striped table-vcenter mar-top">
+                                <thead>
+                                    <tr>
+                                        <th class="min-w-td">#</th>
+                                        <th>Hình đại diện</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Số lượng mua</th>
+                                        <th>Giá</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        @{
+                                            foreach (var item in ViewData["LstChiTietDonHang"] as List<ChiTietDonHang>)
+                                            {
+                                                <tr>
+                                                    <td class="min-w-td">@item.SanPham.MaSanPham</td>
+                                                    <td><img src="~/Content/images/products/@item.SanPham.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
+                                                    <td><a class="btn-link" href="#">@item.SanPham.TenSanPham</a></td>
+                                                    <td>@item.SoLuong</td>
+                                                    <td>@string.Format("{0:0,0}", item.SanPham.GiaSanPham)đ</td>
+                                                </tr>
+                                            }
+                                        }
+                                </tbody>
+
+                            </table>
+                            <div class="text-right">
+                                <div class="row">
+                                    <span class=" col-sm-7 text-2x ">Tổng tiền:</span>
+                                    <span class=" col-sm-5 text-2x text-muted">@ddh.TongThanhTien</span>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Thông tin khách hàng</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <!--Address-->
+                                    <!--===================================================-->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <address>
+                                                <strong>Địa chỉ</strong><br>
+                                                @ddh.TaiKhoan.DiaChi<br>
+                                                <abbr title="Phone">SĐT: @ddh.TaiKhoan.DienThoai
+                                            </address>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <address>
+                                                <strong>Họ tên</strong><br>
+                                                <a href="mailto:#">@ddh.TaiKhoan.TenHienThi</a><br>
+                                                <strong>Email</strong><br>
+                                                <a href="mailto:#">@ddh.TaiKhoan.Email</a>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <!--===================================================-->
+                                </div>
+                            </div>
+                        </div>			<!--Modal footer-->
+                        <div class="modal-footer" style="background-color: #00E6E8;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+
