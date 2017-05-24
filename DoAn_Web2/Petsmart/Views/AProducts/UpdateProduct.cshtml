@@ -1,9 +1,22 @@
-﻿
+﻿@using Petsmart.Models;
+@using Petsmart.Controllers;
 @{
     ViewBag.Title = "showuploadTest";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@{
+    SanPham sp = ViewData["SanPham"] as SanPham;
+}
 <style>
+    #btn_delete_image_update {
+        margin-bottom: 85px;
+        width: 20px;
+        height: 20px;
+        padding: 2px;
+        margin-left: -20px;
+        margin-right: 8px;
+    }
+
     #images-to-upload {
         margin-top: 5px;
         border: 2.5px dotted #E7EBEE;
@@ -54,19 +67,20 @@
 <div id="page-content">
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Thêm Mới Sản Phẩm</h3>
+            <h3 class="panel-title">Sửa Sản Phẩm</h3>
         </div>
         <div class="panel-body">
             <form class="form-horizontal" id="form_add_product" enctype="multipart/form-data">
                 <div class="row">
+                    <input type="text" name="masanpham" value="@sp.MaSanPham" style="display:none;" />
                     <div class="col-md-4 mar-btm">
-                        <input type="text" name="tensanpham" required id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
+                        <input type="text" name="tensanpham" value="@sp.TenSanPham" required id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
                     </div>
                     <div class="col-md-3 mar-btm">
-                        <input type="number" name="soluong" required class="form-control" placeholder="Số lượng">
+                        <input type="number" name="soluong" value="@sp.SoLuongTon" required class="form-control" placeholder="Số lượng">
                     </div>
                     <div class="col-md-3 mar-btm">
-                        <input type="number" id="price_products" required name="giaban" class="form-control" placeholder="Giá bán">
+                        <input type="number" id="price_products" value="@Convert.ToInt32(@sp.GiaSanPham)" required name="giaban" class="form-control" placeholder="Giá bán">
                     </div>
                     <div class="col-md-2 mar-btm">
                         <span style="font-weight:bold;font-size:18px;color:#DB5261;" class="title" id="money_bind"></span>
@@ -91,23 +105,30 @@
                     </div>
                     <div class="col-sm-6">
                         <div id="divhinhdaidien">
-                            <i class="fa fa-upload fa-3x" aria-hidden="true"></i>
+                            <img src="~/Content/images/products/@sp.HinhURL" />
                         </div>
                         <input name="image" style="display:none;" hidden accept='image/*' id="hinhdaidien" type="file" />
                     </div>
                 </div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-md-6">
-                        <textarea id="demo-textarea-input" rows="9" name="mota" class="form-control" placeholder="Giới thiệu sản phẩm..."></textarea>
+                        <textarea id="demo-textarea-input" rows="9" name="mota" class="form-control" placeholder="Giới thiệu sản phẩm...">@sp.MoTa</textarea>
                     </div>
                     <div class="col-md-6">
                         <input name="images_slide" style="display:none;" accept='image/*' id="images" type="file" multiple />
                         <div id="images-to-upload">
+                            @foreach (var item in ViewData["ListImagesPro"] as List<HinhAnhSanPham>)
+                            {
+                                <span class="item_image_uploads">
+                                    <img class="image_upload-old" src="~/Content/images/products/@item.HinhURL" />
+                                    <a onclick="deleteImages(this)" data-id="@item.MaHinh" id="btn_delete_image_update" class="btn btn-sm btn-danger btn-icon btn-hover-warning fa fa-remove add-tooltip" data-original-title="Xóa"></a>
+                                </span>
+                            }
                             <span id="title_upload" style="display:block;">Hình slide sản phẩm</span>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:10px;">
+                <div class="row" style="margin-top:15px;">
                     <div class="col-md-9">
                     </div>
                     <div class="col-md-3">
@@ -120,6 +141,43 @@
     </div>
 </div>
 <script>
+    function deleteImages(e) {
+        var id = $(e).attr("data-id");
+        if (id == null)
+        {
+            $(e).parent('.item_image_uploads').hide("fade", function () {
+                $(e).parent('.item_image_uploads').remove();
+            });
+        }
+        else {
+            swal({
+                title: "Bạn có muốn xóa hình này!",
+                text: "Sau khi xóa hình sẽ mất hoàn toàn!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function () {
+                $.ajax({
+                    url: "@Url.Action("DeleteImages")",
+                    method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    if(data =="sucess")
+                        swal("Xóa thành công!", "Hình ảnh đã được xóa!", "success");
+                    else
+                        swal("Lỗi!", "Có lỗi khi xóa hình!", "error");
+                }
+            });
+            $(e).parent('.item_image_uploads').hide("fade", function () {
+                $(e).parent('.item_image_uploads').remove();
+            });
+        });
+    }
+    }
     $("#divhinhdaidien").click(function () {
         $('#hinhdaidien').click();
     });
@@ -135,15 +193,15 @@
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function (e) {
-                var template = '<img id="image_hinhdaidien" src="' + e.target.result + '" />';
+                var template = '<img src="' + e.target.result + '" class ="new_images" />';
                 ;
                 $('#divhinhdaidien').append(template);
             };
         });
     });
     $('#images').change(function (e) {
-        $('.image_upload').remove();
         var files = e.target.files;
+        $('.image_upload').remove();
         $.each(files, function (i, file) {
             var extension = file.name.substr((file.name.lastIndexOf('.') + 1));
             var reader = new FileReader();
@@ -159,14 +217,14 @@
     $("form#form_add_product").submit(function () {
         var formData = new FormData($(this)[0]);
         $.ajax({
-            url: "@Url.Action("themsanpham")",
+            url: "@Url.Action("suasanpham")",
             type: 'POST',
             data: formData,
             async: false,
             success: function (data) {
             if (data == "success") {
 
-                     sweetAlert("Thành công", "Thêm sản phẩm thành công!", "success");
+                     sweetAlert("Thành công", "Sửa sản phẩm thành công!", "success");
                      $('.confirm').click(function (e) {
                          window.location.replace("@Url.Action("Index")");
                      });

@@ -6,80 +6,81 @@
 @using Petsmart.Models
 @model PagedList.IPagedList<Petsmart.Models.SanPham>
 @using PagedList.Mvc;
-    <!--Page Title-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <div id="page-title">
-        <h1 class="page-header text-overflow">Quản Lý Sản Phẩm</h1>
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Sản Phẩm</h1>
 
-        <!--Searchbox-->
-        <div class="searchbox">
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Tìm kiếm..">
-                <span class="input-group-btn">
-                    <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Tìm kiếm..">
+            <span class="input-group-btn">
+                <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+            </span>
         </div>
     </div>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--End page title-->
-    <!--Breadcrumb-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <ol class="breadcrumb">
-        <li><a href="#">Trang chủ</a></li>
-        <li class="active">Quản lý sản phẩm</li>
-    </ol>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--End breadcrumb-->
-    <!--Page content-->
-    <!--===================================================-->
-    <div id="page-content">
-        <!-- Search -->
-        <!-- End Search -->
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Quản Lý Sản Phẩm</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <a href="@Url.Action("AddProduct","AProducts")"><button data-target="#themsanpham" data-toggle="modal" class="btn btn-success">Thêm sản phẩm</button></a>
-                    </div>
-                    <div class="col-sm-6">
-                        @using (Html.BeginForm())
-                        {
-
-                            <div class="form-group row">
-                                <div class="col-10">
-                                    <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên sản phẩm" id="example-search-input">
-                                </div>
-                            </div>
-                        }
-                        
-                    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">Trang chủ</a></li>
+    <li class="active">Quản lý sản phẩm</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Quản Lý Sản Phẩm</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="@Url.Action("AddProduct","AProducts")"><button class="btn btn-success">Thêm sản phẩm</button></a>
                 </div>
-                <div class="tab-content">
-                    <!-- USERS SEARCH -->
-                    <!--===================================================-->
-                    <div class="tab-pane fade active in" id="demo-search-tab-2">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped table-vcenter mar-top">
-                                <thead>
-                                    <tr>
-                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
-                                        <th class="min-w-td">Hình Đại Diện</th>
-                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.NameSortParm })">Tên Sản Phẩm <i class="fa fa-sort" ></i></a></th>
-                                        <th>Loại Sản Phẩm</th>
-                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.DateSortParm })">Ngày Tạo <i class="fa fa-sort"></i></a></th>
-                                        <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.PriceSortParm })">Giá <i class="fa fa-sort"></i></a></th>
-                                        <th>Trạng Thái</th>
-                                        <th class="min-w-td text-center">Thao tác</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{ 
-                                        foreach (var item in Model)
-                                        {
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên sản phẩm" id="example-search-input">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="demo-search-tab-2">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-vcenter mar-top">
+                            <thead>
+                                <tr>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Hình Đại Diện</th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.NameSortParm })">Tên Sản Phẩm <i class="fa fa-sort"></i></a></th>
+                                    <th>Loại Sản Phẩm</th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.DateSortParm })">Ngày Tạo <i class="fa fa-sort"></i></a></th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.PriceSortParm })">Giá <i class="fa fa-sort"></i></a></th>
+                                    <th>Trạng Thái</th>
+                                    <th class="min-w-td text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
                                         <tr>
                                             <td class="min-w-td">@item.MaSanPham</td>
                                             <td><img src="~/Content/images/products/@item.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
@@ -109,121 +110,56 @@
 
 
                                                 }
-                                                
+
                                             </td>
-                                            
+
                                             <td class="min-w-td text-center">
                                                 <div class="btn-group">
-                                                   @{
-                                                      if (@item.BiXoa != false)
-                                                      {
-                                                        <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-unlock add-tooltip" href="@Url.Action("UnLockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Mở Khóa" data-container="body"></a>
+                                                    @{
+                                                        if (@item.BiXoa != false)
+                                                        {
+                                                            <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-unlock add-tooltip" href="@Url.Action("UnLockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Mở Khóa" data-container="body"></a>
 
-                                                      }
-                                                       else
-                                                       {
-                                                           <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-lock add-tooltip" href="@Url.Action("LockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Khóa" data-container="body"></a>
-                                                       }
-                                                    <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="" data-original-title="Sửa" data-container="body"></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-lock add-tooltip" href="@Url.Action("LockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Khóa" data-container="body"></a>
+                                                        }
+                                                        <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="@Url.Action("UpdateProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Sửa" data-container="body"></a>
 
                                                     }
                                                 </div>
                                             </td>
                                         </tr>
-                                         }
-                                     }
-                                    
-                                </tbody>
-                            </table>
-                            <hr>
+                                                        }
+                                }
 
-                            <!--Pagination-->
-                            <div class="text-right">
-                                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                            </tbody>
+                        </table>
+                        <hr>
 
-                                @Html.PagedListPager(Model, page => Url.Action("Index",
+                        <!--Pagination-->
+
+                        <div class="text-right">
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
                                 new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                                
-                            </div>
                         </div>
                     </div>
-                  
-
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
-    <!--===================================================-->
-    <!--End page content-->
-    <div class="modal fade" id="themsanpham" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!--Modal header-->
-                <div class="modal-header">
-                    <button data-dismiss="modal" class="close" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h3 class="modal-title">Cập nhật sản phẩm</h3>
                 </div>
 
-                <!--Modal body-->
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="row">
-                            <div class="col-md-6 mar-btm">
-                                <input type="text" class="form-control" placeholder="Tên sản phẩm" value="Chó Husky">
-                            </div>
-                            <div class="col-md-6 mar-btm">
-                                <select class="selectpicker" data-live-search="true" data-width="100%" style="display: none;">
-                                    <option>Chó </option>
-                                    <option>Mèo</option>
-                                    <option>Chuột</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mar-btm">
-                                <input type="number" class="form-control" placeholder="Giá bán" value="30000">
-                            </div>
-                            <div class="col-md-4 mar-btm">
-                                <input type="number" class="form-control" placeholder="Giá khuyến mãi" value="300000">
-                            </div>
-                            <div class="col-md-4 mar-btm">
-                                <input type="number" class="form-control" placeholder="Số lượng" value="2">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mar-btm">
-                                <span class="pull-left btn btn-default btn-file">Hình đại diện... <input type="file"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Giới thiệu...">Sản phẩm đẹp</textarea>
-                            </div>
-                        </div>
 
-                    </form>
-                </div>
-
-                <!--Modal footer-->
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
-                    <button class="btn btn-primary">Lưu sản phẩm</button>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 <style>
-.popover-content {
-   font-size: 12px;
-   width:800px;
-}
+    .popover-content {
+        font-size: 12px;
+        width: 800px;
+    }
 </style>
 <script>
     $(document).ready(function () {

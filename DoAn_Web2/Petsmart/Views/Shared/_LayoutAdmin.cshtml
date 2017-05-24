@@ -10,7 +10,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    
+
     <link href="~/Content/admin/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/admin/css/nifty.min.css" rel="stylesheet" />
     <!--Nifty Stylesheet [ REQUIRED ]-->
@@ -30,25 +30,12 @@
     <link href="~/Content/admin/plugins/pace/pace.min.css" rel="stylesheet" />
     <script src="~/Content/admin/plugins/pace/pace.min.js"></script>
 
+    <!--lib alert -->
+    <link href="~/Content/lib_alert/sweetalert.css" rel="stylesheet" />
+    <script src="~/Content/lib_alert/sweetalert.min.js"></script>
     <!--
 
-    REQUIRED
-    You must include this in your project.
 
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
 
     -->
 
@@ -270,7 +257,7 @@
 
                                     <!--Menu list item-->
                                     <li>
-                                        <a href="/AHome">
+                                        <a href="@Url.Action("Index","AHome")">
                                             <i class="fa fa-dashboard"></i>
                                             <span class="menu-title">
                                                 <strong>Trang chủ</strong>
@@ -279,26 +266,32 @@
                                         </a>
                                     </li>
 
-                                    <!--Menu list item-->
                                     <li>
-                                        <a href="#">
+                                        <a href="@Url.Action("Index","AProducts")">
                                             <i class="fa fa-building-o"></i>
                                             <span class="menu-title">
                                                 <strong>Sản phẩm</strong>
                                             </span>
-                                            <i class="arrow"></i>
                                         </a>
-
-                                        <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="/AProducts"><i class="fa fa-paw"></i>QL sản phẩm</a></li>
-                                            <li><a href="/ACategories"><i class="fa fa-th"></i>QL danh mục</a></li>
-                                            <li class="list-divider"></li>
-
-                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="/AOrders">
+                                        <a href="@Url.Action("Index","ACategories")">
+                                            <i class="fa fa-building-o"></i>
+                                            <span class="menu-title">
+                                                <strong>Loại sản phẩm</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","APartner")">
+                                            <i class="fa fa-users"></i>
+                                            <span class="menu-title">
+                                                <strong>Đối tác</strong>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index","AOrders")">
                                             <i class="fa fa-paper-plane"></i>
                                             <span class="menu-title">
                                                 <strong>Đơn hàng</strong>
@@ -306,7 +299,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/AUser">
+                                        <a href="@Url.Action("Index","AUser")">
                                             <i class="fa fa-user"></i>
                                             <span class="menu-title">
                                                 <strong>Khách hàng</strong>
@@ -338,7 +331,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="/AHome">
+                                        <a href="@Url.Action("Index","AHome")">
                                             <i class="fa fa-line-chart"></i>
                                             <span class="menu-title">Thống kê</span>
                                         </a>
@@ -408,11 +401,9 @@
     <script src="~/Content/admin/js/nifty.min.js"></script>
     <script src="~/Content/admin/js/bootstrap.min.js"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
-
     <!--Fast Click [ OPTIONAL ]-->
     <script src="~/Content/admin/plugins/fast-click/fastclick.min.js"></script>
     <!--Nifty Admin [ RECOMMENDED ]-->
-
     <!--Switchery [ OPTIONAL ]-->
     <script src="~/Content/admin/plugins/switchery/switchery.min.js"></script>
     <!--Bootstrap Select [ OPTIONAL ]-->
@@ -425,7 +416,7 @@
     <script src="~/Content/admin/plugins/fast-click/fastclick.min.js"></script>
     <script src="~/Content/admin/plugins/morris-js/morris.min.js"></script>
     <script src="~/Content/admin/plugins/morris-js/raphael-js/raphael.min.js"></script>
-    
+
     <!--Sparkline [ OPTIONAL ]-->
     <script src="~/Content/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Flot Chart [ OPTIONAL ]-->
@@ -433,9 +424,7 @@
     <script src="~/Content/admin/plugins/flot-charts/jquery.flot.pie.min.js"></script>
     <script src="~/Content/admin/plugins/flot-charts/jquery.flot.resize.min.js"></script>
     <!--Flot Pie Chart [ OPTIONAL ]-->
-
     <!--Gauge js [ OPTIONAL ]-->
-
     <!--Easy Pie Chart [ OPTIONAL ]-->
     <script src="~/Content/admin/plugins/gauge-js/gauge.min.js"></script>
     <script src="~/Content/admin/plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
