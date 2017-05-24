@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Petsmart.Models;
 using PagedList;
 using System.IO;
-
 namespace Petsmart.Controllers
 {
     public class APartnerController : Controller

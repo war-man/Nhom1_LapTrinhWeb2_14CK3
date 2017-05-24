@@ -3,190 +3,279 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.LoaiSanPham>
+@using PagedList.Mvc;
+<style>
+    #divhinhdaidien {
+        width: 100px;
+        height: 100px;
+        border: 2.5px dotted #E1E5EA;
+        padding: 2px;
+    }
 
+        #divhinhdaidien i {
+            margin: 28px;
+            color: #E7EBEE;
+        }
+
+        #divhinhdaidien img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #divhinhdaidien:hover {
+            background: #32404E;
+        }
+</style>
 <!--Page Title-->
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<div id="page-title">
-					<h1 class="page-header text-overflow">Quản Lý Loại Sản Phẩm</h1>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Sản Phẩm</h1>
 
-					<!--Searchbox-->
-					<div class="searchbox">
-						<div class="input-group custom-search-form">
-							<input type="text" class="form-control" placeholder="Tìm kiếm..">
-							<span class="input-group-btn">
-								<button class="text-muted" type="button"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<!--End page title-->
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Tìm kiếm..">
+            <span class="input-group-btn">
+                <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">Trang chủ</a></li>
+    <li class="active">Quản Lý Sản Phẩm</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Quản Lý Sản Phẩm</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button data-target="#themdoitac" id="doitac_btn" data-toggle="modal" class="btn btn-mint">Thêm loại sản phẩm</button>
+                    <button data-target="#themdoitac" id="doitac_btn_sua" data-toggle="modal" style="display:none;">Thêm loại sản phẩm</button>
+                </div>
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
 
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên loại sản phẩm" id="example-search-input">
+                            </div>
+                        </div>
+                    }
 
-				<!--Breadcrumb-->
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<ol class="breadcrumb">
-					<li><a href="#">Trang chủ</a></li>
-					<li class="active">Quản lý loại sản phẩm</li>
-				</ol>
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<!--End breadcrumb-->
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="demo-search-tab-2">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-vcenter mar-top">
+                            <thead>
+                                <tr>
+                                    <th><a href="@Url.Action("Index","ACategories",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Logo</th>
+                                    <th><a href="@Url.Action("Index","ACategories",new { sortOrder = ViewBag.NameSortParm })">Tên loại sản phẩm <i class="fa fa-sort"></i></a></th>
+                                    <th class="min-w-td text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaLoaiSanPham</td>
+                                            <td><img src="~/Content/admin/img/logo.png" alt="Profile Picture" class="img-circle img-sm"></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaLoaiSanPham">@item.TenLoaiSanPham</a></td>
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                    <a onclick="fncDeletePartner(this)" class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-remove add-tooltip" data-id="@item.MaLoaiSanPham" href="#" data-original-title="Xóa" data-container="body"></a>
+                                                    <a onclick="fncEditPartner(this)" class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" data-id="@item.MaLoaiSanPham" href="#" data-original-title="Sửa" data-container="body"></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <hr>
+                        <div class="text-right">
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="themdoitac" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--Modal header-->
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="text-bold">Quản lý loại sản phẩm</h4>
+            </div>
+            <!--Modal body-->
+            <form class="form-horizontal" id="form_add_partner">
+                <div class="modal-body">
+                    <div class="row">
+                        <input type="text" id="madoitac" name="madoitac" style="display:none;">
+                        <div class="col-md-6 mar-btm">
+                            <input type="text" id="tendoitac" name="tendoitac" required class="form-control" placeholder="Tên loại sản phẩm">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
+                    <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
+                </div>
+            </form>
 
-		
+        </div>
+    </div>
+</div>
 
-				<!--Page content-->
-				<!--===================================================-->
-				<div id="page-content">
-					<!-- Search -->
-					<!-- End Search -->
-					<div class="panel">
-						<div class="panel-heading">
-								<h3 class="panel-title">Quản Lý Loại Sản Phẩm</h3>
-						</div>
-						
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-sm-6">
-									<button data-target="#themloaisanpham" data-toggle="modal" class="btn btn-success">Thêm loại sản phẩm</button>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group row">
-									  <div class="col-10">
-									    <input class="form-control" type="search" placeholder="Tìm kiếm" id="example-search-input">
-									  </div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-content">
-											<!-- USERS SEARCH -->
-											<!--===================================================-->
-											<div class="tab-pane fade active in" id="demo-search-tab-2">
-												<div class="table-responsive">
-													<table class="table table-hover table-striped table-vcenter mar-top">
-														<thead>
-															<tr>
-																<th class="min-w-td">#</th>
-																<th class="min-w-td">Hình Đại Diện</th>
-																<th>Tên Loại Sản Phẩm</th>
-																<th>Số Lượng</th>
-																<th>Ngày Tạo</th>
-																<th>Đối Tác</th>
-																<th>Tình Trạng</th>
-																<th class="min-w-td text-center">Thao tác</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td class="min-w-td">1</td>
-																<td><img src="~/Content/admin/img/products/dog-sickbay1.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-																<td><a class="btn-link" href="#">Chó</a></td>
-																<td>20</td>
-																<td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-																<td>Lazada</td>
-																<td><span class="label label-table label-info">Bán chạy</span></td>
-																<td class="min-w-td text-center">
-																	<div class="btn-group">
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
-																	</div>
-																</td>
-															</tr>
-															<tr>
-																<td class="min-w-td">2</td>
-																<td><img src="~/Content/admin/img/products/1443347096-1443339772-meonala--1-.jpg" alt="Profile Picture" class="img-circle img-sm"></td>
-																<td><a class="btn-link" href="#">Mèo</a></td>
-																<td>20</td>
-																<td><span class="text-muted"><i class="fa fa-clock-o"></i>27/3/2017</span></td>
-																<td>Apple</td>
-																<td><span class="label label-table label-info">Bán chạy</span></td>
-																<td class="min-w-td text-center">
-																	<div class="btn-group">
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Sửa" data-container="body"></a>
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-times add-tooltip" href="#" data-original-title="Xóa" data-container="body"></a>
-																		<a class="btn btn-sm btn-default btn-icon btn-hover-warning fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-													<hr>
-					
-													<!--Pagination-->
-													<div class="text-right">
-														<ul class="pagination mar-no">
-															<li class="disabled"><a class="fa fa-angle-double-left" href="#"></a></li>
-															<li class="active"><a href="#">1</a></li>
-															<li><a href="#">2</a></li>
-															<li><a href="#">3</a></li>
-															<li><a href="#">4</a></li>
-															<li><span>...</span></li>
-															<li><a href="#">20</a></li>
-															<li><a class="fa fa-angle-double-right" href="#"></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<!--===================================================-->
-					
-										</div>
-						</div>
-					</div>
-					
-					
-					
-				</div>
-				<!--===================================================-->
-				<!--End page content-->
-				<div class="modal fade" id="themloaisanpham" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
-			<div class="modal-dialog">
-			<div class="modal-content">
+<!--Sua doi tac-->
 
-				<!--Modal header-->
-				<div class="modal-header">
-					<button data-dismiss="modal" class="close" type="button">
-					<span aria-hidden="true">&times;</span>
-					</button>
-					<h3 class="modal-title"><b>Thêm loại sản phẩm</b></h3>
-				</div>
+<script>
 
-				<!--Modal body-->
-				<div class="modal-body">
-					<form class="form-horizontal">
-										<div class="row">
-											<div class="col-md-6 mar-btm">
-												<input type="text" class="form-control" placeholder="Tên loại sản phẩm">
-											</div>
-										</div>
-										<div class="row">
-													<div class="col-md-3 mar-btm">
-														<span class="pull-left btn btn-default btn-file">Hình đại diện... <input type="file"></span>
-													</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Giới thiệu..."></textarea>
-											</div>
-										</div>		
-						
-					</form>
-				</div>
+        //clear form
+        $("#doitac_btn").click(function () {
+            $('#divhinhdaidien img').remove();
+            $('#tendoitac').val('');
+        })
+        // Add đối tác
+        $("form#form_add_partner").submit(function () {
+            var formData = new FormData($(this)[0]);
+            var madoitac = $('#madoitac').val();
+            // Sửa sản phẩm
+            if (madoitac != "") {
+                $.ajax({
+                    url: "@Url.Action("suadoitac")",
+                    type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data == "success") {
+                        sweetAlert("Thành công", "Sửa loại sản phẩm thành công!", "success");
+                        $('.confirm').click(function (e) {
+                            window.location.replace("@Url.Action("Index")");
+                        });
+                    }
+                    else if (data == "error_product")
+                        sweetAlert("Lỗi", "Loại Sản phẩm không tồn tại!", "error");
+                    else
+                        sweetAlert(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            }
+                // Form thêm loại sản phẩm
+            else {
+                $.ajax({
+                    url: "@Url.Action("themdoitac")",
+                    type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data == "success") {
+                        sweetAlert("Thành công", "Thêm loại sản phẩm thành công!", "success");
+                        $('.confirm').click(function (e) {
+                            window.location.replace("@Url.Action("Index")");
+                        });
+                    }
+                    else if (data == "error_product")
+                        sweetAlert("Lỗi", "Loại sản phẩm không tồn tại!", "error");
+                    else
+                        sweetAlert(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+                });
+            }
 
-				<!--Modal footer-->
-				<div class="modal-footer">
-					<button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
-					<button class="btn btn-primary">Lưu thay đổi</button>
-				</div>
-			</div>
-			</div>
+            return false;
+        });
+    //Edit đối tác
+    function fncEditPartner(e) {
+        var id = $(e).attr("data-id");
+        $.ajax({
+            url: "@Url.Action("EditPartner")",
+            method: "POST",
+        async: false,
+        data: { id: id },
+        success: function (data) {
 
-			</div>
-			
-			<!--MAIN NAVIGATION-->
-			<!--===================================================-->
-			<!--===================================================-->
-			<!--END MAIN NAVIGATION-->
-			
-			<!--ASIDE-->
-			<!--===================================================-->
+            console.log(data);
+            $('#tendoitac').val(data.TenLoaiSanPham);
+            $('#madoitac').val(data.MaLoaiSanPham);
+            $('#doitac_btn_sua').click();
+        }
+    });
+    }
+        // Delete đối tác
+        function fncDeletePartner(e) {
+            swal({
+                title: "Bạn có muốn xóa loại sản phẩm này!",
+                text: "Sau khi xóa loại sản phẩm sẽ mất hoàn toàn!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function () {
+                var id = $(e).attr("data-id");
+                $.ajax({
+                    url: "@Url.Action("DeletePartner")",
+                    method: "POST",
+                    async: false,
+                    data: { id: id },
+                    success: function (data) {
+                        if (data == "success") {
+                            swal("Xóa thành công!", "Loại sản phẩm đã được xóa!", "success");
+                            $('.confirm').click(function (e) {
+                                window.location.replace("@Url.Action("Index")");
+                            });
+                        }
+                        else if (data == "exits_products")
+                            swal("Lỗi!", "Loại sản phẩm còn sản phẩm không thể xóa!", "error");
+                        else if (data == "error_null") {
+                            swal("Lỗi!", "Không tồn tại loại sản phẩm!", "error");
+
+                        }
+                        else {
+                            swal(data);
+                        }
+                    }
+                });
+            });
+
+        };
+</script>
