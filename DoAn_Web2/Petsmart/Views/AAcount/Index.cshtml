@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.TaiKhoan>
+@using PagedList.Mvc;
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Tài Khoản</h1>
+
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Tìm kiếm..">
+            <span class="input-group-btn">
+                <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">Trang chủ</a></li>
+    <li class="active">Quản lý tài khoản</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Quản Lý Tài Khoản</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button data-target="#themdoitac" id="capnhat_quyen" data-toggle="modal" style="display:none;">Cập nhật quyền</button>
+                </div>
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên đăng nhập" id="example-search-input">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="demo-search-tab-2">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-vcenter mar-top">
+                            <thead>
+                                <tr>
+                                    <th><a href="@Url.Action("Index", "AAcount", new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Hình Đại Diện</th>
+                                    <th><a href="@Url.Action("Index", "AAcount", new { sortOrder = ViewBag.NameSortParm })">Tên Tài Khoản <i class="fa fa-sort"></i></a></th>
+                                    <th>Email</th>
+                                    <th><a href="@Url.Action("Index", "AAcount", new { sortOrder = ViewBag.LoaiSortParm })">Loại Tài Khoản <i class="fa fa-sort"></i></a></th>                                    
+                                    <th class="min-w-td text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaTaiKhoan</td>
+                                            <td><img src="~/Content/admin/img/av3.png" alt="Tài khoản" class="img-circle img-sm"></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaTaiKhoan">@item.TenDangNhap</a></td>                                            
+                                            <td class="min-w-td">@item.Email</td>
+                                            <td>
+                                                @{
+                                                    // user
+                                                    if (@item.MaLoaiTaiKhoan == 1)
+                                                    {
+                                                        <span class="label label-table label-success">USER</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="label label-table label-danger">ADMIN</span>
+                                                    }
+
+                                                }
+
+                                            </td>
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                    <div class="btn-group">
+                                                        @{
+                                                            if (@item.BiXoa != false)
+                                                            {
+                                                                <a onclick="UnlockAccount(this)" class="btn btn-sm btn-danger btn-icon btn-hover-warning fa fa-unlock add-tooltip" data-id="@item.MaTaiKhoan" href="#" data-original-title="Mở Khóa" data-container="body"></a>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <a onclick="lockAccount(this)" data-id="@item.MaTaiKhoan" class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-lock add-tooltip" href="#" data-original-title="Khóa" data-container="body"></a>
+                                                            }
+                                                            <a onclick="updateQuyenAccount(this)" data-id="@item.MaTaiKhoan" class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Cập nhật quyền" data-container="body"></a>
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                                        }
+                                                    }
+
+                            </tbody>
+                        </table>
+                        <hr>
+
+                        <!--Pagination-->
+
+                        <div class="text-right">
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="themdoitac" role="dialog" tabindex="-1" aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--Modal header-->
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="text-bold">Quản lý quyền tài khoản</h4>
+            </div>
+            <!--Modal body-->
+            <form class="form-horizontal" id="form_update_quyen">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mar-btm">
+                             <input type="text" id="mataikhoan" name="mataikhoan" style="display:none;" />
+                            @Html.DropDownList("maloaitaikhoan", (IEnumerable<SelectListItem>)ViewBag.LoaiTaiKhoans, new { @class = "selectpicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Đóng</button>
+                    <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .popover-content {
+        font-size: 12px;
+        width: 800px;
+    }
+</style>
+<script>
+    // cập nhật quyền
+
+    function updateQuyenAccount(e) {
+        var id = $(e).attr("data-id");
+        $('#mataikhoan').val(id);
+        $('#capnhat_quyen').click();
+    }
+    $("form#form_update_quyen").submit(function () {
+            var formData = new FormData($(this)[0]);        
+                $.ajax({
+                    url: "@Url.Action("UpdateQuyen")",
+                    type: 'POST',
+                data: formData,
+                async: false,
+                success: function (data) {
+                    if (data == "success") {
+                        sweetAlert("Thành công", "Cập nhật quyền tài khoản thành công!", "success");
+                        $('.confirm').click(function (e) {
+                            window.location.replace("@Url.Action("Index")");
+                        });
+                    }
+                    else if (data == "error_product")
+                        sweetAlert("Lỗi", "Cập nhật thất bại!", "error");
+                    else
+                        sweetAlert(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });              
+
+            return false;
+        });
+
+    //lock tài khoản
+    function lockAccount(e) {
+        var id = $(e).attr("data-id");
+            swal({
+                title: "Bạn có muốn khóa tài khoản này!",
+                text: "Sau khi khóa tài khoản sẽ không thể sử dụng!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function () {
+                $.ajax({
+                    url: "@Url.Action("LockProduct")",
+                    method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    if (data == "success")
+                    {
+                        swal("Khóa thành công!", "Tài khoản đã bị khóa!", "success");
+                        window.location.replace("@Url.Action("Index")");
+                    }
+                    else
+                        swal("Lỗi!", "Có lỗi khi khóa tài khoản!", "error");
+                }
+            });
+        });
+    }
+    function UnlockAccount(e) {
+        var id = $(e).attr("data-id");
+        swal({
+            title: "Bạn có muốn mở khóa tài khoản này!",
+            text: "Sau khi mở tài khoản có thể sử dụng!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            closeOnConfirm: false
+        },
+        function () {
+            $.ajax({
+                url: "@Url.Action("UnLockProduct")",
+                method: "POST",
+            async: false,
+            data: { id: id },
+            success: function (data) {
+                if (data == "success")
+                {
+                    swal("Mở khóa thành công!", "Tài khoản đã được mở khóa!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Index")");
+                    });
+                }
+                else
+                    swal("Lỗi!", "Có lỗi khi mở khóa tài khoản!", "error");
+            }
+        });
+    });
+    }
+
+    $(document).ready(function () {
+        $('.btn-link').popover({
+            title: "<h4  style='margin:0;' class='title'>Thông tin tài khoản</h4>",
+            content:fetchData,
+            html: true,
+            placement: 'right'
+        });
+        function fetchData() {
+            var fetch_data = '';
+            var element = $(this);
+            var id = element.attr("id");
+            $.ajax({
+                url: "@Url.Action("ChiTietKhachHang")",
+                method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    fetch_data = data;
+                }
+            });
+            return fetch_data;
+        }
+    });
+</script>

@@ -5,9 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Petsmart.Models;
 using PagedList;
-using Newtonsoft.Json;
 using System.IO;
-using System.Drawing;
 
 namespace Petsmart.Controllers
 {
@@ -62,7 +60,6 @@ namespace Petsmart.Controllers
         public ActionResult LockProduct(int id)
         {
             SanPham sp = db.SanPhams.Single(s => s.MaSanPham == id);
-
             sp.BiXoa = true;
             db.SaveChanges();
             return RedirectToAction("Index");

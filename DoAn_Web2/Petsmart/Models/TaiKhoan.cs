@@ -12,8 +12,12 @@ namespace Petsmart.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Data.Entity;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
+    using System.Linq;
 
-    public partial class TaiKhoan
+    public partial class TaiKhoan :DbContext
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
@@ -62,5 +66,6 @@ namespace Petsmart.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
         public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@using Petsmart.Models;
+@using Petsmart.Controllers;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -89,7 +90,7 @@
                     </div>
 
                     <div class="media-body">
-                        <p class="text-2x mar-no text-thin">241</p>
+                        <p class="text-2x mar-no text-thin">@ViewBag.SoLuongUser</p>
                         <p class="text-muted mar-no">Số lượng User</p>
                     </div>
                 </div>
@@ -108,7 +109,7 @@
                     </div>
 
                     <div class="media-body">
-                        <p class="text-2x mar-no text-thin">543</p>
+                        <p class="text-2x mar-no text-thin">@ViewBag.SoLuongDonHang</p>
                         <p class="text-muted mar-no">Tổng đơn đặt hàng</p>
                     </div>
                 </div>
@@ -146,7 +147,7 @@
                     </div>
 
                     <div class="media-body">
-                        <p class="text-2x mar-no text-thin">654</p>
+                        <p class="text-2x mar-no text-thin">@ViewBag.SoLuongSPBan</p>
                         <p class="text-muted mar-no">Số lượng bán</p>
                     </div>
                 </div>
@@ -154,13 +155,80 @@
 
             </div>
         </div>
+
+        <!--Thống kê khách mua nhiều hàng-->
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="panel-control">
+                            <a class="fa fa-question-circle fa-lg fa-fw unselectable add-tooltip" href="#" data-original-title="<h4 class='text-thin'>Khách hàng</h4><p style='width:150px'>Top 10 khách hàng tổng tiền mua hàng nhiều nhất</p>" data-html="true" title=""></a>
+                        </div>
+                        <h3 class="panel-title">Top 10 Khách Hàng</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="pad-btm form-inline">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width:4ex">ID</th>
+                                        <th>Hình đại diện</th>
+                                        <th>Tên</th>
+                                        <th>Tổng tiền</th>
+                                        <th class="text-center">SĐT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewData["lstTop10"] as List<Top10User>)
+                                    {
+                                        <tr>
+                                            <td>@item.Matk</td>
+                                            <td><img src='~/Content/admin/img/av3.png' class='img-circle img-sm' /></td>
+                                            <td><a class="btn-link" data-trigger="hover" id="@item.Matk" href="#">@item.Tenkhach </a></td>
+                                            <td>@string.Format("{0:0,0}", item.Tongtien)đ</td>
+                                            <td class="text-center"><span class="label label-table label-success">@item.Sdt</span></td>
+                                        </tr>
+                                    }
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--===================================================-->
         <!--End Tiles - Bright Version-->
-
-
-
     </div>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-link').popover({
+            title: "<h4  style='margin:0;' class='title'>Thông tin khách hàng</h4>",
+            content:fetchData,
+            html: true,
+            placement: 'right'
+        });
+        function fetchData() {
+            var fetch_data = '';
+            var element = $(this);
+            var id = element.attr("id");
+            $.ajax({
+                url: "@Url.Action("ChiTietKhachHang","AAcount")",
+                method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    fetch_data = data;
+                }
+            });
+            return fetch_data;
+        }
+    });
+</script>
     <!--===================================================-->
-    <!--End page content-->
+ 
 
 
