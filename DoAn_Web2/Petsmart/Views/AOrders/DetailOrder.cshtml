@@ -4,8 +4,16 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @{ 
-    var ddh = ViewData["DonHang"] as DonDatHang;
+    DonDatHang ddh = ViewData["DonHang"] as DonDatHang;
 }
+<style>
+    .modal-body{
+        font-size:14px;
+    }
+    .label-warning{
+        font-size:14px;
+    }
+</style>
 <div id="page-content">
     <!-- Search -->
     <!-- End Search -->
@@ -14,43 +22,37 @@
             <h3 class="panel-title">Xem chi tiết đơn hàng</h3>
         </div>
         <div class="panel-body">
-            <div class="col-md-12">
-                <div class="modal-dialog" style="width:750px;">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-9">
+                <div class="modal-dialog" style="width:800px;" id="detail_invoice">
                     <div class="modal-content">
                         <!--Modal header-->
                         <div class="modal-header">
                             <div class="row">
-                                <div class="col-sm-11">
-                                    <h2 class="text-bold"></h2>
-                                </div>
-                                <div class="col-sm-1">
-                                    <button data-dismiss="modal" class="close" type="button">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
+                                <div class="col-md-12">
+                                    <h2 class="text-bold">@ddh.MaDonDatHang</h2>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-10">
-                                    <!--Basic Buttons-->
-                                    <!--===================================================-->
-                                    <button class="btn btn-default btn-labeled fa fa-print">Print</button>
-                                  <!--===================================================-->
+                                <div class="col-md-8">
+                                    <button class="btn btn-default btn-labeled fa fa-print" id="print_invoice">Print</button>
                                 </div>
-                                <div class="con-sm-2">
+                                <div class="con-md-2">
                                     @{
                                         if (@ddh.MaTinhTrang == 1)
                                         {
-                                            <span class="label label-table label-warning">Chờ duyệt</span>
+                                            <span id="tinh_trang" class="label label-table label-warning" data-id = "@ddh.MaTinhTrang">Chờ duyệt</span>
                                         }
                                         else if (@ddh.MaTinhTrang == 2)
                                         {
-                                            <span class="label label-table label-info">Đang giao</span>
+                                            <span id="tinh_trang" class="label label-table label-info" data-id = "@ddh.MaTinhTrang">Đang giao</span>
                                         }
                                         else
                                         {
-                                            <span class="label label-table label-success">Đã giao</span>
+                                            <span id="tinh_trang" class="label label-table label-success" data-id = "@ddh.MaTinhTrang">Đã giao</span>
                                         }
-
                                     }
                                 </div>
                             </div>
@@ -76,10 +78,10 @@
                                             {
                                                 <tr>
                                                     <td class="min-w-td">@item.SanPham.MaSanPham</td>
-                                                    <td><img src="~/Content/images/products/@item.SanPham.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
+                                                    <td><img src="~/Content/images/products/@item.SanPham.HinhURL" class="img-circle img-sm" /></td>
                                                     <td><a class="btn-link" href="#">@item.SanPham.TenSanPham</a></td>
-                                                    <td>@item.SoLuong</td>
-                                                    <td>@string.Format("{0:0,0}", item.SanPham.GiaSanPham)đ</td>
+                                                    <td>@item.SoLuong</td>                                                 
+                                                    <td>@string.Format("{0:0,0}", @item.GiaBan)đ</td>
                                                 </tr>
                                             }
                                         }
@@ -88,8 +90,8 @@
                             </table>
                             <div class="text-right">
                                 <div class="row">
-                                    <span class=" col-sm-7 text-2x ">Tổng tiền:</span>
-                                    <span class=" col-sm-5 text-2x text-muted">@ddh.TongThanhTien</span>
+                                    <span class="col-sm-8 text-2x">Tổng tiền:</span>
+                                    <span class="col-sm-4 text-2x text-muted">@string.Format("{0:0,0}",@ddh.TongThanhTien) Đ</span>
                                 </div>
                             </div>
                             <div class="panel">
@@ -99,23 +101,25 @@
                                 <div class="panel-body">
                                     <!--Address-->
                                     <!--===================================================-->
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <address>
-                                                <strong>Địa chỉ</strong><br>
-                                                @ddh.TaiKhoan.DiaChi<br>
-                                                <abbr title="Phone">SĐT: @ddh.TaiKhoan.DienThoai
-                                            </address>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <address>
-                                                <strong>Họ tên</strong><br>
-                                                <a href="mailto:#">@ddh.TaiKhoan.TenHienThi</a><br>
-                                                <strong>Email</strong><br>
-                                                <a href="mailto:#">@ddh.TaiKhoan.Email</a>
-                                            </address>
-                                        </div>
-                                    </div>
+                                        <table>
+                                            <tr>
+                                                <td width="600px">
+                                                        <address>
+                                                            <strong>Địa chỉ</strong><br>
+                                                            @ddh.TaiKhoan.DiaChi<br>
+                                                            <abbr title="Phone">SĐT: @ddh.TaiKhoan.DienThoai
+                                                        </address>
+                                                </td>
+                                                <td width="384px">
+                                                        <address>
+                                                            <strong>Họ tên</strong><br>
+                                                            <a href="#">@ddh.TaiKhoan.TenHienThi</a><br>
+                                                            <strong>Email</strong><br>
+                                                            <a href="#">@ddh.TaiKhoan.Email</a>
+                                                        </address>
+                                                </td>
+                                            </tr>
+                                        </table>                                        
                                     <!--===================================================-->
                                 </div>
                             </div>
@@ -125,7 +129,32 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2">
+
+            </div>
         </div>
         </div>
 </div>
+<script>
+    $('#print_invoice').click(function (e) {
+        var id = $('#tinh_trang').attr("data-id");
+        if (id == 3) {
+            var divToPrint = document.getElementById('detail_invoice');
+            var newWin = window.open('', 'Print-Window');
+            newWin.document.open();
+            newWin.document.write('<html><head>');
+            newWin.document.write('<link href="../Content/admin/css/bootstrap.min.css" rel="stylesheet" />' +
+                 '<link href="../Content/admin/css/nifty.min.css" rel="stylesheet" />');
+            newWin.document.write('</head><body onload="window.print()"><div class="row" style="width:800px;margin-left:100px;">');
+            newWin.document.write(divToPrint.innerHTML);
+
+            newWin.document.write('</div></body>');
+            newWin.document.close();
+            setTimeout(function () { newWin.close(); }, 10000);
+        }
+        else {
+            swal("Lỗi!", "Đơn hàng này chưa giao cho khách không thể in hóa đơn!", "error");
+        }
+    });
+</script>
 

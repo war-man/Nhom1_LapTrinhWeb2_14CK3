@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Petsmart.Models;
 using PagedList;
 using System.IO;
+using System.Data.Entity.Validation;
+
 namespace Petsmart.Controllers
 {
     public class AOrdersController : Controller
@@ -60,21 +62,41 @@ namespace Petsmart.Controllers
 
         public ActionResult DetailOrder()
         {
-            string mhd = this.Request.QueryString["mhd"];
+            string mdh = this.Request.QueryString["mdh"];
             DonDatHang dh = new DonDatHang();
-            dh = db.DonDatHangs.SingleOrDefault(d => d.MaDonDatHang == mhd);
-            if(dh == null)
+            dh = db.DonDatHangs.SingleOrDefault(d => d.MaDonDatHang == mdh);
+            
+            if (dh == null)
             {
                 RedirectToAction("Index");
             }
             else
             {
-                List<ChiTietDonHang> ctdh = new List<ChiTietDonHang>();
-                ctdh = db.ChiTietDonHangs.Where(ct => ct.MaDonDatHang == mhd).ToList();
-                ViewData["LstChiTietDonHang"] = ctdh;
                 ViewData["DonHang"] = dh;
+                List<ChiTietDonHang> ctdh = new List<ChiTietDonHang>();
+                ctdh = db.ChiTietDonHangs.Where(ct => ct.MaDonDatHang == mdh).ToList();
+                ViewData["LstChiTietDonHang"] = ctdh;
             }
             return View();
+        }
+        public string UpdateTinhTrang(string id)
+        {
+            string[] words = id.Split(',');
+
+            string madonhang = words[0];
+            int matinhtrang = Convert.ToInt32(words[1]);
+
+            DonDatHang dh = db.DonDatHangs.Single(d => d.MaDonDatHang == madonhang);
+            if(dh == null)
+            {
+                return "Không tồn tại đơn hàng";
+            }
+            dh.MaTinhTrang = matinhtrang;
+
+            if (db.SaveChanges() > 0)
+                return "success";
+            else
+                return "error";
         }
     }
 }

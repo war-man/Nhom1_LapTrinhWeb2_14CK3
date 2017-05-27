@@ -47,5 +47,9 @@ namespace Petsmart.Controllers
         {
             return View();
         }
+        public ActionResult ChartTest()
+        {
+            return View();
+        }
     }
 }

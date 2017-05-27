@@ -7,7 +7,11 @@
 @using Petsmart.Models
 @model PagedList.IPagedList<Petsmart.Models.DonDatHang>
 @using PagedList.Mvc;
-
+<style>
+    #dropdow_trangthai{
+        width:100px;
+    }
+</style>
 <div id="page-title">
     <h1 class="page-header text-overflow">Quản Lý Đơn Hàng</h1>
     <!--Searchbox-->
@@ -84,7 +88,7 @@
                                             <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaDonDatHang">@item.TaiKhoan.TenHienThi </a></td>
                                             <td><span class="text-muted"><i class="fa fa-clock-o"></i> @string.Format("{0:d/M/yyyy}", @item.NgayLap)</span></td>
                                             <td>@string.Format("{0:0,0}", item.TongThanhTien)đ</td>
-                                            <td>
+                                            <td class="tinhtrang_span">
                                                 @{
                                                     if (@item.MaTinhTrang  == 1)
                                                     {
@@ -104,7 +108,23 @@
 
                                             <td class="min-w-td text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="#" data-original-title="Cập nhật trạng thái" data-container="body"></a>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-sm btn-default btn-active-pink dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" aria-expanded="true">
+                                                          <i class="dropdown-caret fa fa-pencil"></i>
+                                                        </a>
+                                                       
+                                                        <ul class="dropdown-menu" id="dropdow_trangthai" style="min-width:100px;">
+                                                            <li>
+                                                                <a onclick="updateTinhTrangDonHang(this)" data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,1">Chờ duyệt</a>
+                                                            </li>
+                                                            <li>
+                                                                <a onclick="updateTinhTrangDonHang(this)"  data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,2">Đang giao</a>
+                                                            </li>
+                                                            <li>
+                                                                <a onclick="updateTinhTrangDonHang(this)"  data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,3">Đã giao</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                     <a class="btn btn-sm btn-default btn-icon btn-hover-info fa fa-info add-tooltip" href="@Url.Action("DetailOrder", new {mdh = @item.MaDonDatHang })" data-original-title="Chi tiết" data-container="body"></a>
                                                 </div>
                                             </td>
@@ -128,4 +148,34 @@
         </div>
     </div>
 </div>
+<script>
+    function updateTinhTrangDonHang(e) {
+        //id gom ma dat hang va ma tinh trang      
+        var id = $(e).attr("data-id");
+        var idold = $(e).attr("data-idold");
+        if (idold == 3) {
+            swal("Lỗi", "Đơn hàng đã giao không thể cập nhật tình trạng!", "error");
+        }
+        else {
+            $.ajax({
+                url: "@Url.Action("UpdateTinhTrang")",
+                method: "POST",
+            async: false,
+            data: { id: id },
+            success: function (data) {
+                if (data == "success") {
+                    swal("Thành công!", "Cập nhật đơn hàng thành công!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Index")");
+                    });
+                }
+                else if (data == "error") {
+                    swal("Lỗi!", "Có lỗi khi cập nhật!", "error");
+                }
+                else swal(data);
+            }
+            });
+        }
+    }
+</script>
 
