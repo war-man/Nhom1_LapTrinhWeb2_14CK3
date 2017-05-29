@@ -1,4 +1,5 @@
 ﻿@using Petsmart.Controllers;
+@using Petsmart.Models;
 @{
     decimal tongtien = 0;
     int count = 0;
@@ -11,6 +12,12 @@
         {
             tongtien += item.Sp.GiaSanPham * item.Soluong;
         }
+    }
+
+    TaiKhoan tk = null;
+    if(Session["user"] != null)
+    {
+        tk = Session["user"] as TaiKhoan;
     }
 }
 <div class="page-heading">
@@ -104,59 +111,82 @@
                     </fieldset>
                 }
             </div>
-
             <!-- BEGIN CART COLLATERALS -->
 
-            <form action="" method="post" id="shipping-zip-form">
+            <form id="shipping-zip-form">
                 <div class="cart-collaterals container">
                     <!-- BEGIN COL2 SEL COL 1 -->
                     <!-- BEGIN TOTALS COL 2 -->
                     <div class="col-sm-4">
-
-
                         <div class="shipping">
-
+                            @*<div class="welcome-msg">
+                                <p class="hello"><strong>Chào, @tk.TenHienThi </strong></p>
+                                <p> Bạn có thể thay đổi thông tin giao hàng</p>
+                            </div>*@
                             <h3>Thông tin giao hàng</h3>
                             <div class="shipping-form">
                                 <ul class="form-list">
                                     <li>
                                         <label for="country" class="required"><em>* </em>Họ và Tên</label>
                                         <div class="input-box">
-                                            <input class="input-text validate-postcode" type="text" id="postcode" name="email" value="">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <label for="country" class="required"><em>* </em>SĐT</label>
+                                            <input class="input-text"  type="text" name="HovaTen" value="@if (tk != null) { @tk.TenHienThi;} ">
+</div>
+
+
+</li>
+
+
+<li>
+
+
+<label for="country" class="required"><em>* </em>SĐT</label>
                                         <div class="input-box">
-                                            <input type="text" name="sdt" class="input-text required-entry">
+                                            <input type="text" name="SoDienThoai" class="input-text" value="@if (tk != null) { @tk.DienThoai;} " required>
                                         </div>
                                     </li>
                                     <li>
                                         <label for="country" class="required"><em>* </em>Email</label>
                                         <div class="input-box">
-                                            <input class="input-text validate-postcode" type="text" id="postcode" name="email" value="">
+                                            <input class="input-text" type="text" id="postcode" name="Email" value="@if (tk != null) { @tk.Email;} ">
                                         </div>
                                     </li>
                                 </ul>
 
                             </div>
+                            @if (tk != null)
+                            {
+                                <span style="color:#FF5F3F;">Bạn có thể thay đổi thông tin giao hàng !</span>
+
+                            }
+
                         </div>
 
                     </div>
                     <div class="col-sm-4">
                         <div class="shipping">
-                            <h3>Thông tin giao hàng</h3>
+                            @if (tk != null)
+                            { <h3>
+                                <span>Chào,</span> @tk.TenHienThi;
+                            </h3>
+                            }
+                            else
+                            {
+                                <h3>&nbsp;</h3>
+                            }
+
                             <div class="shipping-form">
                                 <ul class="form-list">
                                     <li>
                                         <label for="country" class="required"><em>* </em>Địa chỉ</label>
                                         <div class="input-box">
-                                            <textarea name="diachi" style="width: 100%; height: 180px;line-height: 150%;resize:none;"></textarea>
+                                            <textarea name="DiaChi" style="width: 100%; height: 180px;line-height: 150%;resize:none;">@if (tk != null)
+                                            { @tk.DiaChi;
+                                            } </textarea>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                   </div>
                     </div> <!--col-sm-4-->
 
                     <div class="col-sm-4">
@@ -207,5 +237,39 @@
         </div>  <!--cart-->
 
     </div><!--main-container-->
-
 </div>
+<script>
+    $("form#shipping-zip-form").submit(function (e) {
+        var formData = new FormData($(this)[0]);
+        // Sửa thông tin
+            $.ajax({
+                url: "@Url.Action("CheckOut")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "error_user") {
+                    sweetAlert("Lỗi", "Mời bạn đăng nhập trước khi đặt hàng!", "error");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Login","Home")");
+                    });
+                }
+                else if (data == "success") {
+                    sweetAlert("Đặt hàng thành công", "Chúng tôi sẽ liên lạc với quý khách sau ít phút!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Index","Account")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+</script>

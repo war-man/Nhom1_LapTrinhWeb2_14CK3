@@ -76,7 +76,7 @@ namespace Petsmart.Controllers
                     if (tk != null)
                     {
                         Session["user"] = tk;
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Account");
                     }
                 }
 

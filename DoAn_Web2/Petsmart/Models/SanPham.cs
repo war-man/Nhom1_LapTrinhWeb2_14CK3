@@ -37,8 +37,8 @@ namespace Petsmart.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual HangSanXuat HangSanXuat { get; set; }
-        public virtual LoaiSanPham LoaiSanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
+        public virtual LoaiSanPham LoaiSanPham { get; set; }
     }
 }

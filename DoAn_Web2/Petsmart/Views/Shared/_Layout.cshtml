@@ -20,6 +20,10 @@
     <link href="~/Content/user/stylesheet/jquery.mobile-menu.css" rel="stylesheet" />
     <link href="~/Content/user/stylesheet/style.css" rel="stylesheet" />
     <link href="~/Content/user/stylesheet/responsive.css" rel="stylesheet" />
+    <script src="~/Content/admin/js/jquery.min.js"></script>
+    <!--lib alert -->
+    <link href="~/Content/lib_alert/sweetalert.css" rel="stylesheet" />
+    <script src="~/Content/lib_alert/sweetalert.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
@@ -57,6 +61,7 @@
                         <p style="display: none;">GIẢM TỪ <span>40%</span> SỐ LƯỢNG CÓ HẠN &gt;</p>
                     </div>
                 </div>
+               
             </div>
             <div id="header">
                 <div class="header-container container">
@@ -106,33 +111,11 @@
                             <div class="no-js">
                                 <a title="Công ty" class="clicker"></a>
                                 <div class="fl-nav-links">
-                                    <div class="language-currency">
-                                        <div class="fl-language">
-                                            <ul class="lang">
-                                                <li><a href="#"> <img src="~/Content/user/images/english.png" alt="English"> <span>English</span> </a></li>
-                                                <li><a href="#"> <img src="~/Content/user/images/francais.png" alt="French"> <span>French</span> </a></li>
-                                                <li><a href="#"> <img src="~/Content/user/images/german.png" alt="German"> <span>German</span> </a></li>
-                                            </ul>
-                                        </div>
-                                        <!--fl-language-->
-                                        <!-- END For version 1,2,3,4,6 -->
-                                        <!-- For version 1,2,3,4,6 -->
-                                        <div class="fl-currency">
-                                            <ul class="currencies_list">
-                                                <li><a href="#" title="EGP"> £</a></li>
-                                                <li><a href="#" title="EUR"> €</a></li>
-                                                <li><a href="#" title="USD"> $</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--fl-currency-->
-                                        <!-- END For version 1,2,3,4,6 -->
-                                    </div>
                                     <ul class="links">
-                                        <li><a href="dashboard.html" title="Tài khoản của tôi">Tài khoản của tôi</a></li>
-                                        <li><a href="wishlist.html" title="Giỏ hàng tạm">Giỏ hàng tạm</a></li>
-                                        <li><a href="@Url.Action("ViewCart", "ShoppingCart")" title="Thanh toán">Thanh toán</a></li>
-                                        <li><a href="blog.html" title="Bài viết"><span>Bài viết</span></a></li>
-
+                                        @if (Session["user"] != null)
+                                        {
+                                            <li><a href="@Url.Action("Index","Account")" title="Tài khoản của tôi">Tài khoản của tôi</a></li>
+                                        }
                                         @if (Session["user"] == null)
                                         {
                                             <li class="last"><a href="@Url.Action("Login", "Home")" title="Đăng nhập"><span>Đăng nhập</span></a></li>
@@ -193,7 +176,6 @@
                                 <!--fl-mini-cart-content-->
                             </div>
                         </div>
-                        <!--mini-cart-->
                         <div class="collapse navbar-collapse">
 
                                 <div class="input-group">

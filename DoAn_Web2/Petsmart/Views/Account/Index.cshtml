@@ -1,4 +1,9 @@
-﻿<div class="page-heading">
+﻿@using Petsmart.Models;
+@{ 
+    var tk = ViewData["TaiKhoan"] as TaiKhoan;
+
+}
+<div class="page-heading">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -19,21 +24,17 @@
                     <!-- BEGIN DASHBOARD-->
                     <div class="dashboard">
                         <div class="welcome-msg">
-                            <p class="hello"><strong>Chào, Nhanh Phạm!</strong></p>
-                            <p>Từ trang tổng quan tài khoản của tôi, bạn có thể xem về hoạt động tài khoản gần đây của mình và cập nhật thông tin tài khoản của bạn. Chọn liên kết dưới đây để xem hoặc chỉnh sửa thông tin.</p>
+                            <p class="hello"><strong>Chào, @tk.TenHienThi </strong></p>
+                            <p> Xem đơn hàng và, cập nhật thông tin tài khoản</p>
                         </div>
                         <div class="recent-orders">
-                            <div class="title-buttons"> <strong>Những đơn đặt hàng gần đây</strong> <a href="#">Xem tất cả</a> </div>
+                            <div class="page-title">
+                                <h2>10 đơn hàng gần nhất</h2>
+                                <a href="@Url.Action("ViewAllInvoices")" style="float:right;">Xem tất cả</a>
+                            </div>
                             <div class="table-responsive">
                                 <table class="data-table table-striped" id="my-orders-table">
-                                    <colgroup>
-                                        <col width="">
-                                        <col width="">
-                                        <col>
-                                        <col width="1">
-                                        <col width="1">
-                                        <col width="20%">
-                                    </colgroup>
+                                    
                                     <thead>
                                         <tr class="first last">
                                             <th>Đặt hàng # </th>
@@ -44,125 +45,114 @@
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="first odd">
-                                            <td>12800000002</td>
-                                            <td><span class="nobr">5/12/2015</span></td>
-                                            <td>Nhanh Phạm</td>
-                                            <td><span class="price">403.000VNĐ</span></td>
-                                            <td><em>Đang chờ duyệt</em></td>
-                                            <td class="a-center last"><span class="nobr"> <a href="#">Xem</a> </span></td>
+                                    <tbody>.
+                                    @if (ViewData["ListDonHang"] == null)
+                                    {
+                                        <tr>
+                                            <td colspan="5"><h3>Chưa có đơn hàng nào</h3></td>
                                         </tr>
-                                        <tr class="even">
-                                            <td>12800000001</td>
-                                            <td><span class="nobr">5/11/2015</span></td>
-                                            <td>Nhanh Phạm</td>
-                                            <td><span class="price">506.500VNĐ</span></td>
-                                            <td><em>Đang chờ duyệt</em></td>
-                                            <td class="a-center last"><span class="nobr"> <a href="#">Xem</a> <span class="separator">|</span> <a href="#" class="link-reorder">Đặt lại</a> </span></td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td>13100000001</td>
-                                            <td><span class="nobr">5/9/2015</span></td>
-                                            <td>Nhanh Phạm</td>
-                                            <td><span class="price">997.840VNĐ</span></td>
-                                            <td><em>Đang chờ duyệt</em></td>
-                                            <td class="a-center last"><span class="nobr"> <a href="#">Xem</a> <span class="separator">|</span> <a href="#" class="link-reorder">Đặt lại</a> </span></td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td>12000000002</td>
-                                            <td><span class="nobr">4/1/2015</span></td>
-                                            <td>Nhanh Phạm</td>
-                                            <td><span class="price">60.000VNĐ</span></td>
-                                            <td><em>Đang chờ duyệt</em></td>
-                                            <td class="a-center last"><span class="nobr"> <a href="#">Xem</a> <span class="separator">|</span> <a href="#" class="link-reorder">Đặt lại</a> </span></td>
-                                        </tr>
-                                        <tr class="last odd">
-                                            <td>12000000001</td>
-                                            <td><span class="nobr">4/1/2015</span></td>
-                                            <td>Nhanh Phạm</td>
-                                            <td><span class="price">208.000VNĐ</span></td>
-                                            <td><em>Đang chờ duyệt</em></td>
-                                            <td class="a-center last"><span class="nobr"> <a href="#">Xem</a> <span class="separator">|</span> <a href="#" class="link-reorder">Đặt lại</a> </span></td>
-                                        </tr>
+
+                                    }
+                                    else
+                                    {
+                                        foreach (var item in ViewData["ListDonHang"] as List<DonDatHang>)
+                                        {
+                                            <tr class="last odd">
+                                                <td>@item.MaDonDatHang</td>
+                                                <td><span class="nobr">@string.Format("{0:d/M/yyyy}", @item.NgayLap)</span></td>
+                                                <td>@item.TaiKhoan.TenHienThi</td>
+                                                <td><span class="price">@string.Format("{0:0,0}", item.TongThanhTien)đ</span></td>
+                                                <td><em>@item.TinhTrang.TenTinhTrang</em></td>
+                                                <td class="a-center last">
+                                                    <span class="nobr"> <a href="#">Xem</a></span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                     </tbody>
                                 </table>
                             </div>
                             <!--table-responsive-->
                         </div>
                         <!--recent-orders-->
-                        <div class="box-account">
+                        <div class="recent-orders">
                             <div class="page-title">
                                 <h2>Thông tin tài khoản</h2>
                             </div>
-                            <div class="col2-set">
-                                <div class="col-1">
-                                    <div class="box">
-                                        <div class="box-title">
-                                            <h5>Thông tin liên lạc</h5>
-                                            <a href="#">Cập nhật</a>
+                            <form id="formCapNhatThongTin" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="col-2 registered-users">
+                                            <div class="content">
+                                            <input style="display:none;" value="@tk.MaTaiKhoan" name="mataikhoan"/>
+                                                <ul class="form-list">
+                                                    <li>
+                                                        Họ và tên
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required  name="HovaTen" type="text" value="@tk.TenHienThi">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        Tên đăng nhập
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required  name="TenDangNhap" type="text" value="@tk.TenDangNhap">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        Số điện thoại
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required name="SoDienThoai" type="text" value="@tk.DienThoai">
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                                <!--buttons-set-->
+                                            </div> <!--content-->
                                         </div>
-                                        <!--box-title-->
-                                        <div class="box-content">
-                                            <p>
-                                                Nhanh Phạm<br>
-                                                nhanh.pham@gmail.com<br>
-                                                <a href="#">Thay đổi mật khẩu</a>
-                                            </p>
-                                        </div>
-                                        <!--box-content-->
                                     </div>
-                                    <!--box-->
+                                    <div class="col-lg-6">
+                                        <div class="col-2 registered-users">
+                                            <div class="content">
+                                                <ul class="form-list">
+                                                    <li>
+                                                       Email
+                                                        <div class="input-box">
+                                                            <input class="input-text" required name="Email" type="text" value="@tk.Email">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        Địa chỉ
+                                                        <div class="input-box">
+                                                            <textarea class="TextArea"  required name="DiaChi" style="width:410px; height:110px;">@tk.DiaChi</textarea>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div> <!--content-->
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="box">
-                                        <div class="box-title">
-                                            <h5>Bản tin</h5>
-                                            <a href="#">Cập nhật</a>
-                                        </div>
-                                        <!--box-title-->
-                                        <div class="box-content">
-                                            <p> Hiện tại bạn không đăng ký theo dõi bản tin. </p>
-                                        </div>
-                                        <!--box-content-->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <button type="submit" title="Update Cart"
+                                                class="button btn-update">
+                                            <span><span>Cập nhật tài khoản</span></span>
+                                        </button>
                                     </div>
-                                    <!--box-->
+                                    <div class="col-lg-3">
+                                            <button type="button" title="Đổi mật khẩu"
+                                                    class="button btn-continue">
+                                                <span>Đổi mật khẩu</span>
+                                            </button>
+                                        
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <a href="@Url.Action("Index","Home")"><button type="button" title="Continue Shopping" class="button btn-continue"><span>Tiếp tục mua sắm</span></button></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col2-set">
-                                <div class="box">
-                                    <div class="box-title">
-                                        <h4>Sổ địa chỉ</h4>
-                                        <a href="#">Quản lý địa chỉ</a>
-                                    </div>
-                                    <!--box-title-->
-                                    <div class="box-content">
-                                        <div class="col-1">
-                                            <h5>Địa chỉ thanh toán mặc định</h5>
-                                            <address>
-                                                Nhanh Phạm<br>
-                                                Bình Thuận<br>
-                                                đảo Phú Quý<br>
-                                                Việt Nam<br>
-                                                <a href="#">Cập nhật địa chỉ</a>
-                                            </address>
-                                        </div>
-                                        <div class="col-2">
-                                            <h5>Địa chỉ giao hàng mặc định</h5>
-                                            <address>
-                                                Nhanh Phạm<br>
-                                                Bình Thuận<br>
-                                                đảo Phú Quý<br>
-                                                Việt Nam<br>
-                                                <a href="#">Cập nhật địa chỉ</a>
-                                            </address>
-                                        </div>
-                                    </div>
-                                    <!--box-content-->
-                                </div>
-                                <!--box-->
-                            </div>
+                            </form>
+
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -175,20 +165,11 @@
                             <li class="current"><a>Tổng quan tài khoản</a></li>
                             <li><a href="#"><span> Thông tin tài khoản</span></a></li>
                             <li><a href="#"><span> Sổ địa chỉ</span></a></li>
-                            <li><a href="#"><span> Đơn đặt hàng</span></a></li>
-                            <li><a href="#"><span> Thỏa thuận thanh toán</span></a></li>
-                            <li><a href="#"><span> Hồ sơ định kỳ</span></a></li>
-                            <li><a href="#"><span> Đánh giá sản phẩm</span></a></li>
-                            <li><a href="#"><span> Giỏ hàng tạm</span></a></li>
-                            <li><a href="#"><span> Ứng dụng</span></a></li>
-                            <li><a href="#"><span> Đăng ký bản tin</span></a></li>
-                            <li class="last"><a href="#"><span> Sản phẩm miễn phí</span></a></li>
                         </ul>
                     </div>
                     <!--block-content-->
                 </div>
                 <!--block block-account-->
-
                 <div class="custom-slider">
                     <div>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -232,3 +213,32 @@
     </div>
     <!--main container-->
 </section>
+<script>
+    $("form#formCapNhatThongTin").submit(function (e) {
+        var formData = new FormData($(this)[0]);
+        // Sửa thông tin
+            $.ajax({
+                url: "@Url.Action("thaydoithongtin")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "success") {
+                    sweetAlert("Thành công", "Sửa thông tin tài khoản thành công!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Index")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+</script>

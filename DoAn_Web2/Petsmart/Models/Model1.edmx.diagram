@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f24d9e0a7b7140f6b0f2f76458005b1a" Name="Diagram1">
+        <EntityTypeShape EntityType="ShopBanDongVatModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.DonDatHang" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.HangSanXuat" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.HinhAnhSanPham" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.LoaiTaiKhoan" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.SanPham" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopBanDongVatModel.TinhTrang" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_ChiTietDonHang_DonDatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_ChiTietDonHang_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_DonDatHang_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_DonDatHang_TinhTrang" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_SanPham_HangSanXuat" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_HinhAnhSanPham_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ShopBanDongVatModel.FK_TaiKhoan_LoaiTaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

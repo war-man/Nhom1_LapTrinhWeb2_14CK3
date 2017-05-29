@@ -16,7 +16,7 @@ namespace Petsmart.Models
     {
         public string MaChiTietDonHang { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public Nullable<int> GiaBan { get; set; }
+        public Nullable<decimal> GiaBan { get; set; }
         public string MaDonDatHang { get; set; }
         public Nullable<int> MaSanPham { get; set; }
     

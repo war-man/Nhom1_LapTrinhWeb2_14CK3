@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Tuong\Desktop\DoAnWeb2\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\Models\ShopBanDongVatModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\DoAnWeb2_29-05-2017\Nhom1_LapTrinhWeb2_14CK3\DoAn_Web2\Petsmart\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

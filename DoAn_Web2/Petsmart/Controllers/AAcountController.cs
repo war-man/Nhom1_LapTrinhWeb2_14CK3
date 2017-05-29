@@ -63,7 +63,7 @@ namespace Petsmart.Controllers
             {
                 TaiKhoan tk = db.TaiKhoans.Single(s => s.MaTaiKhoan == id);
                 tk.BiXoa = true;
-                tk.XacNhanMK = tk.MatKhau;
+                //tk.XacNhanMK = tk.MatKhau;
                 db.SaveChanges();
                 return "success";
             }
@@ -80,7 +80,7 @@ namespace Petsmart.Controllers
             {
                 TaiKhoan tk = db.TaiKhoans.Single(s => s.MaTaiKhoan == id);
                 tk.BiXoa = false;
-                tk.XacNhanMK = tk.MatKhau;
+                //tk.XacNhanMK = tk.MatKhau;
                 db.SaveChanges();
                 return "success";
             }
@@ -98,7 +98,7 @@ namespace Petsmart.Controllers
             {
                 TaiKhoan tk = db.TaiKhoans.Single(s => s.MaTaiKhoan == matk);
                 tk.MaLoaiTaiKhoan = maltk;
-                tk.XacNhanMK = tk.MatKhau;
+               // tk.XacNhanMK = tk.MatKhau;
                 db.SaveChanges();
                 return "success";
             }
