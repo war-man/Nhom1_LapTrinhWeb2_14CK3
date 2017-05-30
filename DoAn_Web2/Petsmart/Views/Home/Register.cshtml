@@ -1,15 +1,4 @@
-﻿@model Petsmart.Models.TaiKhoan
-
-<style>
-    .validationLogin {
-        color: red;
-    }
-
-    .TextArea{
-        width: 540px;
-        height: 100px;
-    }
-</style>
+﻿
 
 <div class="page-heading">
     <div class="container">
@@ -34,40 +23,30 @@
             <form action="" method="post" id="login-form">
                 <input name="form_key" type="hidden" value="EPYwQxF6xoWcjLUr">
                 <fieldset class="col2-set">
-
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken();
-                        @Html.ValidationSummary(true);
-
-                        if(ViewBag.Message != null)
-                        {
-                            <div style="font-size: 16px; color: red;">@ViewBag.Message</div>
-                        }
-
                         <div class="col-2 registered-users">
                             <strong>Thông tin đăng nhập</strong>
                             <div class="content">
                                 <ul class="form-list">
                                     <li>
-                                        <label for="email">@Html.LabelFor(e => e.Email)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(e => e.Email)</div></label>
+                                        Tên đăng nhập
                                         <div class="input-box">
-                                            @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email" })
+                                            <input class="input-text required-entry" required name="TenDangNhap" type="text" value="">
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="pass">@Html.LabelFor(p => p.MatKhau)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(p => p.MatKhau)</div></label>
+                                        Mật khẩu
                                         <div class="input-box">
-                                            @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password" })
+                                            <input class="input-text required-entry" required name="MatKhau" type="password" value="">
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="pass">@Html.LabelFor(p => p.XacNhanMK)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(p => p.XacNhanMK)</div></label>
+                                        Xác nhận mật khẩu
                                         <div class="input-box">
-                                            @Html.PasswordFor(p => p.XacNhanMK, new { @class = "input-text required-entry validate-password" })
+                                            <input class="input-text" required name="XacNhanMatKhau" type="password" value="">
                                         </div>
                                     </li>
-                                </ul>
+                                   
+                                    </ul>
                                 <p class="required">* Thông tin bắt buộc</p>
                                 <div class="buttons-set">
 
@@ -81,39 +60,34 @@
                             <div class="content">
                                 <ul class="form-list">
                                     <li>
-                                        <label for="email">@Html.LabelFor(t => t.TenDangNhap)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(t => t.TenDangNhap)</div></label>
+                                        Họ và tên
                                         <div class="input-box">
-                                            @Html.TextBoxFor(t => t.TenDangNhap, new { @class = "input-text required-entry validate-email" })
+                                            <input class="input-text required-entry" required name="HovaTen" type="text" value="">
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="email">@Html.LabelFor(t => t.TenHienThi)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(t => t.TenHienThi)</div></label>
+                                        Số điện thoại
                                         <div class="input-box">
-                                            @Html.TextBoxFor(t => t.TenHienThi, new { @class = "input-text required-entry validate-email" })
+                                            <input class="input-text required-entry" required name="SoDienThoai" type="text" value="">
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="email">@Html.LabelFor(s => s.DienThoai)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(s => s.DienThoai)</div></label>
+                                        Email
                                         <div class="input-box">
-                                            @Html.TextBoxFor(s => s.DienThoai, new { @class = "input-text required-entry validate-email" })
+                                            <input class="input-text" required name="Email" type="text" value="">
                                         </div>
                                     </li>
                                     <li>
-                                        <label for="pass">@Html.LabelFor(d => d.DiaChi)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(d => d.DiaChi)</div></label>
+                                        Địa chỉ
                                         <div class="input-box">
-                                            @Html.TextAreaFor(d => d.DiaChi, new { @class = "TextArea", @rows = 5 })
+                                            <textarea class="TextArea" required name="DiaChi" style="width:410px; height:110px;"></textarea>
                                         </div>
                                     </li>
                                 </ul>
-                                <!--buttons-set-->
                             </div> <!--content-->
                         </div> <!--col-2 registered-users-->
-                    }
                 </fieldset> <!--col2-set-->
             </form>
-
         </div> <!--account-login-->
-
     </div><!--main-container-->
-
 </div>

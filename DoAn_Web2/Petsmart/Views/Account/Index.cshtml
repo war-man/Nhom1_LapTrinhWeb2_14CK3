@@ -30,7 +30,6 @@
                         <div class="recent-orders">
                             <div class="page-title">
                                 <h2>10 đơn hàng gần nhất</h2>
-                                <a href="@Url.Action("ViewAllInvoices")" style="float:right;">Xem tất cả</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="data-table table-striped" id="my-orders-table">
@@ -64,13 +63,17 @@
                                                 <td><span class="price">@string.Format("{0:0,0}", item.TongThanhTien)đ</span></td>
                                                 <td><em>@item.TinhTrang.TenTinhTrang</em></td>
                                                 <td class="a-center last">
-                                                    <span class="nobr"> <a href="#">Xem</a></span>
+                                                    <span class="nobr"> <a class="view_invoices" href="@Url.Action("DetailOrder", new {mdh = @item.MaDonDatHang })">Xem</a></span>
                                                 </td>
                                             </tr>
                                         }
                                     }
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="text-right">
+                                <a class="view_invoices" href="@Url.Action("ViewAllInvoices")" style="float:right;">Xem tất cả</a>
+
                             </div>
                             <!--table-responsive-->
                         </div>
@@ -162,9 +165,9 @@
                     <div class="block-title"> Tài khoản của tôi </div>
                     <div class="block-content">
                         <ul>
-                            <li class="current"><a>Tổng quan tài khoản</a></li>
-                            <li><a href="#"><span> Thông tin tài khoản</span></a></li>
-                            <li><a href="#"><span> Sổ địa chỉ</span></a></li>
+                            <li class="current"><a href="@Url.Action("Index")">Tổng quan tài khoản</a></li>
+                            <li><a href="@Url.Action("Index")"><span>Danh sách đơn hàng</span></a></li>
+                            <li><a href="@Url.Action("DoiMatKhau")"><span>Đổi mật khẩu</span></a></li>
                         </ul>
                     </div>
                     <!--block-content-->

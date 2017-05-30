@@ -86,17 +86,52 @@ namespace Petsmart.Controllers
             string madonhang = words[0];
             int matinhtrang = Convert.ToInt32(words[1]);
 
-            DonDatHang dh = db.DonDatHangs.Single(d => d.MaDonDatHang == madonhang);
+            DonDatHang dh = db.DonDatHangs.SingleOrDefault(d => d.MaDonDatHang == madonhang);
+
             if(dh == null)
             {
                 return "Không tồn tại đơn hàng";
             }
+            // cập nhật lại số lượng sản phẩm khi update tình trạng.
+            List<ChiTietDonHang> ctdh = db.ChiTietDonHangs.Where(ct => ct.MaDonDatHang == madonhang).ToList();
+            if(matinhtrang == 2) // tình trạng đang giao thì trừ số lượng sp trong đơn hàng
+            {
+                foreach(var item in ctdh)
+                {
+                    SanPham sp = db.SanPhams.Single(s=> s.MaSanPham == item.MaSanPham);
+                    // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
+                    sp.SoLuongTon = sp.SoLuongTon - Convert.ToInt32(item.SoLuong);
+                    db.SaveChanges(); 
+                }
+               
+            }
+            // tình trạng cũ là đang giao và tình trạng mới là  đã hủy thì cộng lại sl sp trong ĐH
+            else if (dh.MaTinhTrang == 2 && matinhtrang == 4) 
+            {
+                foreach (var item in ctdh)
+                {
+                    SanPham sp = db.SanPhams.Single(s => s.MaSanPham == item.MaSanPham);
+                    // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
+                    sp.SoLuongTon = sp.SoLuongTon + Convert.ToInt32(item.SoLuong);
+                    db.SaveChanges();
+                }
+            }
+            // nếu mã tình trạng = đã giao thì cộng số lượng bán
+            else if(dh.MaTinhTrang == 3)
+            {
+                foreach (var item in ctdh)
+                {
+                    SanPham sp = db.SanPhams.Single(s => s.MaSanPham == item.MaSanPham);
+                    // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
+                    sp.SoLuongBan += Convert.ToInt32(item.SoLuong);
+                    db.SaveChanges();
+                }
+            }
+            // cập nhật lại tình trạng
             dh.MaTinhTrang = matinhtrang;
-
-            if (db.SaveChanges() > 0)
+            db.SaveChanges();
                 return "success";
-            else
-                return "error";
+          
         }
     }
 }

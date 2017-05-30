@@ -1,13 +1,10 @@
-﻿@using Petsmart.Models;
-@{
-    ViewBag.Title = "ViewAllInvoices";
+﻿@{
+    ViewBag.Title = "DetailOrder";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model PagedList.IPagedList<Petsmart.Models.DonDatHang>
-@using PagedList.Mvc;
+@using Petsmart.Models
 @{
-    var tk = ViewData["TaiKhoan"] as TaiKhoan;
-
+    DonDatHang ddh = ViewData["DonHang"] as DonDatHang;
 }
 <div class="page-heading">
     <div class="container">
@@ -25,62 +22,49 @@
         <div class="row">
             <section class="col-main col-sm-9 col-xs-12 wow bounceInUp animated animated animated" style="visibility: visible;">
                 <div class="my-account">
-
                     <!--page-title-->
                     <!-- BEGIN DASHBOARD-->
                     <div class="dashboard">
                         <div class="row">
                             <div class="col-sm-6">
-                                <p class="hello"><strong>Chào @ViewBag.TenTaiKhoan !</strong></p>
-                            </div>
-                            @using (Html.BeginForm())
-                            {
-                                <div class="col-sm-6">
-                                    <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm mã đơn hàng" id="example-search-input">
-                                </div>
-                            }
-                          
+                                <p class="hello"><strong>Chào @ddh.TaiKhoan.TenHienThi !</strong></p>
+                            </div>                       
                         </div>
-                        
-                        <div class="recent-orders">
-                            <div class="page-title">
-                                <h2>Danh sách đơn hàng của bạn</h2>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="data-table table-striped" id="my-orders-table">
 
-                                    <thead>
-                                        <tr class="first last">
-                                            <th>Đặt hàng # </th>
-                                            <th>Ngày</th>
-                                            <th>Giao đến</th>
-                                            <th><span class="nobr">Tổng chi phí</span></th>
-                                            <th>Trạng thái</th>
-                                            <th>&nbsp;</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @{
-                                            foreach (var item in Model)
-                                            {
-                                                <tr class="last odd">
-                                                    <td>@item.MaDonDatHang</td>
-                                                    <td><span class="nobr">@string.Format("{0:d/M/yyyy}", @item.NgayLap)</span></td>
-                                                    <td>@item.TaiKhoan.TenHienThi</td>
-                                                    <td><span class="price">@string.Format("{0:0,0}", item.TongThanhTien)đ</span></td>
-                                                    <td><em>@item.TinhTrang.TenTinhTrang</em></td>
-                                                    <td class="a-center last">
-                                                        <span class="nobr"> <a class="view_invoices" href="@Url.Action("DetailOrder", new {mdh = @item.MaDonDatHang })">Xem</a></span>
-                                                    </td>
-                                                </tr>
+                        <div class="recent-orders">
+                            <div class="row">
+                                <div class="page-title">
+                                    <h2>Chi tiết đơn hàng @ddh.MaDonDatHang</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="data-table table-striped" id="my-orders-table">
+
+                                        <thead>
+                                            <tr class="first last">
+                                                <th class="min-w-td">#</th>
+                                                <th>Hình đại diện</th>
+                                                <th>Tên Sản Phẩm</th>
+                                                <th>Số lượng mua</th>
+                                                <th>Giá</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var item in ViewData["LstChiTietDonHang"] as List<ChiTietDonHang>)
+                                                {
+                                                    <tr class="last odd">
+                                                        <td class="min-w-td">@item.SanPham.MaSanPham</td>
+                                                        <td><img src="~/Content/images/products/@item.SanPham.HinhURL" class="img-circle img-sm" /></td>
+                                                        <td><a class="price" href="#">@item.SanPham.TenSanPham</a></td>
+                                                        <td>@item.SoLuong</td>
+                                                        <td>@string.Format("{0:0,0}", @item.GiaBan)đ</td>
+                                                    </tr>
+                                                }
                                             }
-                                        }
-                                    </tbody>
-                                </table>
-                                <div class="text-right">
-                                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                                    @Html.PagedListPager(Model, page => Url.Action("ViewAllInvoices",
-                                new { page, currentFilter = ViewBag.CurrentFilter }))
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!--table-responsive-->
@@ -146,5 +130,4 @@
     </div>
     <!--main container-->
 </section>
-
 

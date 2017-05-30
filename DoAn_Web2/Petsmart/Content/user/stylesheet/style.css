@@ -14,6 +14,10 @@ website:   	http://www.themesmart.net/
 */
 
 /* body RobotoSlab,Arial,sans-serif /*/
+.view_invoices{
+    color:#EA4335;
+    text-decoration:underline;
+}
 
 body {
 	font-family: 'Open Sans', sans-serif;

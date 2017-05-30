@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Petsmart.Models;
 using PagedList;
+using System.Text.RegularExpressions;
+
 namespace Petsmart.Controllers
 {
     public class HomeController : Controller
@@ -61,6 +63,10 @@ namespace Petsmart.Controllers
 
         public ActionResult Login()
         {
+            if(Session["user"] != null)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
@@ -71,7 +77,7 @@ namespace Petsmart.Controllers
 
             using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
             {
-                var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
+                var tk = db.TaiKhoans.Where(e => (e.Email.Equals(t.Email) || e.TenDangNhap.Equals(t.Email)) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
                 {
                     if (tk != null)
                     {
@@ -81,7 +87,6 @@ namespace Petsmart.Controllers
                 }
 
             }
-
             return View();
         }
 
@@ -96,36 +101,43 @@ namespace Petsmart.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(TaiKhoan t)
+        public string dangki(FormCollection fm)
         {
-            if (ModelState.IsValid)
+            // check email
+            string Email = fm["Email"].Trim();
+            bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            // check sdt
+            string SoDienThoai = fm["SoDienThoai"].Trim();
+            bool isPhone = Regex.IsMatch(SoDienThoai, @"^(0\d{9,10})$", RegexOptions.IgnoreCase);
+            if (isEmail != true)
             {
-                using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
-                {
-                    var tk = db.TaiKhoans.Where(e => e.Email.Equals(t.Email)).FirstOrDefault();
-
-                    if (tk != null)
-                    {
-                        ViewBag.Message = "Tài khoản này đã tồn tại!";
-                    }
-                    else
-                    {
-                        t.BiXoa = false;
-                        t.MaLoaiTaiKhoan = 1;
-                        db.TaiKhoans.Add(t);
-                        db.SaveChanges();
-                        ModelState.Clear();
-                        t = null;
-                        ViewBag.Message = "Đăng ký thành công!";
-                    }
-                }
+                return "Email không hợp lệ";
             }
+            if (isPhone != true) return "Số điện thoại không hợp lệ";
 
-            return View();
+            string HovaTen = fm["HovaTen"].Trim();
+            string TenDangNhap = fm["TenDangNhap"].Trim();
+            string DiaChi = fm["DiaChi"].Trim();
+            // check day du thong tin
+            if (DiaChi.Length <= 0 || Email.Length <= 0 || HovaTen.Length <= 0 || TenDangNhap.Length <= 0
+                || SoDienThoai.Length <= 0) return "Chưa điền đầy đủ thông tin";
+            //sau khi check
+
+            var tk = db.TaiKhoans.Where(e => e.Email.Equals(Email)).FirstOrDefault();
+            if (tk.Email != Email)
+            {
+                var check = db.TaiKhoans.Where(t => t.Email == Email).FirstOrDefault();
+                if (check != null) return "Email đã tồn tại";
+            }
+            tk.DiaChi = DiaChi;
+            tk.Email = Email;
+            tk.TenHienThi = HovaTen;
+            tk.TenDangNhap = TenDangNhap;
+            tk.DienThoai = SoDienThoai;
+            db.SaveChanges();
+            return "success";
+
         }
-
         public ActionResult Error()
         {
             return View();

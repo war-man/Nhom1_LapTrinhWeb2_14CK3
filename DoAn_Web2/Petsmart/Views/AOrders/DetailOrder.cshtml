@@ -49,6 +49,10 @@
                                         {
                                             <span id="tinh_trang" class="label label-table label-info" data-id = "@ddh.MaTinhTrang">Đang giao</span>
                                         }
+                                        else if (@ddh.MaTinhTrang == 4)
+                                        {
+                                            <span class="label label-table label-danger">Đã hủy</span>
+                                        }
                                         else
                                         {
                                             <span id="tinh_trang" class="label label-table label-success" data-id = "@ddh.MaTinhTrang">Đã giao</span>
@@ -106,16 +110,16 @@
                                                 <td width="600px">
                                                         <address>
                                                             <strong>Địa chỉ</strong><br>
-                                                            @ddh.TaiKhoan.DiaChi<br>
-                                                            <abbr title="Phone">SĐT: @ddh.TaiKhoan.DienThoai
+                                                            @ddh.DiaChi<br>
+                                                            <abbr title="Phone">SĐT: @ddh.SoDienThoai
                                                         </address>
                                                 </td>
                                                 <td width="384px">
                                                         <address>
                                                             <strong>Họ tên</strong><br>
-                                                            <a href="#">@ddh.TaiKhoan.TenHienThi</a><br>
+                                                            <a href="#">@ddh.HoVaTen</a><br>
                                                             <strong>Email</strong><br>
-                                                            <a href="#">@ddh.TaiKhoan.Email</a>
+                                                            <a href="#">@ddh.Email</a>
                                                         </address>
                                                 </td>
                                             </tr>
@@ -138,7 +142,7 @@
 <script>
     $('#print_invoice').click(function (e) {
         var id = $('#tinh_trang').attr("data-id");
-        if (id == 3) {
+        if (id == 3 || id == 2) {
             var divToPrint = document.getElementById('detail_invoice');
             var newWin = window.open('', 'Print-Window');
             newWin.document.open();
@@ -153,7 +157,7 @@
             setTimeout(function () { newWin.close(); }, 10000);
         }
         else {
-            swal("Lỗi!", "Đơn hàng này chưa giao cho khách không thể in hóa đơn!", "error");
+            swal("Lỗi!", "Đơn hàng này chưa duyệt cho khách không thể in hóa đơn!", "error");
         }
     });
 </script>

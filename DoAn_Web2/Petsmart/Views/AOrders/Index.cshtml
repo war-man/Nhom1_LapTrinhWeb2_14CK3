@@ -94,7 +94,11 @@
                                                     {
                                                         <span class="label label-table label-warning">Chờ duyệt</span>
                                                     }
-                                                    else if(@item.MaTinhTrang == 2)
+                                                    else if (@item.MaTinhTrang == 4)
+                                                    {
+                                                        <span class="label label-table label-danger">Đã hủy</span>
+                                                    }
+                                                    else if (@item.MaTinhTrang == 2)
                                                     {
                                                        <span class="label label-table label-info">Đang giao</span>
                                                     }
@@ -112,7 +116,6 @@
                                                         <a class="btn btn-sm btn-default btn-active-pink dropdown-toggle dropdown-toggle-icon" data-toggle="dropdown" aria-expanded="true">
                                                           <i class="dropdown-caret fa fa-pencil"></i>
                                                         </a>
-                                                       
                                                         <ul class="dropdown-menu" id="dropdow_trangthai" style="min-width:100px;">
                                                             <li>
                                                                 <a onclick="updateTinhTrangDonHang(this)" data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,1">Chờ duyệt</a>
@@ -122,6 +125,9 @@
                                                             </li>
                                                             <li>
                                                                 <a onclick="updateTinhTrangDonHang(this)"  data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,3">Đã giao</a>
+                                                            </li>
+                                                            <li>
+                                                                <a onclick="updateTinhTrangDonHang(this)" data-idold="@item.MaTinhTrang" data-id="@item.MaDonDatHang,4">Hủy</a>
                                                             </li>
                                                         </ul>
                                                     </div>

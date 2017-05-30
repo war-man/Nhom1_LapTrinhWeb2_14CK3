@@ -90,12 +90,12 @@ namespace Petsmart.Controllers
 
                 var donhangs = from s in db.DonDatHangs
                                 select s;
-                donhangs = donhangs.Where(s => s.MaTaiKhoan == tk.MaTaiKhoan);
+                donhangs = donhangs.Where(s => s.MaTaiKhoan == tk.MaTaiKhoan).OrderByDescending(a=>a.NgayLap);
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     donhangs = donhangs.Where(s => s.MaDonDatHang.Contains(searchString));
                 }
-                int pageSize = 5;
+                int pageSize = 2;
                 int pageNumber = (page ?? 1);
                 return View(donhangs.ToPagedList(pageNumber, pageSize));
             }
@@ -104,6 +104,36 @@ namespace Petsmart.Controllers
                 return RedirectToAction("Index", "Home");
             }
            
+        }
+        public ActionResult DetailOrder()
+        {
+            if (Session["user"] != null)
+            {
+                string mdh = this.Request.QueryString["mdh"];
+                if(mdh == "")
+                {
+                    return RedirectToAction("Index");
+                }
+                DonDatHang dh = new DonDatHang();
+                dh = db.DonDatHangs.SingleOrDefault(d => d.MaDonDatHang == mdh);
+                if (dh == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewData["DonHang"] = dh;
+                    List<ChiTietDonHang> ctdh = new List<ChiTietDonHang>();
+                    ctdh = db.ChiTietDonHangs.Where(ct => ct.MaDonDatHang == mdh).ToList();
+                    ViewData["LstChiTietDonHang"] = ctdh;
+                    
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
 
     }

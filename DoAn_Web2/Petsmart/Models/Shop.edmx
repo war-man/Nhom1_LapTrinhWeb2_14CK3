@@ -86,7 +86,7 @@
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenHienThi" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="DiaChi" Type="text" Nullable="false" />
+          <Property Name="DiaChi" Type="ntext" />
           <Property Name="DienThoai" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BiXoa" Type="bit" Nullable="false" />
@@ -337,7 +337,7 @@
           <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenHienThi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BiXoa" Type="Boolean" Nullable="false" />
