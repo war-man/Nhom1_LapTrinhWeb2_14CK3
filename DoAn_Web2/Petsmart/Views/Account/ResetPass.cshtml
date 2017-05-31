@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "ResetPass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+  .account-login{
+      width:500px;
+      padding:30px;
+      padding-top:5px;
+  }
+  .page-title h3{
+      text-align:center;
+      margin-bottom:30px;
+  }
+  .input-text{
+      width:100%;
+  }
+  #row_email{
+    border-top: #ececec double;
+    margin-top:40px;
+  }
+</style>
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+                <div class="page-title">
+                    <h2>Lấy Lại Mật Khẩu</h2>
+                </div>
+            <!--col-xs-12-->
+        </div>
+        <!--row-->
+    </div>
+    <!--container-->
+</div>
+
+<div class="main-container col1-layout wow bounceInUp animated animated animated" style="visibility: visible;">
+
+    <div class="main">
+        <div class="container account-login">
+            <!--page-title-->
+            <form action="" method="post" id="formCapNhatThongTin">
+                    <div class="row">
+                        <div class="page-title">
+                            <h3>Nhập Email để phục hồi mật khẩu</h3>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-lg-9">
+                              <input class="input-text" placeholder="Email của bạn.." required name="Email" type="email">
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit"  class="button btn-continue"><span>Gửi</span></button>
+                        </div>
+                    </div>
+                    <div class="row" id="row_email">
+                        <div class="col-lg-3">
+
+                        </div>
+                        <div class="col-lg-5" style="margin-top:20px;">
+                            <a href="@Url.Action("Login","Home")"><button type="button" class="button btn-continue"><span>Đăng nhập trở lại</span></button></a>
+                        </div>
+                        <div class="col-lg-4">
+
+                        </div>
+                    </div>
+            </form>
+
+        </div> <!--account-login-->
+
+    </div><!--main-container-->
+
+</div>
+<script>
+    $("form#formCapNhatThongTin").submit(function (e) {
+        var formData = new FormData($(this)[0]);
+        // Sửa thông tin
+            $.ajax({
+                url: "@Url.Action("formResetPass")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "success") {
+                    sweetAlert("Thành công", "Mã xác thực đã được gửi qua email của bạn !", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("KeyEmail")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+</script>

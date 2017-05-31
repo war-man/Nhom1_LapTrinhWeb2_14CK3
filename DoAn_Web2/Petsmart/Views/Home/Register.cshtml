@@ -74,13 +74,13 @@
                                     <li>
                                         Email
                                         <div class="input-box">
-                                            <input class="input-text" required name="Email" type="text" value="">
+                                            <input class="input-text" required name="Email" type="email" value="">
                                         </div>
                                     </li>
                                     <li>
                                         Địa chỉ
                                         <div class="input-box">
-                                            <textarea class="TextArea" required name="DiaChi" style="width:410px; height:110px;"></textarea>
+                                            <textarea class="TextArea" required name="DiaChi" style="width:500px; height:100px;"></textarea>
                                         </div>
                                     </li>
                                 </ul>
@@ -91,3 +91,32 @@
         </div> <!--account-login-->
     </div><!--main-container-->
 </div>
+<script>
+    $("form#login-form").submit(function (e) {
+        var formData = new FormData($(this)[0]);
+        // Sửa thông tin
+            $.ajax({
+                url: "@Url.Action("dangki")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "success") {
+                    sweetAlert("Thành công", "Đăng kí tài khoản thành công!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Login")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Đăng kí thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+</script>

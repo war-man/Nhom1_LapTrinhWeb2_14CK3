@@ -1,10 +1,7 @@
-﻿@{
-    ViewBag.Title = "DetailOrder";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@using Petsmart.Models
+﻿
 @{
-    DonDatHang ddh = ViewData["DonHang"] as DonDatHang;
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-heading">
     <div class="container">
@@ -22,52 +19,61 @@
         <div class="row">
             <section class="col-main col-sm-9 col-xs-12 wow bounceInUp animated animated animated" style="visibility: visible;">
                 <div class="my-account">
+
                     <!--page-title-->
                     <!-- BEGIN DASHBOARD-->
                     <div class="dashboard">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="hello"><strong>Chào @ddh.TaiKhoan.TenHienThi !</strong></p>
-                            </div>                       
+                        <div class="welcome-msg">
+                            <p class="hello"><strong>Chào, @ViewBag.TenTaiKhoan </strong></p>
                         </div>
-
+                        <!--recent-orders-->
                         <div class="recent-orders">
-                            <div class="row">
-                                <div class="page-title">
-                                    <h2>Chi tiết đơn hàng @ddh.MaDonDatHang</h2>
+                            <form id="formCapNhatThongTin" method="post">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
+                                        <div class="col-2 registered-users">
+                                            <div class="content">
+                                                <ul class="form-list">
+                                                    <li>
+                                                        Mật khẩu cũ
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required name="MatKhauCu" type="password" >
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        Mật khẩu mới
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required name="MatKhauMoi" type="password" >
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        Xác nhận mật khẩu mới
+                                                        <div class="input-box">
+                                                            <input class="input-text required-entry" required name="XacNhanMatKhauMoi" type="password">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <!--buttons-set-->
+                                            </div> <!--content-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3"></div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="table-responsive">
-                                    <table class="data-table table-striped" id="my-orders-table">
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3">
+                                            <button type="submit" title="Đổi mật khẩu"
+                                                    class="button btn-continue">
+                                                <span>Cập nhật mật khẩu</span>
+                                            </button>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <a href="@Url.Action("Index","Home")"><button type="button" title="Continue Shopping" class="button btn-continue"><span>Tiếp tục mua sắm</span></button></a>
+                                    </div>
+                                </div>
+                            </form>
 
-                                        <thead>
-                                            <tr class="first last">
-                                                <th class="min-w-td">#</th>
-                                                <th>Hình đại diện</th>
-                                                <th>Tên Sản Phẩm</th>
-                                                <th>Số lượng mua</th>
-                                                <th>Giá</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @{
-                                                foreach (var item in ViewData["LstChiTietDonHang"] as List<ChiTietDonHang>)
-                                                {
-                                                    <tr class="last odd">
-                                                        <td class="min-w-td">@item.SanPham.MaSanPham</td>
-                                                        <td><img src="~/Content/images/products/@item.SanPham.HinhURL" class="img-circle img-sm" /></td>
-                                                        <td><a class="price" href="#">@item.SanPham.TenSanPham</a></td>
-                                                        <td>@item.SoLuong</td>
-                                                        <td>@string.Format("{0:0,0}", @item.GiaBan)đ</td>
-                                                    </tr>
-                                                }
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!--table-responsive-->
                         </div>
 
                     </div>
@@ -130,4 +136,32 @@
     </div>
     <!--main container-->
 </section>
-
+<script>
+    $("form#formCapNhatThongTin").submit(function (e) {
+        var formData = new FormData($(this)[0]);
+        // Sửa thông tin
+            $.ajax({
+                url: "@Url.Action("Fromdoimatkhau")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "success") {
+                    sweetAlert("Thành công", "Sửa thông tin tài khoản thành công!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Index")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+</script>

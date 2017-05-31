@@ -6,12 +6,40 @@ using System.Web.Mvc;
 using Petsmart.Models;
 using PagedList;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Petsmart.Controllers
 {
     public class HomeController : Controller
     {
         private ShopBanDongVatEntities db = new ShopBanDongVatEntities();
+        public string EncodeMD5(string pass)
+
+        {
+
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            byte[] bs = System.Text.Encoding.UTF8.GetBytes(pass);
+
+            bs = md5.ComputeHash(bs);
+
+            System.Text.StringBuilder s = new System.Text.StringBuilder();
+
+            foreach (byte b in bs)
+
+            {
+
+                s.Append(b.ToString("x1").ToLower());
+
+            }
+
+            pass = s.ToString();
+
+            return pass;
+
+        }
+
         public ActionResult Index()
         {
             ViewData["lstDanhMuc"] = db.SanPhams.OrderByDescending(s => s.LuotXem).Where(s => s.MaLoaiSanPham < 5).Select(s => s).ToList();
@@ -77,7 +105,8 @@ namespace Petsmart.Controllers
 
             using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
             {
-                var tk = db.TaiKhoans.Where(e => (e.Email.Equals(t.Email) || e.TenDangNhap.Equals(t.Email)) && e.MatKhau.Equals(t.MatKhau) && e.BiXoa.Equals(false)).FirstOrDefault();
+                string mkmd5 = EncodeMD5(t.MatKhau);
+                var tk = db.TaiKhoans.Where(e => (e.Email.Equals(t.Email) || e.TenDangNhap.Equals(t.Email)) && e.MatKhau.Equals(mkmd5) && e.BiXoa.Equals(false)).FirstOrDefault();
                 {
                     if (tk != null)
                     {
@@ -102,7 +131,7 @@ namespace Petsmart.Controllers
         }
 
         public string dangki(FormCollection fm)
-        {
+        { 
             // check email
             string Email = fm["Email"].Trim();
             bool isEmail = Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
@@ -114,28 +143,45 @@ namespace Petsmart.Controllers
                 return "Email không hợp lệ";
             }
             if (isPhone != true) return "Số điện thoại không hợp lệ";
-
+            string MatKhau = fm["MatKhau"].Trim();
+            string XacNhanMatKhau = fm["XacNhanMatKhau"].Trim();
+            // check trùng xác nhận mật khẩu
+            if (MatKhau.Equals(XacNhanMatKhau) == false)
+            {
+                return "Mật khẩu xác nhận không đúng!";
+            }
             string HovaTen = fm["HovaTen"].Trim();
             string TenDangNhap = fm["TenDangNhap"].Trim();
             string DiaChi = fm["DiaChi"].Trim();
+            
+
             // check day du thong tin
             if (DiaChi.Length <= 0 || Email.Length <= 0 || HovaTen.Length <= 0 || TenDangNhap.Length <= 0
-                || SoDienThoai.Length <= 0) return "Chưa điền đầy đủ thông tin";
-            //sau khi check
+                || SoDienThoai.Length <= 0 || MatKhau.Length <=0 || XacNhanMatKhau.Length <=0) return "Chưa điền đầy đủ thông tin";
 
-            var tk = db.TaiKhoans.Where(e => e.Email.Equals(Email)).FirstOrDefault();
-            if (tk.Email != Email)
+            // check trùng tài khoản or email
+            var tkcheck = db.TaiKhoans.Where(e => (e.Email.Equals(Email) || e.TenDangNhap.Equals(TenDangNhap)) && e.BiXoa.Equals(false)).FirstOrDefault();
+
+            if (tkcheck != null)
             {
-                var check = db.TaiKhoans.Where(t => t.Email == Email).FirstOrDefault();
-                if (check != null) return "Email đã tồn tại";
+                return "Email hoặc tên đăng nhập đã bị trùng !";
             }
+
+            //sau khi check
+            TaiKhoan tk = new TaiKhoan();
+            tk.MatKhau = EncodeMD5(MatKhau);
             tk.DiaChi = DiaChi;
             tk.Email = Email;
             tk.TenHienThi = HovaTen;
             tk.TenDangNhap = TenDangNhap;
             tk.DienThoai = SoDienThoai;
-            db.SaveChanges();
-            return "success";
+            // mặc định User
+            tk.MaLoaiTaiKhoan = 1;
+            db.TaiKhoans.Add(tk);
+            if (db.SaveChanges() > 0)
+                return "success";
+            else
+                return "error";
 
         }
         public ActionResult Error()
