@@ -202,10 +202,6 @@ namespace Petsmart.Controllers
         }
         public ActionResult ResetPass()
         {
-            if (Session["EmailUser"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             return View();
         }
         private string RandomString(int size, bool lowerCase)
@@ -239,7 +235,7 @@ namespace Petsmart.Controllers
                 // lưu session email để cập nhật mật khẩu
                 Session["EmailUser"] = email;
                 string randomkeyemail = RandomString(10, true);
-                new MailHelper().SendMail(email, "WebPetsmart - Lấy lại mật khẩu ", "Mã xác thực của bạn là:"+randomkeyemail);
+                new MailHelper().SendMail(email, "WebPetsmart - Lấy lại mật khẩu ", "Mã xác thực của bạn là: "+randomkeyemail);
                 Session["KeyEmail"] = randomkeyemail;
                 // gửi mã xác nhận cho user
                 return "success";

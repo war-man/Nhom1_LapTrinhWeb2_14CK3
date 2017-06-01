@@ -13,10 +13,12 @@ namespace Petsmart.Controllers
         // GET: Products
         public ActionResult Detail(int id)
         {
-            ViewData["ChitietSP"] = db.SanPhams.Where(s => s.MaSanPham == id).Select(s => s).ToList();
+            ViewData["ChiTietSP"] = db.SanPhams.Where(s => s.MaSanPham == id).SingleOrDefault();
             var maloai = db.SanPhams.Where(s => s.MaSanPham == id).Select(s => s.MaLoaiSanPham);
+            var masp = (ViewData["ChiTietSP"] as SanPham).MaSanPham;
             ViewData["SPTuongTu"] = db.SanPhams.Where(s => s.MaLoaiSanPham == maloai.FirstOrDefault() && s.MaSanPham != id).Select(s => s).ToList();
-            ViewData["LoaiSP"] = db.LoaiSanPhams.Where(s => s.MaLoaiSanPham == maloai.FirstOrDefault()).Select(s => s).ToList();
+            ViewData["LoaiSP"] = db.LoaiSanPhams.Where(s => s.MaLoaiSanPham == maloai.FirstOrDefault()).SingleOrDefault();
+            ViewData["HinhAnhSP"] = db.HinhAnhSanPhams.Where(s => s.MaSanPham == masp).ToList();
             return View();
         }
     }
