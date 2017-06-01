@@ -4,6 +4,11 @@
     .validationLogin{
         color: red;
     }
+   
+    button#btnface{
+        color:white;
+        background-color:#6A7FB4;
+    }
 </style>
 
 <div class="page-heading">
@@ -33,7 +38,6 @@
                     <div class="col-1 new-users">
                         <strong>Khách hàng mới</strong>
                         <div class="content">
-
                             <p>Bằng cách tạo tài khoản với shop của chúng tôi, bạn sẽ có thể thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi các đơn đặt hàng trong tài khoản của bạn và hơn thế nữa.</p>
                             <div class="buttons-set">
                                 <button type="button" title="Tạo tài khoản" class="button create-account" onclick="window.location.href = '@Url.Action("Register", "Home")';"><span><span>Tạo tài khoản</span></span></button>
@@ -84,18 +88,29 @@
                             <div class="buttons-set">
 
                                 <button type="submit" class="button login" title="Đăng nhập" name="send" id="send2"><span>Đăng nhập</span></button>
+                                <a href="@Url.Action("LoginFacebook","Home")" class="forgot-word">
+                                    <button type="button" id="btnface" class="button face" title="Đăng nhập facebook" name="send" id="send2">
+                                        <span>
+                                            Đăng nhập bằng Facebook
+                                        </span>
+                                    </button>
+                                </a>
 
                                 <a href="@Url.Action("ResetPass","Account")" class="forgot-word">Quên mật khẩu?</a>
                             </div> <!--buttons-set-->
+                        
                         </div> <!--content-->
                     </div> <!--col-2 registered-users-->
                 }
                     
                 </fieldset> <!--col2-set-->
             </form>
-
+            
         </div> <!--account-login-->
 
     </div><!--main-container-->
 
 </div>
+<script>
+
+</script>

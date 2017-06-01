@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -690,6 +694,9 @@
     <Content Include="Views\Partners\Index.cshtml" />
     <Content Include="Views\LayoutUser\leftSideLoaiSanPham.cshtml" />
     <Content Include="Views\LayoutUser\leftSideHangSanXuat.cshtml" />
+    <Content Include="Views\AProducts\AddProduct.cshtml" />
+    <Content Include="Views\AProducts\Index.cshtml" />
+    <Content Include="Views\AProducts\UpdateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -8,6 +8,8 @@ using PagedList;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using System.Text;
+using Facebook;
+using System.Configuration;
 
 namespace Petsmart.Controllers
 {
@@ -39,13 +41,26 @@ namespace Petsmart.Controllers
             return pass;
 
         }
+        private string RandomString(int size, bool lowerCase)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
+        }
 
         public ActionResult Index()
         {
             ViewData["lstDanhMuc"] = db.SanPhams.OrderByDescending(s => s.LuotXem).Where(s => s.MaLoaiSanPham < 5).Select(s => s).ToList();
-            ViewData["lstSanPham"] = db.SanPhams.OrderByDescending(s => s.SoLuongBan).Select(s => s).Take(6).ToList();
+            ViewData["lstSanPham"] = db.SanPhams.OrderByDescending(s => s.NgayNhap).Select(s => s).Take(6).ToList();
             ViewData["lstNSX"] = db.HangSanXuats.ToList();
-
             if (Session["user"] == null)
             {
                 RedirectToAction("Index", "Home");
@@ -183,6 +198,81 @@ namespace Petsmart.Controllers
             else
                 return "error";
 
+        }
+        // Login Facebook
+        private Uri RedirectUri
+        {
+            get
+            {
+                var uriBuilder = new UriBuilder(Request.Url);
+                uriBuilder.Query = null;
+                uriBuilder.Fragment = null;
+                uriBuilder.Path = Url.Action("FacebookCallback");
+                return uriBuilder.Uri;
+            }
+        }
+
+        public ActionResult LoginFacebook()
+        {
+            var fb = new FacebookClient();
+            var loginUrl = fb.GetLoginUrl(new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                response_type = "code",
+                scope = "email",
+            });
+            return Redirect(loginUrl.AbsoluteUri);
+        }
+        public ActionResult FacebookCallback(string code)
+        {
+            var fb = new FacebookClient();
+            dynamic result = fb.Post("oauth/access_token", new
+            {
+                client_id = ConfigurationManager.AppSettings["FbAppId"],
+                client_secret = ConfigurationManager.AppSettings["FbAppSecret"],
+                redirect_uri = RedirectUri.AbsoluteUri,
+                code = code
+            });
+            var accessToken = result.access_token;
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                fb.AccessToken = accessToken;
+                // Get the user's information, like email, first name, middle name etc
+                dynamic me = fb.Get("me?fields=first_name,middle_name,last_name,id,email");
+                string email = me.email;
+                string userName = me.email;
+                string firstname = me.first_name;
+                string middlename = me.middle_name;
+                string lastname = me.last_name;
+                // If đã tồn tại email thì set session User
+                TaiKhoan tk = db.TaiKhoans.Where(t=>t.BiXoa == false).SingleOrDefault(t => t.Email.Equals(email));
+                if(tk != null)
+                {
+                    Session["user"] = tk;
+                    return RedirectToAction("Index", "Account");
+                }
+                else
+                {
+                    TaiKhoan tkface = new TaiKhoan();
+                    // Thêm vào table Tài Khoản
+                    tkface.Email = email;
+                    tkface.TenDangNhap = email;
+                    tkface.TenHienThi = firstname+ " " + middlename+ " " + lastname;
+                    tkface.MaLoaiTaiKhoan = 1;
+                    tkface.BiXoa = false;
+                    tkface.MatKhau = EncodeMD5("123456");
+                    tkface.DiaChi = "Mật khẩu mặc định của bạn là:(123456) - Bạn có thể đổi mật khẩu";
+                    tkface.DienThoai = "";
+                    db.TaiKhoans.Add(tkface);
+                    db.SaveChanges();
+                    Session["user"] = tkface;
+                    return RedirectToAction("Index", "Account");
+                }
+
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Error()
         {

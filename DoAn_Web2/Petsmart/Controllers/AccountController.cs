@@ -187,7 +187,6 @@ namespace Petsmart.Controllers
                 // cập nhật mật khẩu mới
                 string MatKhauMoi = fm["MatKhauMoi"].Trim();
                 string XacNhanMatKhauMoi = fm["XacNhanMatKhauMoi"].Trim();
-
                 if(MatKhauMoi.Equals(XacNhanMatKhauMoi) == false)
                 {
                     return "Mật khẩu xác nhận không đúng!";
@@ -196,6 +195,8 @@ namespace Petsmart.Controllers
                 TaiKhoan tk1 = db.TaiKhoans.SingleOrDefault(s => s.MaTaiKhoan == tk.MaTaiKhoan);
                 tk1.MatKhau = md5mkm;
                 db.SaveChanges();
+                // Cập nhật lại session
+                Session["user"] = tk1;
                 return "success";
             }
 
