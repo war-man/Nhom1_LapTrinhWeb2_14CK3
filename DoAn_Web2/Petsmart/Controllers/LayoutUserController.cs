@@ -10,10 +10,27 @@ namespace Petsmart.Controllers
     {
        ShopBanDongVatEntities db = new ShopBanDongVatEntities();
         // GET: LayoutUser
-      public PartialViewResult getMenu()
+      public PartialViewResult getmenuLoaiSanPham()
       {
             var LoaiSanPham = db.LoaiSanPhams.ToList();
             return PartialView(LoaiSanPham);
       }
+      public PartialViewResult getmenuHangSanXuat()
+      {
+            var HangSanXuat = db.HangSanXuats.ToList();
+            return PartialView(HangSanXuat);
+        }
+        // get slide left loai san pham
+        public PartialViewResult leftSideLoaiSanPham()
+        {
+            var LoaiSanPham = db.LoaiSanPhams.ToList();
+            return PartialView(LoaiSanPham);
+        }
+        public PartialViewResult leftSideHangSanXuat()
+        {
+            var HangSanXuat = db.HangSanXuats.ToList();
+            return PartialView(HangSanXuat);
+        }
+
     }
 }

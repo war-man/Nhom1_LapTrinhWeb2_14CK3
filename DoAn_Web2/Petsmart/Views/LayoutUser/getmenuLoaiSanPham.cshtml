@@ -1,0 +1,32 @@
+﻿@using Petsmart.Models;
+@model List<LoaiSanPham>
+        <li class="mega-menu">
+            <a href="#" class="level-top"><span>Loại sản phẩm</span></a>
+            <div class="level0-wrapper dropdown-6col" style="left: 0px; display: none;">
+                <div class="container">
+                    <div class="level0-wrapper2">
+                        <div class="col-1">
+                            <div class="nav-block nav-block-center">
+                                <ul class="level0">
+                                    <!--level3 nav-6-1 parent item-->
+                                    @foreach (var item in Model)
+                                    {
+                                        <li class="level3 nav-6-1 parent item">
+                                            <a href="@Url.Action("Index", "Categories", new { id = @item.MaLoaiSanPham })" class="level-top"><span>@item.TenLoaiSanPham</span></a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <!--col-1-->
+                        <div class="col-2">
+                            <div class="menu_image"><a title="" href="grid.html"><img alt="menu_image" src="~/Content/user/images/menu-bag.png"></a></div>
+                        </div>
+                        <!--col-2-->
+                    </div>
+                    <!--level0-wrapper2-->
+                </div>
+                <!--container-->
+            </div>
+            </li>
+

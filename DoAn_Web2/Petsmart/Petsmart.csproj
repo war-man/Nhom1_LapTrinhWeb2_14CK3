@@ -206,71 +206,72 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AAcountController.cs" />
     <Compile Include="Controllers\ACategoriesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AHomeController.cs" />
     <Compile Include="Controllers\AOrdersController.cs" />
+    <Compile Include="Controllers\APartnerController.cs" />
     <Compile Include="Controllers\AProductsController.cs" />
     <Compile Include="Controllers\AUserController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImagesProduct.cs" />
     <Compile Include="Controllers\ItemCart.cs" />
     <Compile Include="Controllers\LayoutUserController.cs" />
+    <Compile Include="Controllers\MailHelper.cs" />
+    <Compile Include="Controllers\PartnersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\Top10User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonDatHang.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HangSanXuat.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhAnhSanPham.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoaiSanPham.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiTaiKhoan.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShopBanDongVatModel.Context.cs">
+    <Compile Include="Models\Shop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShopBanDongVatModel.Context.tt</DependentUpon>
+      <DependentUpon>Shop.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShopBanDongVatModel.cs">
+    <Compile Include="Models\Shop.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ShopBanDongVatModel.Designer.cs">
+    <Compile Include="Models\Shop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ShopBanDongVatModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiKhoan.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TinhTrang.cs">
-      <DependentUpon>ShopBanDongVatModel.tt</DependentUpon>
+      <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -578,15 +579,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\ShopBanDongVatModel.Context.tt">
+    <Content Include="Models\Shop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShopBanDongVatModel.edmx</DependentUpon>
-      <LastGenOutput>ShopBanDongVatModel.Context.cs</LastGenOutput>
+      <DependentUpon>Shop.edmx</DependentUpon>
+      <LastGenOutput>Shop.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ShopBanDongVatModel.tt">
+    <Content Include="Models\Shop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShopBanDongVatModel.edmx</DependentUpon>
-      <LastGenOutput>ShopBanDongVatModel.cs</LastGenOutput>
+      <DependentUpon>Shop.edmx</DependentUpon>
+      <LastGenOutput>Shop.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -639,12 +640,12 @@
     <Content Include="Content\user\fonts\site-icons.ttf" />
     <Content Include="Content\user\fonts\site-icons.woff" />
     <Content Include="Content\user\images\Thumbs.db" />
-    <EntityDeploy Include="Models\ShopBanDongVatModel.edmx">
+    <EntityDeploy Include="Models\Shop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShopBanDongVatModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Shop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ShopBanDongVatModel.edmx.diagram">
-      <DependentUpon>ShopBanDongVatModel.edmx</DependentUpon>
+    <Content Include="Models\Shop.edmx.diagram">
+      <DependentUpon>Shop.edmx</DependentUpon>
     </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -664,17 +665,31 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Detail.cshtml" />
-    <Content Include="Views\AProducts\Index.cshtml" />
+    <Content Include="Views\AUser\AProducts\Index.cshtml" />
     <Content Include="Views\ACategories\Index.cshtml" />
     <Content Include="Views\AOrders\Index.cshtml" />
     <Content Include="Views\AUser\Index.cshtml" />
     <Content Include="Views\AHome\Login.cshtml" />
-    <Content Include="Views\LayoutUser\getMenu.cshtml" />
+    <Content Include="Views\LayoutUser\getmenuLoaiSanPham.cshtml" />
     <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
     <Content Include="Views\Products\Detail.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\AProducts\AddProduct.cshtml" />
+    <Content Include="Views\AUser\AProducts\AddProduct.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\AAcount\Index.cshtml" />
+    <Content Include="Views\APartner\Index.cshtml" />
+    <Content Include="Views\AUser\AProducts\UpdateProduct.cshtml" />
+    <Content Include="Views\AOrders\DetailOrder.cshtml" />
+    <Content Include="Views\Account\ViewAllInvoices.cshtml" />
+    <Content Include="Views\Account\DetailOrder.cshtml" />
+    <Content Include="Views\Account\DoiMatKhau.cshtml" />
+    <Content Include="Views\Account\ResetPass.cshtml" />
+    <Content Include="Views\Account\KeyEmail.cshtml" />
+    <Content Include="Views\Account\NewPass.cshtml" />
+    <Content Include="Views\LayoutUser\getmenuHangSanXuat.cshtml" />
+    <Content Include="Views\Partners\Index.cshtml" />
+    <Content Include="Views\LayoutUser\leftSideLoaiSanPham.cshtml" />
+    <Content Include="Views\LayoutUser\leftSideHangSanXuat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -94,30 +94,8 @@
             </div>
             <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9 wow bounceInUp animated animated" style="visibility: visible;">
                 <!-- BEGIN SIDE-NAV-CATEGORY -->
-                <div class="side-nav-categories">
-                    <div class="block-title"> Thể loại </div>
-                    <!--block-title-->
-                    <!-- BEGIN BOX-CATEGORY -->
-                    <div class="box-content box-category">
-                        <ul>
-                            <li>
-                                @{
-                                    foreach (var item in ViewData["lstLoaiSanpham"] as List<LoaiSanPham>)
-                                    {
-
-                                        <a class="active" href="#">@item.TenLoaiSanPham</a> <span class=""></span>
-                                    }
-                                }
-
-                                <!--level0-->
-                            </li>
-                            <!--level 0-->
-
-                        </ul>
-                    </div>
-                    <!--box-content box-category-->
-                </div>
-
+                @{ Html.RenderAction("leftSideLoaiSanPham", "LayoutUser", null); }
+                @{ Html.RenderAction("leftSideHangSanXuat", "LayoutUser", null); }
                 <div class="custom-slider" style="margin-bottom:20px;">
                     <div>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

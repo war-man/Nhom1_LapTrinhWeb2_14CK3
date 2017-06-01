@@ -1,0 +1,23 @@
+﻿@using Petsmart.Models;
+@model List<LoaiSanPham>
+<div class="side-nav-categories">
+    <div class="block-title"> Thể loại </div>
+    <!--block-title-->
+    <!-- BEGIN BOX-CATEGORY -->
+    <div class="box-content box-category">
+        <ul>
+            <li>
+                @{
+                    foreach (var item in Model)
+                    {
+
+                        <a class="active" href="@Url.Action("Index","Categories",new { id = @item.MaLoaiSanPham })">@item.TenLoaiSanPham</a> <span class=""></span>
+                    }
+                }
+                <!--level0-->
+            </li>
+            <!--level 0-->
+        </ul>
+    </div>
+    <!--box-content box-category-->
+</div>
