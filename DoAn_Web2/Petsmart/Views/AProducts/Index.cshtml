@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using Petsmart.Models
+@model PagedList.IPagedList<Petsmart.Models.SanPham>
+@using PagedList.Mvc;
+<!--Page Title-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div id="page-title">
+    <h1 class="page-header text-overflow">Quản Lý Sản Phẩm</h1>
+
+    <!--Searchbox-->
+    <div class="searchbox">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Tìm kiếm..">
+            <span class="input-group-btn">
+                <button class="text-muted" type="button"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End page title-->
+<!--Breadcrumb-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ol class="breadcrumb">
+    <li><a href="#">Trang chủ</a></li>
+    <li class="active">Quản lý sản phẩm</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--End breadcrumb-->
+<!--Page content-->
+<!--===================================================-->
+<div id="page-content">
+    <!-- Search -->
+    <!-- End Search -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Quản Lý Sản Phẩm</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <a href="@Url.Action("AddProduct","AProducts")"><button class="btn btn-success">Thêm sản phẩm</button></a>
+                </div>
+                <div class="col-sm-9">
+                    @using (Html.BeginForm())
+                    {
+
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <input class="form-control" name="searchString" type="text" placeholder="Tìm kiếm tên sản phẩm" id="example-search-input">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-sm-1">
+                    <a href="@Url.Action("Index")"><button class="btn btn-default btn-icon btn-circle icon-lg fa fa-refresh"></button></a>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="demo-search-tab-2">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-vcenter mar-top">
+                            <thead>
+                                <tr>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.IDSortParm })">#</a></th>
+                                    <th class="min-w-td">Hình Đại Diện</th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.NameSortParm })">Tên Sản Phẩm <i class="fa fa-sort"></i></a></th>
+                                    <th>Loại Sản Phẩm</th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.DateSortParm })">Ngày Tạo <i class="fa fa-sort"></i></a></th>
+                                    <th><a href="@Url.Action("Index","AProducts",new { sortOrder = ViewBag.PriceSortParm })">Giá <i class="fa fa-sort"></i></a></th>
+                                    <th>Trạng Thái</th>
+                                    <th class="min-w-td text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="min-w-td">@item.MaSanPham</td>
+                                            <td><img src="~/Content/images/products/@item.HinhURL" alt="Profile Picture" class="img-circle img-sm"></td>
+                                            <td><a class="btn-link" data-trigger="hover" href="#" id="@item.MaSanPham">@item.TenSanPham</a></td>
+                                            <td>@item.LoaiSanPham.TenLoaiSanPham</td>
+                                            <td><span class="text-muted"><i class="fa fa-clock-o"></i> @string.Format("{0:d/M/yyyy}", item.NgayNhap)</span></td>
+                                            <td>@string.Format("{0:0,0}", item.GiaSanPham)đ</td>
+                                            <td>
+                                                @{
+                                                    if (@item.BiXoa != false)
+                                                    {
+                                                        <span class="label label-table label-danger">Đã Khóa</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (@item.SoLuongTon > 0)
+                                                        {
+                                                            <span class="label label-table label-info">Còn hàng</span>
+
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="label label-table label-warning">Hết hàng</span>
+                                                        }
+                                                    }
+
+
+                                                }
+
+                                            </td>
+
+                                            <td class="min-w-td text-center">
+                                                <div class="btn-group">
+                                                    @{
+                                                        if (@item.BiXoa != false)
+                                                        {
+                                                            <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-unlock add-tooltip" href="@Url.Action("UnLockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Mở Khóa" data-container="body"></a>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <a class="btn btn-sm btn-default btn-icon btn-hover-danger fa fa-lock add-tooltip" href="@Url.Action("LockProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Khóa" data-container="body"></a>
+                                                        }
+                                                        <a class="btn btn-sm btn-default btn-icon btn-hover-success fa fa-pencil add-tooltip" href="@Url.Action("UpdateProduct","AProducts",new { id = @item.MaSanPham})" data-original-title="Sửa" data-container="body"></a>
+
+                                                    }
+                                                </div>
+                                            </td>
+                                        </tr>
+                                                        }
+                                }
+
+                            </tbody>
+                        </table>
+                        <hr>
+
+                        <!--Pagination-->
+
+                        <div class="text-right">
+                            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .popover-content {
+        font-size: 12px;
+        width: 800px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.btn-link').popover({
+            title: "<h4  style='margin:0;' class='title'>Chi tiết sản phẩm</h4>",
+            content:fetchData,
+            html: true,
+            placement: 'right'
+        });
+        function fetchData() {
+            var fetch_data = '';
+            var element = $(this);
+            var id = element.attr("id");
+            $.ajax({
+                url: "@Url.Action("DetailProduct")",
+                method: "POST",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    fetch_data = data;
+                }
+            });
+            return fetch_data;
+        }
+    });
+</script>

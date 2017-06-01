@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "showuploadTest";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    #images-to-upload {
+        margin-top: 5px;
+        border: 2.5px dotted #E7EBEE;
+        padding: 10px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin: auto;
+    }
+
+    #title_upload:hover {
+        color: #686868;
+    }
+
+    #images-to-upload span {
+        font-size: 20px;
+        color: #C8DADF;
+    }
+
+    #images-to-upload img {
+        width: 100px;
+        height: 100px;
+        margin-right: 8px;
+        margin-bottom: 5px;
+    }
+
+    #divhinhdaidien {
+        width: 100px;
+        height: 100px;
+        border: 2.5px dotted #E1E5EA;
+        padding: 2px;
+    }
+
+        #divhinhdaidien i {
+            margin: 28px;
+            color: #E7EBEE;
+        }
+
+        #divhinhdaidien img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #divhinhdaidien:hover {
+            background: #32404E;
+        }
+</style>
+<div id="page-content">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Thêm Mới Sản Phẩm</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" id="form_add_product" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4 mar-btm">
+                        <input type="text" name="tensanpham" required id="tensanpham" class="form-control" placeholder="Tên sản phẩm">
+                    </div>
+                    <div class="col-md-3 mar-btm">
+                        <input type="number" name="soluong" required class="form-control" placeholder="Số lượng">
+                    </div>
+                    <div class="col-md-3 mar-btm">
+                        <input type="number" id="price_products" required name="giaban" class="form-control" placeholder="Giá bán">
+                    </div>
+                    <div class="col-md-2 mar-btm">
+                        <span style="font-weight:bold;font-size:18px;color:#DB5261;" class="title" id="money_bind"></span>
+                    </div>
+                    <script>
+                                $('#price_products').keyup(function () {
+                                    var value = "";
+                                    value = $(this).val();
+                                    if (value == "") {
+                                        $("#money_bind").text();
+                                    }
+                                    $("#money_bind").text(String(value).replace(/(.)(?=(\d{3})+$)/g, '$1,')+"đ");
+                                });
+                    </script>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mar-btm">
+                        @Html.DropDownList("MaLoaiSanPham", (IEnumerable<SelectListItem>)ViewBag.LoaiSanPhams, new { @class = "selectpicker" })
+                    </div>
+                    <div class="col-md-3 mar-btm">
+                        @Html.DropDownList("MaHangSanXuat", (IEnumerable<SelectListItem>)ViewBag.HangSanXuats, new { @class = "selectpicker" })
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="divhinhdaidien">
+                            <i class="fa fa-upload fa-3x" aria-hidden="true"></i>
+                        </div>
+                        <input name="image" style="display:none;" hidden accept='image/*' id="hinhdaidien" type="file" />
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-md-6">
+                        <textarea id="demo-textarea-input" rows="9" name="mota" class="form-control" placeholder="Giới thiệu sản phẩm..."></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <input name="images_slide" style="display:none;" accept='image/*' id="images" type="file" multiple />
+                        <div id="images-to-upload">
+                            <span id="title_upload" style="display:block;">Hình slide sản phẩm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-info" type="submit">Lưu sản phẩm</button>
+                        <a href="@Url.Action("Index")"><button class="btn btn-mint" type="button">Quay về danh sách</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $("#divhinhdaidien").click(function () {
+        $('#hinhdaidien').click();
+    });
+    $("#title_upload").click(function () {
+        $('#images').click();
+    });
+
+    $('#hinhdaidien').change(function (e) {
+        $('#divhinhdaidien').empty();
+        var files = e.target.files;
+        $.each(files, function (i, file) {
+            var extension = file.name.substr((file.name.lastIndexOf('.') + 1));
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var template = '<img id="image_hinhdaidien" src="' + e.target.result + '" />';
+                ;
+                $('#divhinhdaidien').append(template);
+            };
+        });
+    });
+    $('#images').change(function (e) {
+        $('.image_upload').remove();
+        var files = e.target.files;
+        $.each(files, function (i, file) {
+            var extension = file.name.substr((file.name.lastIndexOf('.') + 1));
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var template = '<img class="image_upload" src="' + e.target.result + '" />';
+                ;
+                $('#images-to-upload').append(template);
+            };
+        });
+    });
+
+    $("form#form_add_product").submit(function () {
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: "@Url.Action("themsanpham")",
+            type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+            if (data == "success") {
+
+                     sweetAlert("Thành công", "Thêm sản phẩm thành công!", "success");
+                     $('.confirm').click(function (e) {
+                         window.location.replace("@Url.Action("Index")");
+                     });
+             }
+            else if (data == "error_product")
+                sweetAlert("Lỗi", "Sản phẩm không tồn tại!", "error");
+            else if (data == "error_images")
+                sweetAlert("Lỗi", "Hình ảnh không được rỗng!", "error");
+            else
+                    sweetAlert(data);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        return false;
+    });
+</script>
+
