@@ -1,23 +1,24 @@
 ﻿@using Petsmart.Models
 
+@{ 
+    var lsp = ViewData["LoaiSP"] as LoaiSanPham;
+    var ctsp = ViewData["ChiTietSP"] as SanPham;
+}
+
 <div class="page-heading">
     <div class="breadcrumbs">
         <div class="container">
             <div class="row">
                 @{
-                    foreach (var item in ViewData["LoaiSP"] as List<LoaiSanPham>)
-                    {
-                        foreach (var item1 in ViewData["ChitietSP"] as List<SanPham>)
-                        {
+                 
                             <div class="col-xs-12">
                                 <ul>
                                     <li class="home"> <a href="@Url.Action("Index", "Home")" title="Đến trang chủ">Home</a> <span>—› </span> </li>
-                                    <li class="category1599"> <a href="@Url.Action("Index", "Categories", new { id = @item1.MaLoaiSanPham })" title="">@item.TenLoaiSanPham<span>—› </span></a> </li>
-                                    <li class="category1600"> <a href="@Url.Action("Detail", "Products", new { id = @item1.MaSanPham })" title="">@item1.TenSanPham</a> </li>
+                                    <li class="category1599"> <a href="@Url.Action("Index", "Categories", new { id = @lsp.MaLoaiSanPham })" title="">@lsp.TenLoaiSanPham<span>—› </span></a> </li>
+                                    <li class="category1600"> <a href="@Url.Action("Detail", "Products", new { id = @ctsp.MaSanPham })" title="">@ctsp.TenSanPham</a> </li>
                                 </ul>
                             </div>
-                        }
-                    }
+                 
                 }
 
                 <!--col-xs-12-->
@@ -40,8 +41,7 @@
                 <!--product-next-prev-->
                 <div class="product-essential container">
                     @{
-                        foreach (var item in ViewData["ChiTietSP"] as List<SanPham>)
-                        {
+                        
                             <div class="row">
                                 <div class="product-next-prev"> <a class="product-next" title="Tiếp" href="#"><span></span></a> <a class="product-prev" title="Lui" href="#"><span></span></a> </div>
                                 <form action="" method="post" id="product_addtocart_form">
@@ -50,21 +50,22 @@
                                     <div class="product-img-box col-sm-6 col-xs-12">
                                         <div class="new-label new-top-left"> New </div>
                                         <div class="product-image">
-                                            <div class="large-image"> <a href="images/product-img.jpg" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20" style="position: relative; display: block;"> <img src="~/Content/images/products/@item.HinhURL" style="display: block;"> </a> <div class="mousetrap" style="background-image:url(&quot;.&quot;);z-index:999;position:absolute;width:574px;height:574px;left:0px;top:0px;"></div></div>
+                                            <div class="large-image"> <a href="images/@ctsp.HinhURL" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20" style="position: relative; display: block;"> <img src="~/Content/images/products/@ctsp.HinhURL" style="display: block;"> </a> <div class="mousetrap" style="background-image:url(&quot;.&quot;);z-index:999;position:absolute;width:574px;height:574px;left:0px;top:0px;"></div></div>
                                             <div class="flexslider flexslider-thumb">
-
                                                 <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                                     <ul class="previews-list slides" style="width: 1400%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 1" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 2" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 1" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 2" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 2" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 2" draggable="false"></a></li>
-                                                        <li style="width: 100px; float: left; display: block;"><a href="~/Content/user/images/product-img.jpg" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/user/images/product-img.jpg" alt="Thumbnail 2" draggable="false"></a></li>
+                                                        @{
+                                                            foreach (var item in ViewData["HinhAnhSP"] as List<HinhAnhSanPham>)
+                                                            {
+                                                                <li style="width: 100px; float: left; display: block;"><a href="~/Content/images/products/@item.HinhURL" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: 'images/product-img.jpg' "><img src="~/Content/images/products/@item.HinhURL" alt="@ctsp.TenSanPham" draggable="false"></a></li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div><ul class="flex-direction-nav"><li><a class="flex-prev flex-disabled" href="#" tabindex="-1"></a></li><li><a class="flex-next" href="#"></a></li></ul>
                                             </div>
+
+
+
                                         </div>
                                         <!-- end: more-images -->
                                     </div>
@@ -73,7 +74,7 @@
                                     <div class="product-shop col-sm-6 col-xs-12">
 
                                         <div class="product-name">
-                                            <h1 itemprop="name">@item.TenSanPham</h1>
+                                            <h1 itemprop="name">@ctsp.TenSanPham</h1>
                                         </div>
                                         <!--product-name-->
                                         <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
@@ -87,10 +88,10 @@
                                             </div>
                                         </span>
                                         <div class="price-block">
-                                            <div class="price-box"> <span class="regular-price" id="product-price-123"> <span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
+                                            <div class="price-box"> <span class="regular-price" id="product-price-123"> <span class="price">@string.Format("{0:0,0}", @ctsp.GiaSanPham) VNĐ</span> </span> </div>
                                             <p class="availability in-stock">
                                                 <link itemprop="availability" href="http://schema.org/InStock">
-                                                @if (@item.SoLuongTon > 0)
+                                                @if (@ctsp.SoLuongTon > 0)
                                                 {
                                                     <span>Còn hàng</span>
                                                 }
@@ -103,7 +104,7 @@
                                         <!--price-block-->
                                         <div class="short-description">
                                             <h2>Tổng quát</h2>
-                                            <p>@item.MoTa</p>
+                                            <p>@ctsp.MoTa</p>
                                         </div>
                                         <div class="add-to-box">
                                             <div class="add-to-cart">
@@ -116,7 +117,7 @@
                                                     <!--custom pull-left-->
                                                 </div>
                                                 <!--pull-left-->
-                                                <a href="@Url.Action("OrderNow", "ShoppingCart", new { id = @item.MaSanPham })"><button type="button" title="Thêm vào giỏ" class="button btn-cart"><span><i class="icon-basket"></i>Thêm vào giỏ</span></button></a>
+                                                <a href="@Url.Action("OrderNow", "ShoppingCart", new { id = @ctsp.MaSanPham })"><button type="button" title="Thêm vào giỏ" class="button btn-cart"><span><i class="icon-basket"></i>Thêm vào giỏ</span></button></a>
                                             </div>
                                             <!--add-to-cart-->
                                             <div class="email-addto-box">
@@ -158,7 +159,7 @@
                                 <div id="productTabContent" class="tab-content">
                                     <div class="tab-pane fade in active" id="product_tabs_description">
                                         <div class="std">
-                                            <p>@item.MoTa</p>
+                                            <p>@ctsp.MoTa</p>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="product_tabs_tags">
@@ -411,7 +412,7 @@
 
 
                 <!--product-collateral-->
-                        }
+                        
                     }
                 </div>
 
@@ -424,11 +425,11 @@
                             </div>
                             <div id="related-slider" class="product-flexslider hidden-buttons">
                                 <div class="slider-items slider-width-col4 products-grid">
-                                    
-        @{
-            foreach (var item in ViewData["SPTuongTu"] as List<SanPham>)
-            {
-                                <div class="item">
+
+                                    @{
+                                        foreach (var item in ViewData["SPTuongTu"] as List<SanPham>)
+                                        {
+                                            <div class="item">
                                                 <div class="item-inner">
                                                     <div class="item-img">
                                                         <div class="item-img-info">
@@ -455,7 +456,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="item-price">
-                                                                    <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@string.Format("{0:0,0}",@item.GiaSanPham) VNĐ</span> </span> </div>
+                                                                    <div class="price-box"><span class="regular-price" id="product-price-1"><span class="price">@string.Format("{0:0,0}", @item.GiaSanPham) VNĐ</span> </span> </div>
                                                                 </div>
                                                                 <div class="add_cart">
                                                                     <a href="@Url.Action("Detail","Products",new { id = @item.MaSanPham})"><button class="button btn-cart" type="button"><span>Xem chi tiết</span></button></a>
@@ -465,13 +466,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-            }
-        }
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- end related product -->
                 </div>
                 <!--box-additional-->
