@@ -1,16 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using Petsmart.Models;
+@if(Session["admin"] == null)
+{
+    Response.Redirect("~/Home");
+}
+@{ 
+    TaiKhoan ad = Session["admin"] as TaiKhoan;
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <!--STYLESHEET-->
-    <!--=================================================-->
-    <!--Open Sans Font [ OPTIONAL ] -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
-
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
-
     <link href="~/Content/admin/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/admin/css/nifty.min.css" rel="stylesheet" />
     <!--Nifty Stylesheet [ REQUIRED ]-->
@@ -46,7 +50,6 @@
 <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 <body>
     <div id="container" class="effect mainnav-lg">
-
         <!--NAVBAR-->
         <!--===================================================-->
         <header id="navbar">
@@ -132,18 +135,12 @@
                         <!--End mega dropdown-->
                     </ul>
                     <ul class="nav navbar-top-links pull-right">
-                        <!--Language selector-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                        <!--End language selector-->
-                        <!--User dropdown-->
-                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                         <li id="dropdown-user" class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="pull-right">
                                     <img class="img-circle img-user media-object" src="~/Content/admin/img/av1.png" alt="Profile Picture">
                                 </span>
-                                <div class="username hidden-xs">Tuong Nguyen</div>
+                                <div class="username hidden-xs">@ad.TenHienThi</div>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
@@ -159,42 +156,20 @@
                                 <!-- User dropdown menu -->
                                 <ul class="head-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="@Url.Action("Setting","AHome")">
                                             <i class="fa fa-user fa-fw fa-lg" style="color:#272822"></i> Thông tin
                                         </a>
                                     </li>
+                                   @{ Html.RenderAction("getInfoShopLayout", "LayoutAdmin", null); }
                                     <li>
-                                        <a href="#">
-                                            <span class="badge badge-danger pull-right">9</span>
-                                            <i class="fa fa-facebook-official fa-fw fa-lg" style="color:#3B5998"></i> Facebook
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="badge badge-primary pull-right">5</span>
-                                            <i class="fa fa-google fa-fw fa-lg" style="color:#DD4B38"></i> Google
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-question-circle fa-fw fa-lg"></i> Hướng dẫn
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-success pull-right">New</span>
+                                        <a href="@Url.Action("Setting","AHome")">
                                             <i class="fa fa-gear fa-fw fa-lg"></i> Cài đặt
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-lock fa-fw fa-lg"></i> Khóa màn hình
                                         </a>
                                     </li>
                                 </ul>
                                 <!-- Dropdown footer -->
                                 <div class="pad-all text-right">
-                                    <a href="pages-login.html" class="btn btn-primary">
+                                    <a href="@Url.Action("Logout","AHome")" class="btn btn-primary">
                                         <i class="fa fa-sign-out fa-fw"></i> Đăng xuất
                                     </a>
                                 </div>
@@ -428,10 +403,8 @@
     <!--Flot Pie Chart [ OPTIONAL ]-->
     <!--Gauge js [ OPTIONAL ]-->
     <!--Easy Pie Chart [ OPTIONAL ]-->
-    <script src="~/Content/admin/plugins/gauge-js/gauge.min.js"></script>
     <script src="~/Content/admin/plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
     <!--Demo script [ DEMONSTRATION ]-->
-    <script src="~/Content/admin/js/demo/charts.js"></script>
     <!--Charts [ SAMPLE ]-->
 </body>
 </html>

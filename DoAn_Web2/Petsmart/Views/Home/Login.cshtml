@@ -58,13 +58,13 @@
                                 <li>
                                     <label for="email">@Html.LabelFor(e => e.Email)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(e => e.Email)</div></label>
                                     <div class="input-box">
-                                        @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email" })
+                                        @Html.TextBoxFor(e => e.Email, new { @class = "input-text required-entry validate-email" ,@required = "true" })
                                     </div>
                                 </li>
                                 <li>
                                     <label for="pass">@Html.LabelFor(p => p.MatKhau)<em class="required">*</em><div class="validationLogin">@Html.ValidationMessageFor(m => m.MatKhau)</div></label>
                                     <div class="input-box">
-                                        @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password" })
+                                        @Html.PasswordFor(p => p.MatKhau, new { @class = "input-text required-entry validate-password", @required = "true" })
                                     </div>
                                 </li>
                             </ul>

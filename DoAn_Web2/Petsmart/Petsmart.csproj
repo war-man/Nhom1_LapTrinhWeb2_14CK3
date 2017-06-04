@@ -223,6 +223,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemCart.cs" />
+    <Compile Include="Controllers\LayoutAdminController.cs" />
     <Compile Include="Controllers\LayoutUserController.cs" />
     <Compile Include="Controllers\MailHelper.cs" />
     <Compile Include="Controllers\PartnersController.cs" />
@@ -234,48 +235,51 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonDatHang.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HangSanXuat.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhAnhSanPham.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoaiSanPham.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiTaiKhoan.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shop.Context.cs">
+    <Compile Include="Models\ShopPets.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.Context.tt</DependentUpon>
+      <DependentUpon>ShopPets.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shop.cs">
+    <Compile Include="Models\ShopPets.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shop.Designer.cs">
+    <Compile Include="Models\ShopPets.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.edmx</DependentUpon>
+      <DependentUpon>ShopPets.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiKhoan.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinShop.cs">
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TinhTrang.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopPets.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -425,6 +429,8 @@
     <Content Include="Content\images\products\shiba-inu.jpg" />
     <Content Include="Content\images\products\siberianhusky.png" />
     <Content Include="Content\images\products\teddybear.jpg" />
+    <Content Include="Content\lib_alert\sweetalert.css" />
+    <Content Include="Content\lib_alert\sweetalert.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\user\images\404.jpg" />
     <Content Include="Content\user\images\ad-banner1.jpg" />
@@ -583,15 +589,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\Shop.Context.tt">
+    <Content Include="Models\ShopPets.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Shop.edmx</DependentUpon>
-      <LastGenOutput>Shop.Context.cs</LastGenOutput>
+      <DependentUpon>ShopPets.edmx</DependentUpon>
+      <LastGenOutput>ShopPets.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Shop.tt">
+    <Content Include="Models\ShopPets.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Shop.edmx</DependentUpon>
-      <LastGenOutput>Shop.cs</LastGenOutput>
+      <DependentUpon>ShopPets.edmx</DependentUpon>
+      <LastGenOutput>ShopPets.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -644,12 +650,12 @@
     <Content Include="Content\user\fonts\site-icons.ttf" />
     <Content Include="Content\user\fonts\site-icons.woff" />
     <Content Include="Content\user\images\Thumbs.db" />
-    <EntityDeploy Include="Models\Shop.edmx">
+    <EntityDeploy Include="Models\ShopPets.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Shop.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShopPets.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Shop.edmx.diagram">
-      <DependentUpon>Shop.edmx</DependentUpon>
+    <Content Include="Models\ShopPets.edmx.diagram">
+      <DependentUpon>ShopPets.edmx</DependentUpon>
     </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -697,6 +703,8 @@
     <Content Include="Views\AProducts\AddProduct.cshtml" />
     <Content Include="Views\AProducts\Index.cshtml" />
     <Content Include="Views\AProducts\UpdateProduct.cshtml" />
+    <Content Include="Views\AHome\Setting.cshtml" />
+    <Content Include="Views\LayoutAdmin\getInfoShopLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

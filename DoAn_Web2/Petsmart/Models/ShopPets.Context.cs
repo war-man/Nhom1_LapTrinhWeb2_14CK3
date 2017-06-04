@@ -33,6 +33,7 @@ namespace Petsmart.Models
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public virtual DbSet<ThongTinShop> ThongTinShops { get; set; }
         public virtual DbSet<TinhTrang> TinhTrangs { get; set; }
     }
 }

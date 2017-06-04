@@ -117,16 +117,22 @@ namespace Petsmart.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(TaiKhoan t)
         {
-
             using (ShopBanDongVatEntities db = new ShopBanDongVatEntities())
             {
                 string mkmd5 = EncodeMD5(t.MatKhau);
                 var tk = db.TaiKhoans.Where(e => (e.Email.Equals(t.Email) || e.TenDangNhap.Equals(t.Email)) && e.MatKhau.Equals(mkmd5) && e.BiXoa.Equals(false)).FirstOrDefault();
                 {
-                    if (tk != null)
+                    // user
+                    if (tk != null && tk.MaLoaiTaiKhoan == 1)
                     {
                         Session["user"] = tk;
                         return RedirectToAction("Index", "Account");
+                    }
+                    // admin
+                    else if(tk!=null && tk.MaLoaiTaiKhoan == 2)
+                    {
+                        Session["admin"] = tk;
+                        return RedirectToAction("Index", "AHome");
                     }
                 }
 

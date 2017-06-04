@@ -73,7 +73,6 @@
                             </a>
                         </div>
                         <div class="fl-nav-menu">
-
                             <nav>
                                 <div class="mm-toggle-wrap">
                                     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -161,7 +160,7 @@
                                     @if (count != 0)
                                     {
                                          <div class="actions">
-                                            <a href="@Url.Action("CheckOut","ShoppingCart")"><button class="btn-checkout" title="Thanh toán" type="button" onClick="window.location.href = '@Url.Action("ViewCart", "ShoppingCart")';"><span>Thanh toán</span></button></a>
+                                            <a href="@Url.Action("ViewCart","ShoppingCart")"><button class="btn-checkout" title="Thanh toán" type="button" onClick="window.location.href = '@Url.Action("ViewCart", "ShoppingCart")';"><span>Thanh toán</span></button></a>
                                         </div>
                                     }
                                     else

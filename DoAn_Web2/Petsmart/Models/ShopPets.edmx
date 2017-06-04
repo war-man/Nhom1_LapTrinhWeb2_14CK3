@@ -92,6 +92,17 @@
           <Property Name="BiXoa" Type="bit" Nullable="false" />
           <Property Name="MaLoaiTaiKhoan" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ThongTinShop">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="SoDienThoai" Type="varchar" MaxLength="255" />
+          <Property Name="FacebookURL" Type="varchar" MaxLength="255" />
+          <Property Name="GoogleURL" Type="varchar" MaxLength="255" />
+          <Property Name="GioiThieu" Type="ntext" />
+        </EntityType>
         <EntityType Name="TinhTrang">
           <Key>
             <PropertyRef Name="MaTinhTrang" />
@@ -204,6 +215,7 @@
           <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongTinShop" EntityType="Self.ThongTinShop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TinhTrang" EntityType="Self.TinhTrang" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ChiTietDonHang_DonDatHang" Association="Self.FK_ChiTietDonHang_DonDatHang">
             <End Role="DonDatHang" EntitySet="DonDatHang" />
@@ -345,6 +357,17 @@
           <NavigationProperty Name="DonDatHangs" Relationship="Self.FK_DonDatHang_TaiKhoan" FromRole="TaiKhoan" ToRole="DonDatHang" />
           <NavigationProperty Name="LoaiTaiKhoan" Relationship="Self.FK_TaiKhoan_LoaiTaiKhoan" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
         </EntityType>
+        <EntityType Name="ThongTinShop">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FacebookURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GoogleURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="TinhTrang">
           <Key>
             <PropertyRef Name="MaTinhTrang" />
@@ -458,6 +481,7 @@
           <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
           <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="ThongTinShops" EntityType="Self.ThongTinShop" />
           <EntitySet Name="TinhTrangs" EntityType="Self.TinhTrang" />
           <AssociationSet Name="FK_ChiTietDonHang_DonDatHang" Association="Self.FK_ChiTietDonHang_DonDatHang">
             <End Role="DonDatHang" EntitySet="DonDatHangs" />
@@ -590,6 +614,18 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="BiXoa" ColumnName="BiXoa" />
                 <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongTinShops">
+            <EntityTypeMapping TypeName="ShopBanDongVatModel.ThongTinShop">
+              <MappingFragment StoreEntitySet="ThongTinShop">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="FacebookURL" ColumnName="FacebookURL" />
+                <ScalarProperty Name="GoogleURL" ColumnName="GoogleURL" />
+                <ScalarProperty Name="GioiThieu" ColumnName="GioiThieu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,160 @@
+﻿@using Petsmart.Models;
+@model ThongTinShop
+@{
+    ViewBag.Title = "Setting";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="//cdn.ckeditor.com/4.7.0/standard/ckeditor.js"></script>
+<div id="page-title">
+    <h1 class="page-header text-overflow">Cấu hình website</h1>
+    <!--Searchbox-->
+</div>
+<div id="page-content">
+<div class="row">
+    <div class="col-lg-7">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thông tin website</h3>
+            </div>
+            <!--Icons Addons-->
+            <!--===================================================-->
+            <form class="form-horizontal" id="diachifanpage">
+                <div class="panel-body">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">Facebook</label>
+                            <input name="UrlFacebook" type="text" value="@Model.FacebookURL" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">Google+</label>
+                            <input name="UrlGoogle" type="text" value="@Model.GoogleURL" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">SĐT</label>
+                            <input name="SoDienThoai" type="text" value="@Model.SoDienThoai" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <input name="Email" type="email" value="@Model.Email" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label">Giới thiệu</label>
+                            <textarea name="gioithieu" id="gioithieu" rows="6" cols="80" required>@Model.GioiThieu</textarea>
+                            <script>
+                                CKEDITOR.replace('gioithieu');
+                            </script>
+                        </div>
+                    </div>
+                  </div>
+                <div class="panel-footer text-right">
+                    <button class="btn btn-info" type="submit">Cập nhật</button>
+                </div>
+            </form>
+            <!--End Icons Addons-->
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thông tin đăng nhập</h3>
+            </div>
+            <!--Icons Addons-->
+            <!--===================================================-->
+            <form class="form-horizontal" id="doimatkhauadmin">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Mật khẩu cũ</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="MatKhauCu" placeholder=""  class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Mât khẩu mới</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="MatKhauMoi" placeholder=""  class="form-control">
+                        </div>
+                    </div>
+                    </div>
+                <div class="panel-footer text-right">
+                    <button class="btn btn-info" type="submit">Đổi mật khẩu</button>
+                </div>
+            </form>
+           
+            <!--End Icons Addons-->
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $("form#doimatkhauadmin").submit(function () {
+        // Sửa thông tin
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: "@Url.Action("ResetPassAdmin")",
+                type: 'POST',
+            data: formData,
+            async: false,
+            success: function (data) {
+                if (data == "success") {
+                    sweetAlert("Thành công", "Sửa thông tin tài khoản thành công!", "success");
+                    $('.confirm').click(function (e) {
+                        window.location.replace("@Url.Action("Setting")");
+                    });
+                }
+                else if (data == "error"){
+                    sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+                }
+                else
+                    sweetAlert("Lỗi", data,"error");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+            });
+        return false;
+    });
+    // cập nhật thông tin web site
+    $("form#diachifanpage").submit(function () {
+        // Sửa thông tin
+        for (var instanceName in CKEDITOR.instances)
+            CKEDITOR.instances[instanceName].updateElement();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: "@Url.Action("UpdateInfoWebsite")",
+            type: 'POST',
+        data: formData,
+        async: false,
+        success: function (data) {
+            if (data == "success") {
+                sweetAlert("Thành công", "Sửa thông tin tài khoản thành công!", "success");
+                $('.confirm').click(function (e) {
+                    window.location.replace("@Url.Action("Setting")");
+                });
+            }
+            else if (data == "error"){
+                sweetAlert("Lỗi", "Sửa thông tin thất bại!", "error");
+            }
+            else
+                sweetAlert("Lỗi", data,"error");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+    return false;
+    });
+</script>
