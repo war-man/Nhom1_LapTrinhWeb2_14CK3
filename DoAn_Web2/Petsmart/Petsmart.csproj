@@ -229,6 +229,7 @@
     <Compile Include="Controllers\PartnersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\ThongKeDoanhThu.cs" />
     <Compile Include="Controllers\Top10User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -320,6 +321,7 @@
     <Content Include="Content\admin\img\thumbs\img3.jpg" />
     <Content Include="Content\admin\jquery-1.12.4.min.js" />
     <Content Include="Content\admin\js\bootstrap.min.js" />
+    <Content Include="Content\admin\js\css-color.js" />
     <Content Include="Content\admin\js\demo\bg-images.js" />
     <Content Include="Content\admin\js\demo\charts.js" />
     <Content Include="Content\admin\js\demo\dashboard.js" />
