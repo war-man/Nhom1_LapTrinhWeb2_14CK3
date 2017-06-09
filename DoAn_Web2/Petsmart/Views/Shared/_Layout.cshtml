@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link href="~/Content/user/stylesheet/flexslider.css" rel="stylesheet" />
     <!-- CSS Style -->
+    <!-- CSS Style -->
+    
     <link href="~/Content/user/stylesheet/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/user/stylesheet/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/user/stylesheet/revslider.css" rel="stylesheet" />
@@ -31,6 +33,17 @@
 
 </head>
 <body>
+    <!-- Facebook Comment-->
+
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=1369117709839397";
+  fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     @using Petsmart.Models;
     @using Petsmart.Controllers;
     <!--page-->
@@ -566,17 +579,15 @@
     
 
 
-    <!-- JavaScript -->
-    <script src="~/Content/user/js/jquery.min.js"></script>
-    <script src="~/Content/user/js/jquery.flexslider.js"></script>
-    <script src="~/Content/user/js/bootstrap.min.js"></script>
-    <script src="~/Content/user/js/parallax.js"></script>
     <script src="~/Content/user/js/revslider.js"></script>
+    <script src="~/Content/user/js/bootstrap.min.js"></script>
+    <script src="~/Content/user/js/jquery.flexslider.js"></script>
     <script src="~/Content/user/js/common.js"></script>
     <script src="~/Content/user/js/jquery.bxslider.min.js"></script>
+    <script src="~/Content/user/js/cloud-zoom.js"></script>
     <script src="~/Content/user/js/owl.carousel.min.js"></script>
+    <script src="~/Content/user/js/parallax.js"></script>
     <script src="~/Content/user/js/jquery.mobile-menu.min.js"></script>
-
     <script type="text/javascript">
         jQuery(document).ready(function(){
             jQuery('#thm-rev-slider').show().revolution({

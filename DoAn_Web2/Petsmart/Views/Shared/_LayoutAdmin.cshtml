@@ -1,8 +1,8 @@
 ﻿@using Petsmart.Models;
-@*@if(Session["admin"] == null)
+@if(Session["admin"] == null)
 {
     Response.Redirect("~/Home");
-}*@
+}
 @{ 
     TaiKhoan ad = Session["admin"] as TaiKhoan;
 
@@ -140,7 +140,7 @@
                                 <span class="pull-right">
                                     <img class="img-circle img-user media-object" src="~/Content/admin/img/av1.png" alt="Profile Picture">
                                 </span>
-                                <div class="username hidden-xs">@*@ad.TenHienThi*@</div>
+                                <div class="username hidden-xs">@ad.TenHienThi</div>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">

@@ -94,16 +94,19 @@ namespace Petsmart.Controllers
             }
             // cập nhật lại số lượng sản phẩm khi update tình trạng.
             List<ChiTietDonHang> ctdh = db.ChiTietDonHangs.Where(ct => ct.MaDonDatHang == madonhang).ToList();
-            if(matinhtrang == 2) // tình trạng đang giao thì trừ số lượng sp trong đơn hàng
+            // ma tinh trang cu khac dang giao thi tru slsp trong dh va + so luong ban
+            if(dh.MaTinhTrang != 2 && (matinhtrang == 2 || matinhtrang == 3))
             {
                 foreach(var item in ctdh)
                 {
+                    // Tìm sp thuộc ctdh
                     SanPham sp = db.SanPhams.Single(s=> s.MaSanPham == item.MaSanPham);
                     // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
                     sp.SoLuongTon = sp.SoLuongTon - Convert.ToInt32(item.SoLuong);
+                    // + số lượng bán
+                    sp.SoLuongBan += Convert.ToInt32(item.SoLuong);
                     db.SaveChanges(); 
                 }
-               
             }
             // tình trạng cũ là đang giao và tình trạng mới là  đã hủy thì cộng lại sl sp trong ĐH
             else if (dh.MaTinhTrang == 2 && matinhtrang == 4) 
@@ -111,19 +114,8 @@ namespace Petsmart.Controllers
                 foreach (var item in ctdh)
                 {
                     SanPham sp = db.SanPhams.Single(s => s.MaSanPham == item.MaSanPham);
-                    // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
+                    // lấy số lượng tồn + cho số lượng sp trong ct đơn hàng
                     sp.SoLuongTon = sp.SoLuongTon + Convert.ToInt32(item.SoLuong);
-                    db.SaveChanges();
-                }
-            }
-            // nếu mã tình trạng = đã giao thì cộng số lượng bán
-            else if(dh.MaTinhTrang == 3)
-            {
-                foreach (var item in ctdh)
-                {
-                    SanPham sp = db.SanPhams.Single(s => s.MaSanPham == item.MaSanPham);
-                    // lấy số lượng tồn trừ cho số lượng sp trong đơn hàng
-                    sp.SoLuongBan += Convert.ToInt32(item.SoLuong);
                     db.SaveChanges();
                 }
             }

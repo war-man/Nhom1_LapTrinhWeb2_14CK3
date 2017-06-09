@@ -101,7 +101,8 @@ namespace Petsmart.Controllers
 
         public ActionResult About()
         {
-            return View();
+            var tt = db.ThongTinShops.FirstOrDefault();
+            return View(tt);
         }
 
         public ActionResult Login()

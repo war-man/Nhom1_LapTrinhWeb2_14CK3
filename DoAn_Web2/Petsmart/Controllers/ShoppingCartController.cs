@@ -28,6 +28,7 @@ namespace Petsmart.Controllers
             }
             return -1;
         }
+       
         public ActionResult ViewCart()
         {
             return View();
@@ -68,9 +69,10 @@ namespace Petsmart.Controllers
                 int quantity = Convert.ToInt32(quantities[i]);
                 if (quantity <= 0)
                     cart.RemoveAt(i);
-
-                else
-                    cart[i].Soluong = quantity;
+                // Số lượng sản phẩm quá số lượng tồn
+                else if(cart[i].Soluong > cart[i].Sp.SoLuongTon)
+                    return RedirectToAction("ViewCart", "ShoppingCart");
+                else cart[i].Soluong = quantity;
             }
             Session["cart"] = cart;
             return RedirectToAction("ViewCart", "ShoppingCart");

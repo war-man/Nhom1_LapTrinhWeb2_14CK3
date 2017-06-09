@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" id="divthongketheothang">
                         <canvas id="thongketheothang" height="150"></canvas>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                      </div>
-                    <div class="panel-body" id="divchartthang">
+                    <div class="panel-body" id="divthongketheodanhmuc">
                         <canvas id="canvas" height="150"></canvas>
                         
                     </div>
@@ -156,42 +156,103 @@
 
         <!--Thống kê khách mua nhiều hàng-->
         <div class="row">
-            <div class="col-lg-7">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <div class="panel-control">
-                            <a class="fa fa-question-circle fa-lg fa-fw unselectable add-tooltip" href="#" data-original-title="<h4 class='text-thin'>Khách hàng</h4><p style='width:150px'>Top 10 khách hàng tổng tiền mua hàng nhiều nhất</p>" data-html="true" title=""></a>
-                        </div>
-                        <h3 class="panel-title">Top 10 Khách Hàng</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="pad-btm form-inline">
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="width:4ex">ID</th>
-                                        <th>Hình đại diện</th>
-                                        <th>Tên</th>
-                                        <th>Tổng tiền</th>
-                                        <th class="text-center">SĐT</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in ViewData["lstTop10"] as List<Top10User>)
-                                    {
+            <div class="col-lg-12">
+                <div class="tab-base">
+                    <!--Nav tabs-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#demo-ico-lft-tab-1" aria-expanded="true"><i class="fa fa-user"></i></a></li>
+                        <li class=""><a data-toggle="tab" href="#demo-ico-lft-tab-2" aria-expanded="false"><i class="fa fa-eye"></i></a></li>
+                        <li class=""><a data-toggle="tab" href="#demo-ico-lft-tab-3" aria-expanded="false"><i class="fa fa-heart"></i></a></li>
+                    </ul>
+                    <!--Tabs Content-->
+                    <div class="tab-content">
+                        <div id="demo-ico-lft-tab-1" class="tab-pane fade active in">
+                            <h4 class="text-thin">Top 10 Khách Hàng</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>@item.Matk</td>
-                                            <td><img src='~/Content/admin/img/av3.png' class='img-circle img-sm' /></td>
-                                            <td><a class="btn-link" data-trigger="hover" id="@item.Matk" href="#">@item.Tenkhach </a></td>
-                                            <td>@string.Format("{0:0,0}", item.Tongtien)đ</td>
-                                            <td class="text-center"><span class="label label-table label-success">@item.Sdt</span></td>
+                                            <th style="width:4ex">ID</th>
+                                            <th>Hình đại diện</th>
+                                            <th>Tên</th>
+                                            <th>Tổng tiền</th>
+                                            <th class="text-center">SĐT</th>
                                         </tr>
-                                    }
-                                   
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewData["lstTop10"] as List<Top10User>)
+                                        {
+                                            <tr>
+                                                <td>@item.Matk</td>
+                                                <td><img src='~/Content/admin/img/av3.png' class='img-circle img-sm' /></td>
+                                                <td><a class="btn-link" data-trigger="hover" data-loai="user" id="@item.Matk" href="#">@item.Tenkhach </a></td>
+                                                <td>@string.Format("{0:0,0}", item.Tongtien)đ</td>
+                                                <td class="text-center"><span class="label label-table label-success">@item.Sdt</span></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div id="demo-ico-lft-tab-2" class="tab-pane fade">
+                            <h4 class="text-thin">Top 10 Sản Phẩm Xem Nhiều</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:4ex">ID</th>
+                                            <th>Hình sản phẩm</th>
+                                            <th>Tên</th>
+                                            <th>Lượt Xem</th>
+                                            <th class="text-center">Giá</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewData["top10sp"] as List<SanPham>)
+                                        {
+                                            <tr>
+                                                <td>@item.MaSanPham</td>
+                                                <td><img src="~/Content/images/products/@item.HinhURL" class='img-circle img-sm' /></td>
+                                                <td><a class="btn-link" data-trigger="hover" data-loai="sp" id="@item.MaSanPham" href="#">@item.TenSanPham </a></td>
+                                                <td>@item.LuotXem</td>
+                                                <td class="text-center"><span class="label label-table label-success">@string.Format("{0:0,0}", item.GiaSanPham)đ</span></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="demo-ico-lft-tab-3" class="tab-pane fade">
+                            <h4 class="text-thin">Top 10 Sản Phẩm Bán Chạy</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:4ex">ID</th>
+                                            <th>Hình sản phẩm</th>
+                                            <th>Tên</th>
+                                            <th>Số lượng bán</th>
+                                            <th class="text-center">Giá</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewData["top10spbc"] as List<SanPham>)
+                                        {
+                                            <tr>
+                                                <td>@item.MaSanPham</td>
+                                                <td><img src="~/Content/images/products/@item.HinhURL" class='img-circle img-sm' /></td>
+                                                <td><a class="btn-link" data-trigger="hover" data-loai="sp" id="@item.MaSanPham" href="#">@item.TenSanPham </a></td>
+                                                <td>@item.SoLuongBan</td>
+                                                <td class="text-center"><span class="label label-table label-success">@string.Format("{0:0,0}", item.GiaSanPham)đ</span></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -204,7 +265,7 @@
 <script>
     $(document).ready(function () {
         $('.btn-link').popover({
-            title: "<h4  style='margin:0;' class='title'>Thông tin khách hàng</h4>",
+            title: "<h4  style='margin:0; width:200px;' class='title'>Thông tin chi tiết</h4>",
             content:fetchData,
             html: true,
             placement: 'right'
@@ -213,8 +274,16 @@
             var fetch_data = '';
             var element = $(this);
             var id = element.attr("id");
+            var loai = element.attr("data-loai");
+            var url;
+            if (loai == "user") {
+                url = "@Url.Action("ChiTietKhachHang","AAcount")";
+            }
+            else {
+                url = "@Url.Action("DetailProduct", "AProducts")";
+            }
             $.ajax({
-                url: "@Url.Action("ChiTietKhachHang","AAcount")",
+                url: url,
                 method: "POST",
                 async: false,
                 data: { id: id },
@@ -243,12 +312,43 @@
                 data: {
                     labels: MONTHS,
                     datasets: [{
-                        label: "Doanh thu / triệu đồng",
+                        label: "Doanh thu",
                         backgroundColor: "#FF5733",
                         borderColor: "#FF5733",
                         data: arrDoanhThuTheoThang,
                         fill: false,
                     }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Thống Kê Doanh Thu Tháng'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Tháng'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'triệu VNĐ'
+                            }
+                        }]
+                    }
                 }
             };
             var ctx = document.getElementById("thongketheothang").getContext("2d");
@@ -258,7 +358,7 @@
     });
 
         //Thống kế doanh thu default theo loai...
-        var value = 1;   
+        var value = 1;
         $.ajax({
             url: "@Url.Action("thongKeDoanhThu")",
             method: "POST",
@@ -302,6 +402,8 @@
     }
 
     $('#dropThongKe').change(function (e) {
+        $('#canvas').remove(); // this is my <canvas> element
+        $('#divthongketheodanhmuc').append('<canvas id="canvas" height="150"><canvas>');
         var value = $('#dropThongKe').val();
          //Thống kế doanh thu 
         $.ajax({
@@ -319,10 +421,11 @@
 </script>
 
 <script>
-    $('.chartjs-hidden-iframe').remove();
 
     // Doanh thu theo thang
     $('#dropNam').change(function (e) {
+        $('#thongketheothang').remove(); // this is my <canvas> element
+        $('#divthongketheothang').append('<canvas id="thongketheothang"><canvas>');
         var value = $('#dropNam').val();
         $.ajax({
             url: "@Url.Action("thongkeTheoThang")",
@@ -347,6 +450,37 @@
                         data: arrDoanhThuTheoThang,
                         fill: false,
                     }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Thống Kê Doanh Thu Tháng'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Tháng'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'triệu VNĐ'
+                            }
+                        }]
+                    }
                 }
             };
             var ctx = document.getElementById("thongketheothang").getContext("2d");

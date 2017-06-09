@@ -217,7 +217,6 @@
     <Compile Include="Controllers\AOrdersController.cs" />
     <Compile Include="Controllers\APartnerController.cs" />
     <Compile Include="Controllers\AProductsController.cs" />
-    <Compile Include="Controllers\AUserController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
@@ -423,6 +422,12 @@
     <Content Include="Content\images\products\husky-1160444_1280.jpg" />
     <Content Include="Content\images\products\labradorhusky.jpg" />
     <Content Include="Content\images\products\newsletter.jpg" />
+    <Content Include="Content\images\products\p-1013.jpg" />
+    <Content Include="Content\images\products\p-1014.jpg" />
+    <Content Include="Content\images\products\p-1059.jpg" />
+    <Content Include="Content\images\products\p-1060.jpg" />
+    <Content Include="Content\images\products\p-2.jpg" />
+    <Content Include="Content\images\products\p-3.jpg" />
     <Content Include="Content\images\products\pandabear.jpg" />
     <Content Include="Content\images\products\phocsoc.jpg" />
     <Content Include="Content\images\products\roboisabel.png" />
@@ -434,6 +439,7 @@
     <Content Include="Content\lib_alert\sweetalert.css" />
     <Content Include="Content\lib_alert\sweetalert.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\product-img.jpg" />
     <Content Include="Content\user\images\404.jpg" />
     <Content Include="Content\user\images\ad-banner1.jpg" />
     <Content Include="Content\user\images\ad-banner2.jpg" />

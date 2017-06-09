@@ -245,7 +245,7 @@ namespace Petsmart.Controllers
         {
             SanPham sp = db.SanPhams.Single(s => s.MaSanPham == id);
             string img = "<img src='../Content/images/products/" + sp.HinhURL + "' class='img-circle img-sm' />";
-            string out1 = img + "<div class='row'>" +
+            string out1 = img + "<div class='row' style='padding:8px; min-width:300px;'>" +
                                 "<p>" +
                                     "<label>Tên:&nbsp;</label>" +
                                     "<strong>" + sp.TenSanPham + "</strong>" +

@@ -25,8 +25,6 @@ namespace Petsmart.Controllers
                              matk = gr.Key,
                              tongtien = gr.Sum(x => x.TongThanhTien)
                          }).OrderByDescending(i => i.tongtien).Take(10);
-
-
             foreach (var item in query)
             {
                 Top10User t = new Top10User();
@@ -38,6 +36,14 @@ namespace Petsmart.Controllers
                 lstTop10.Add(t);
             }
             ViewData["lstTop10"] = lstTop10;
+            // Top 10 sản phẩm xem nhiều
+            var top10sp = db.SanPhams.OrderByDescending(s => s.LuotXem).Take(10).ToList();
+            ViewData["top10sp"] = top10sp;
+
+            // Top 10 sản phẩm bán chạy
+            var top10spbc = db.SanPhams.OrderByDescending(s => s.SoLuongBan).Take(10).ToList();
+            ViewData["top10spbc"] = top10spbc;
+
             //Số lượng User
             var sumUser = db.TaiKhoans.Where(s => s.MaLoaiTaiKhoan == 1).Count();
             ViewBag.SoLuongUser = sumUser;
